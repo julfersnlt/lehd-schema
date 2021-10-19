@@ -1,6 +1,6 @@
 = LEHD Public Use Shapefile Data
 Heath Hayward, Matthew Graham, Lars Vilhuber <Patrick.Hayward@census.gov>
-28 March 2019
+18 July 2019
 :ext-relative: {outfilesuffix}
 ( link:lehd_shapefiles.pdf[Printable version] )
 
@@ -152,18 +152,15 @@ ________________________________________________________________________________
 For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
 
 === This version (revisions)
-- 2019-02-21: Initial release
+- 2019-05-16: Initial release
 
-=== Version 4.4.0 from 4.3.1
-- Underlying geovintage updated to reflect 2018 census geography
-- Updated shapefiles based on TIGER 2018
-- PR geography labels added
-- Added state part to non-metro/non-micro areas in state label files
-- Removed nonexistent VT geography from labels
+=== Version 4.5.0 from 4.4.0
+- Added PSEO draft schema csv files
+- Added PSEO sourcing and documentation
 
 
 <<<
 *******************
-This revision: Thu Mar 28 19:30:47 UTC 2019
+This revision: Thu Jul 18 20:30:58 UTC 2019
 *******************
 

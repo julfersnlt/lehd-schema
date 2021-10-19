@@ -1,18 +1,11 @@
-= LEHD Public Use  Schema V4.4.0 - File and Directory Naming Convention
-Lars Vilhuber <ces.qwi.feedback@census.gov>
-28 March 2019
+= LEHD Public Use  Schema V4.5.0-draft - File and Directory Naming Convention
+Lars Vilhuber <>
+18 July 2019
 :ext-relative: {outfilesuffix}
 
 ( link:lehd_csv_naming.pdf[Printable version] )
 
 
-
-[IMPORTANT]
-.Important
-==============================================
-Feedback is welcome. Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema_draft[ces.qwi.feedback@census.gov].
-==============================================
-	
 
 Purpose
 -------
@@ -35,7 +28,7 @@ This version modifies a portion of the structure of the metadata. Many files com
 
 Supersedes
 ----------
-This version supersedes V4.3.1, for files released as of R2019Q1.
+This version supersedes V4.4.0, for files released as of R2019Q1.
 
 
 Basic Filename Schema
@@ -217,14 +210,11 @@ include::naming_ext.csv[]
 For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
 
 === This version (revisions)
-- 2019-02-21: Initial release
+- 2019-05-16: Initial release
 
-=== Version 4.4.0 from 4.3.1
-- Underlying geovintage updated to reflect 2018 census geography
-- Updated shapefiles based on TIGER 2018
-- PR geography labels added
-- Added state part to non-metro/non-micro areas in state label files
-- Removed nonexistent VT geography from labels
+=== Version 4.5.0 from 4.4.0
+- Added PSEO draft schema csv files
+- Added PSEO sourcing and documentation
 
 [IMPORTANT]
 .Important
@@ -234,6 +224,6 @@ Some of the data products noted above do not exist yet.
 
 <<<
 *******************
-This revision: Thu Mar 28 19:30:36 UTC 2019
+This revision: Thu Jul 18 20:30:46 UTC 2019
 *******************
 

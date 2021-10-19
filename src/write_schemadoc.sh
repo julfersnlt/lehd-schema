@@ -37,9 +37,11 @@ sed 's/  /,/g;s/R N/R,N/; s/,,/,/g; s/,,/,/g; s/,,/,/g; s/, /,/g' column_definit
 # create ascii doc version
 asciifile=lehd_public_use_schema.asciidoc
 # this revision is used to dynamically download a sample for the version.txt. should be available for both QWI and J2J
-versionvintage=R2018Q3
+# the 'latest_release' keyword is a symlink in the raw data ftp for the most recent version
+versionvintage=latest_release
 # versionj2jvintage=$versionvintage
-versionj2jvintage=R2018Q2
+# the 'latest_release' keyword is a symlink in the raw data ftp for the most recent version
+versionj2jvintage=latest_release
 versionstate=de
 versionurl=https://lehd.ces.census.gov/data/qwi/${versionvintage}/${versionstate}
 versionj2jurl=https://lehd.ces.census.gov/data/j2j/${versionj2jvintage}/${versionstate}/j2j
@@ -115,7 +117,7 @@ This version supersedes ${previousvintage}, for files released as of R2019Q1.
 
 Basic Schema
 ------------
-Each data file is structured as a CSV file. The first columns contain <<identifiers>>, subsequent columns contain <<indicators>>, followed by <<statusflags,status flags>>. In some cases, visually formatted Excel (XLSX) files are also available,  containing the same information together with header lines  on each sheet.
+Each data file is structured as a CSV (comma separated values) file. The first columns contain <<identifiers>>, subsequent columns contain <<indicators>>, followed by <<statusflags,status flags>>. In some cases, visually formatted Excel (XLSX) files are also available, containing the same information together with header lines on each sheet. Excel versions may contain labels following each identifier variable, and data may be abridged from the CSV due to size limitations.
 
 === Generic structure
 
@@ -148,7 +150,7 @@ Identifiers without the year and quarter component can be considered a series id
 " >> $asciifile
 
 ############################## Identifiers
-for arg in  lehd_mapping_identifiers.csv
+for arg in lehd_mapping_identifiers.csv
 do
   name="$(echo ${arg%*.csv}| sed 's/lehd_//; s/_/ for /; s/mapping/Mapping/; s/ident/Ident/')"
   echo "==== $name
@@ -157,7 +159,7 @@ do
 Each of the released files has a set of variables uniquely identifying records ('Identifiers'). The table below relates the set of identifier specifications
 to the released files. The actual CSV files containing the identifiers for each set are listed after this table. Each identifier can take on a specified list of values, documented in the section on <<catvars,Categorical Variables>>.
 
-[width=\"80%\",format=\"csv\",cols=\"<3,6*^1\",options=\"header\"]
+[width=\"80%\",format=\"csv\",cols=\"<3,8*^1\",options=\"header\"]
 |===================================================
 include::$arg[]
 |===================================================
@@ -165,7 +167,8 @@ include::$arg[]
 " >> $asciifile
 done
 
-for arg in   $(ls lehd_identifiers_*csv)
+### Hardcode identifier order
+for arg in lehd_identifiers_qwi.csv lehd_identifiers_j2j.csv lehd_identifiers_j2jod.csv lehd_identifiers_pseo.csv
 do
   name="$(echo ${arg%*.csv}| sed 's/lehd_//; s/_/ for /; s/ident/Ident/')"
   echo "==== $name
@@ -179,6 +182,7 @@ include::$arg[]
 
 " >> $asciifile
 done
+
 
 ################################# Variables
 echo "
@@ -247,7 +251,29 @@ include::variables_j2jr.csv[]
 include::variables_j2jod.csv[]
 |===================================================
 <<<
+" >> $asciifile
 
+tmp_pseoevars_cols=$(mktemp -p $cwd)
+cut -d ',' -f 1,3,5,6,7 variables_pseoe.csv >> $tmp_pseoevars_cols
+echo "
+==== Post-Secondary Employment Outcomes Earnings (PSEOE)
+( link:variables_pseoe.csv[] )
+[width=\"95%\",format=\"csv\",cols=\"<1,<3,<5,2*<1\",options=\"header\"]
+|===================================================
+include::$tmp_pseoevars_cols[]
+|===================================================
+<<<
+" >> $asciifile
+
+tmp_pseofvars_cols=$(mktemp -p $cwd)
+cut -d ',' -f 1,3,5,6,7 variables_pseof.csv >> $tmp_pseofvars_cols
+echo "
+==== Post-Secondary Employment Outcomes Flows(PSEOF)
+( link:variables_pseof.csv[] )
+[width=\"95%\",format=\"csv\",cols=\"<1,<3,<5,2*<1\",options=\"header\"]
+|===================================================
+include::$tmp_pseofvars_cols[]
+|===================================================
 <<<
 " >> $asciifile
 
@@ -391,7 +417,7 @@ Categorical variable descriptions are displayed above each table, with the varia
 " >> $asciifile
 
 # we do industry and geo last
-for arg in $(ls label_*csv| grep -vE "geo|ind_level|industry|agg_level|flags|fips|stusps|concept_draft")
+for arg in $(ls label_*csv| grep -vE "geo|ind_level|industry|agg_level|flags|fips|stusps|concept_draft|pseo|cip|inst|degree")
 do
   name=$(echo ${arg%*.csv}| sed 's/label_//')
   echo "=== $name
@@ -450,6 +476,114 @@ include::tmp2.csv[]
 " >> $asciifile
 done
 
+echo "
+=== Educational Institution ===
+
+==== Institution Levels
+( link:label_inst_level.csv[] )
+
+Educational institutions are tabulated individually in the current data release.
+Future releases may aggregate to institutions to higher levels, such as state or Census Division.
+
+[width=\"60%\",format=\"csv\",cols=\"^1,<4\",options=\"header\"]
+|===================================================
+include::label_inst_level.csv[]
+|===================================================
+" >> $asciifile
+
+tmp_inst_cols=$(mktemp -p $cwd)
+tmp_inst_rows=$(mktemp -p $cwd)
+cut -d ',' -f 1,2,4 label_institution.csv >> $tmp_inst_cols
+head -8 $tmp_inst_cols > $tmp_inst_rows
+echo "...,," >> $tmp_inst_rows
+head -100 $tmp_inst_cols | tail -8  >> $tmp_inst_rows
+echo "
+==== Institution
+( link:label_institution.csv[] )
+
+Institution identifiers are sourced from the
+https://ifap.ed.gov/ifap/fedSchoolCodeList.jsp[U.S. Department of Education, Federal Student Aid office].
+This list has been supplemented with records for regional groupings of institutions.
+
+[width=\"60%\",format=\"csv\",cols=\"^1,<5,^1\",options=\"header\"]
+|===================================================
+include::$tmp_inst_rows[]
+|===================================================
+" >> $asciifile
+
+echo "
+=== Degree level
+( link:label_degree_level.csv[] )
+
+The degree levels are sourced from the
+https://surveys.nces.ed.gov/ipeds/VisInstructions.aspx?survey=10&id=30080&show=part#chunk_1526[National Center for Education Statistics (NCES), Integrated Postsecondary Education Data System (IPEDS)].
+
+[width=\"60%\",format=\"csv\",cols=\"^1,<4\",options=\"header\"]
+|===================================================
+include::label_degree_level.csv[]
+|===================================================
+" >> $asciifile
+
+echo "
+=== Classification of Instruction Programs (CIP)
+
+==== CIP levels
+( link:label_cip_level.csv[] )
+
+[width=\"60%\",format=\"csv\",cols=\"^1,<4\",options=\"header\"]
+|===================================================
+include::label_cip_level.csv[]
+|===================================================
+" >> $asciifile
+
+tmp_cip_cols=$(mktemp -p $cwd)
+tmp_cip_rows=$(mktemp -p $cwd)
+# use python to parse mixed quote csvs
+python -c 'import sys,csv
+w = csv.writer(sys.stdout)
+for row in csv.reader(sys.stdin):
+    w.writerow((row[0],row[1],row[4]))' < label_cipcode.csv > $tmp_cip_cols
+head -5 $tmp_cip_cols > $tmp_cip_rows
+echo "...,," >> $tmp_cip_rows
+head -100 $tmp_cip_cols | tail -5  >> $tmp_cip_rows
+echo "...,," >> $tmp_cip_rows
+echo "
+==== CIP code
+( link:label_cipcode.csv[] )
+
+CIP codes are sourced from the https://nces.ed.gov/ipeds/cipcode/[National Center for Education Statistics (NCES), Integrated Postsecondary Education Data System (IPEDS)].
+Data are reported using 2010 CIP codes, for all years.
+In 4-digit CIP tabulations, select degree levels are collapsed to the 2-Digit CIP family, using custom codes (e.g., 01.XX, 02.XX, etc.).
+
+[width=\"90%\",format=\"csv\",cols=\"<1,<3,<6\",options=\"header\"]
+|===================================================
+include::$tmp_cip_rows[]
+|===================================================
+" >> $asciifile
+
+echo "
+=== Grad Cohort
+
+This is a 4-digit number representing the first year of the graduation cohort. The number of years in the cohort is reported in the separate <<#_grad_cohort_years>> variable. 
+
+[source]
+--
+If grad_cohort is 2010 and grad_cohort_years is 3, then the cell includes graduates from (2010, 2011, and 2012).
+--
+
+When tabulating across all cohorts, the value *0000* will be used for grad_cohort.
+
+=== Grad Cohort Years
+
+This is the number of years in the cohort of reference (see <<#_grad_cohort>>). It varies by degree_level.
+
+[source]
+--
+If degree_level=05, grad_cohort_years=3 (3 year cohorts for bachelor's degrees) otherwise, grad_cohort_years=5 (5 year cohorts for all other degrees).
+--
+
+Tabulations are not done across degree types, so grad_cohort_years will be reported when grad_cohort=0000.
+" >> $asciifile
 
 ################################ Geo formats
 # now do geography
@@ -480,6 +614,7 @@ done
 	grep -E ",M$" tmp3.csv | sort -n -k 1 -t , >> label_geography.csv
 	grep -E ",W$" tmp3.csv | sort    -k 1 -t , >> label_geography.csv
 	grep -E ",B$" tmp3.csv | sort -n -k 1 -t , >> label_geography.csv
+	grep -E ",D$" tmp3.csv | sort -n -k 1 -t , >> label_geography.csv
   # we check that we have the same numbers
 
 	# convert to UTF-8
@@ -530,6 +665,16 @@ for all entities of <<geolevel,geo_level>> 'N' or 'S', and is a summary of separ
 include::tmp.csv[]
 |===================================================
 
+( link:label_geography_division.csv[] )
+
+The file link:label_geography_division.csv[label_geography_division.csv] contains values and labels
+for all entities of <<geolevel,geo_level>> 'D'.
+
+[width=\"40%\",format=\"csv\",cols=\"^1,<3,^1\",options=\"header\"]
+|===================================================
+include::label_geography_division.csv[]
+|===================================================
+
 ==== [[stusps]]State postal codes
 
 Some parts of the schema use (lower or upper-case) state postal codes.
@@ -566,6 +711,11 @@ Scope,Types,Format file" >> $asciifile
 	state=$(echo ${arg%*.csv} | awk -F_ ' { print $3 } '| tr [a-z] [A-Z])
 	echo "$state,N,link:${arg}[]" >> $asciifile
 	done
+	for arg in label_geography_division.csv
+	do
+	state=$(echo ${arg%*.csv} | awk -F_ ' { print $3 } '| tr [a-z] [A-Z])
+	echo "$state,D,link:${arg}[]" >> $asciifile
+	done
 	for arg in label_geography_metro.csv
 	do
 	state=$(echo ${arg%*.csv} | awk -F_ ' { print $3 } '| tr [a-z] [A-Z])
@@ -597,6 +747,8 @@ cut -d ',' -f 1-9 $nsfileshort >> $tmp_nsfileshort_csv
 echo "
 <<<
 === Aggregation level
+
+==== J2J
 ( link:$nsfile[] )
 
 Measures within the J2J and QWI data products are tabulated on many different dimensions, including demographic characteristics, geography, industry, and other firm characteristics. For Origin-Destination (O-D) tables, characteristics of the origin and destination firm can be tabulated separately.  Every tabulation level is assigned a unique aggregation index, represented by the agg_level variable. This index starts from 1, representing a national level grand total (all industries, workers, etc.), and progresses through different combinations of characteristics. There are gaps in the progression to leave space for aggregation levels that may be included in future data releases.
@@ -614,6 +766,8 @@ include::variables_agg_level.csv[]
 
 The characteristics available on an aggregation level are repeated using a series of flags following the standard schema:
 
+- <<_cip_levels,cip_level>> - degree field reporting level of table
+- <<_institution_levels,inst_level>> - institution reporting level of table
 - <<geolevel,geo_level>> - geographic level of table
 - <<ind_level,ind_level>> - industry level of table
 - by_ variables - flags indicating other dimensions reported, including ownership, demographics, firm age and size.
@@ -627,6 +781,59 @@ include::$tmp_nsfileshort_csv[]
 |===================================================
 ">> $asciifile
 
+# use all cols
+tmp_pseoagg_cols=label_agg_level_pseo.csv
+tmp_pseoagg_rows=$(mktemp -p $cwd)
+
+head -5 $tmp_pseoagg_cols > $tmp_pseoagg_rows
+echo "...,,,,,,,,,," >> $tmp_pseoagg_rows
+head -50 $tmp_pseoagg_cols | tail -3 >> $tmp_pseoagg_rows
+echo "...,,,,,,,,,," >> $tmp_pseoagg_rows
+head -100 $tmp_pseoagg_cols | tail -3 >> $tmp_pseoagg_rows
+echo "...,,,,,,,,,," >> $tmp_pseoagg_rows
+
+
+echo "
+==== PSEO
+( link:label_agg_level_pseo.csv[] )
+
+Measures within the PSEO data product can be tabulated by characteristics of the graduate
+(e.g., institution attended, instructional program, degree level, etc.) and by characteristics of employment
+(state, industry). All measures may not be available on all levels of aggregation - for example,
+earnings variables may not be available when tabulating by place and industry of work, though counts are.
+Every tabulation level is assigned a unique aggregation index, represented by the agg_level_pseo variable.
+This index starts from 1, representing a national level grand total (all institutions, graduates, industries,
+etc.), and progresses through different combinations of characteristics. There are gaps in the progression to
+leave space for aggregation levels that may be included in future data releases. Aggregation levels that are
+available in the PSEO release will be flagged.
+
+The following variables are included in the link:label_agg_level_pseo.csv[] file:
+
+[width=\"60%\",format=\"csv\",cols=\"<2,<5\",options=\"header\"]
+|===================================================
+Variable,Description
+agg_level_pseo, index representing level of aggregation reported on a given record
+grad_char,Characteristics of graduate and program
+firm_char,Characterstics of place of employment
+pseoe,Flag: aggregation level available on PSEO Earnings
+pseof,Flag: aggregation level available on PSEO Flows
+|===================================================
+
+The characteristics available on an aggregation level are repeated using a series of flags following the standard schema:
+
+- <<#_institution_levels,inst_levels>> - institution level of table
+- <<geolevel,geo_level>> - geographic level of table
+- <<ind_level,ind_level>> - industry level of table
+- by_ variables - flags indicating other dimensions reported, including ownership, demographics, firm age and size.
+
+
+[width=\"90%\",format=\"csv\",cols=\"^1,2*<3,8*^1\",options=\"header\"]
+|===================================================
+include::$tmp_pseoagg_rows[]
+|===================================================
+">> $asciifile
+
+
 
 arg=label_flags.csv
 echo "
@@ -634,13 +841,14 @@ echo "
 == [[statusflags]]Status Flags
 ( link:${arg}[] )
 
-Each status flag in the tables above contains one of the following valid values.
-The values and their interpretation are listed in the table below.
+Most indicators in the LEHD data products have associated status flags. Each status flag in the tables above contains one of the following valid values. The values and their interpretation are listed in the tables below. Unless otherwise specified in this section, a status flag will take the values described in 7.1 Standard Status Flags.
+
+=== Standard Status Flags
 
 [IMPORTANT]
 .Important
 ==============================================
-Note: Currently, the J2J tables only contain status flags '-1', '1', '5'. Status flags with values 10 or above only appear in online applications, not in CSV files.
+Note: Currently, the J2J and PSEO tables only contain status flags '-1', '1', '5'. Status flags with values 10 or above only appear in online applications, not in CSV files.
 ==============================================
 
 
@@ -648,6 +856,18 @@ Note: Currently, the J2J tables only contain status flags '-1', '1', '5'. Status
 |===================================================
 include::$arg[]
 |===================================================
+
+=== IPEDS Count Status Flag
+( link:label_flags_ipeds_count.csv[] )
+
+Graduate counts are provided from public use data from the https://nces.ed.gov/ipeds/use-the-data[Integrated Postsecondary Education Data System (IPEDS)]. Counts are linked to graduation cohorts in the PSEO data and included in the PSEOE tables. In a small number of cases, misalignment in programs (CIPCODE) is observed between the IPEDS and PSEO counts. In these cases, the IPEDS counts adjusted to be consistent with those on PSEO, and the count is flagged accordingly.
+
+[width=\"80%\",format=\"csv\",cols=\"^1,<4\",options=\"header\"]
+|===================================================
+include::label_flags_ipeds_count.csv[]
+|===================================================
+
+
 ">> $asciifile
 
 
@@ -661,7 +881,7 @@ echo "
 == [[metadata]]Metadata
 ( link:${arg}[] )
 
-=== [[metadataqwij2j]]Version Metadata for QWI and J2J Files (version.txt)
+=== [[metadataqwij2j]]Version Metadata for QWI, J2J, and PSEO Files (version.txt)
 
 Each data release is accompanied by one or more files with metadata on geographic and temporal coverage, in a compact notation. These files follow the following naming convention:
 --------------------------------
@@ -670,7 +890,7 @@ $(awk -F, ' NR == 5 { print $1 }' naming_convention.csv  )
 where each component is described in more detail in link:lehd_csv_naming{ext-relative}[].
 
 The contents contains the following elements:
-[width=\"90%\",format=\"csv\",cols=\"<1,<2,<5\",options=\"header\"]
+[width=\"90%\",format=\"csv\",cols=\"<1,<3,<4\",options=\"header\"]
 |===================================================
 include::tmp_$arg[]
 |===================================================
@@ -691,6 +911,13 @@ tabulations (obtained from $versionj2jurl/version_j2j.txt[here]) has  the follow
 $(curl $versionj2jurl/version_j2j.txt)
 --------------------------------
 Some J2J metadata may contain multiple lines, as necessary.
+
+The PSEO metadata will contain separate lines for the PSEOE and PSEOF tables. The year range for PSEO tables is based on the <<#_grad_cohort>>, the start year of the graduation cohort. An example for Colorado institutions has the following content:
+
+--------------------------------
+PSEOE CO 08 2001-2015 V4.5.0 2019Q1 pseopu_co_20190617_0839
+PSEOF CO 08 2001-2015 V4.5.0 2019Q1 pseopu_co_20190617_0839
+--------------------------------
 
 === [[metadataj2jod]]Additional Metadata for J2JOD Files (avail.csv)
 (link:variables_avail.csv[])
