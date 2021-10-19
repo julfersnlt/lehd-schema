@@ -40,10 +40,6 @@ sed 's/  /,/g;s/R N/R,N/; s/,,/,/g; s/,,/,/g; s/,,/,/g; s/, /,/g' column_definit
 # create ascii doc version
 asciifile=lehd_j2jexplorer_schema.asciidoc
 appname="J2J Explorer (beta)"
-versionvintage=R2017Q3
-versionstate=mo
-versionj2jurl=https://lehd.ces.census.gov/data/j2j/$versionvintage/j2j/$versionstate/
-
 echo "= LEHD Public Use Data Schema for $appname $numversion" > $asciifile
 echo "Lars Vilhuber <${author}>" >> $asciifile
 echo "$(date +%d\ %B\ %Y)
@@ -137,24 +133,24 @@ Identifiers without the year and quarter component can be considered a series id
 " >> $asciifile
 
 ############################## Identifiers
-#for arg in  lehd_mapping_identifiers.csv
-#do
-#  name="$(echo ${arg%*.csv}| sed 's/lehd_//; s/_/ for /; s/mapping/Mapping/; s/ident/Ident/')"
-#  echo "==== $name
-#( link:${arg}[] )
+for arg in  lehd_mapping_identifiers.csv
+do
+  name="$(echo ${arg%*.csv}| sed 's/lehd_//; s/_/ for /; s/mapping/Mapping/; s/ident/Ident/')"
+  echo "==== $name
+( link:${arg}[] )
 
-#Each of the released files has a set of variables uniquely identifying records ('Identifiers'). The table below relates the set of identifier specifications
-#to the released files. The actual CSV files containing the identifiers for each set are listed after this table. Each identifier can take on a specified list of values, documented in the section on <<catvars,Categorical #Variables>>.
+Each of the released files has a set of variables uniquely identifying records ('Identifiers'). The table below relates the set of identifier specifications
+to the released files. The actual CSV files containing the identifiers for each set are listed after this table. Each identifier can take on a specified list of values, documented in the section on <<catvars,Categorical Variables>>.
 
-#[width=\"80%\",format=\"csv\",cols=\"<3,6*^1\",options=\"header\"]
-#|===================================================
-#include::$arg[]
-#|===================================================
-#<<<
-#" >> $asciifile
-#done
+[width=\"80%\",format=\"csv\",cols=\"<3,6*^1\",options=\"header\"]
+|===================================================
+include::$arg[]
+|===================================================
+<<<
+" >> $asciifile
+done
 
-for arg in   $(ls lehd_identifiers_j2j*csv)
+for arg in   $(ls lehd_identifiers_*csv)
 do
   name="$(echo ${arg%*.csv}| sed 's/lehd_//; s/_/ for /; s/ident/Ident/')"
   echo "==== $name
@@ -184,44 +180,15 @@ The ''Indicator Name'' is a more verbose name for the indicator.
 The ''Description'' provides a complete description of the indicator.
 ''Units'' identify the type of variable: counts, rates, monetary amounts.
 ''Concept'' classifies each indicator in a descriptive category: employment, hire, separation, earnings, or flow.
-The ''Base'' indicates the denominator used to compute the statistic, and may be '1'.
+The ''Base'' indicates the denominator used to compute the statistic, and may be '1'. 
 
-==== Job-to-job flow counts (J2J)
-( link:variables_j2j.csv[] )
-[width=\"95%\",format=\"csv\",cols=\"3*^2,<5,<5,<2,<2,^1\",options=\"header\"]
-|===================================================
-include::variables_j2j.csv[]
-|===================================================
-<<<
-
-==== Job-to-job flow rates (J2JR)
-( link:variables_j2jr.csv[] )
-
-Rates are computed from published data, and are provided as a convenience.
-
-
-[width=\"95%\",format=\"csv\",cols=\"3*^2,<5,<5,<2,<2,^1\",options=\"header\"]
-|===================================================
-include::variables_j2jr.csv[]
-|===================================================
-
-
-<<<
-
-==== Job-to-job flow Origin-Destination (J2JOD)
-( link:variables_j2jod.csv[] )
-[width=\"95%\",format=\"csv\",cols=\"3*^2,<5,<5,<2,<2,^1\",options=\"header\"]
-|===================================================
-include::variables_j2jod.csv[]
-|===================================================
-<<<
-
-==== Job-to-job flow computed by the app (J2JAPP)
 ( link:variables_j2japp.csv[] )
 [width=\"95%\",format=\"csv\",cols=\"3*^2,<5,<5,<2,<2,^1\",options=\"header\"]
 |===================================================
 include::variables_j2japp.csv[]
 |===================================================
+<<<
+
 <<<
 " >> $asciifile
 
@@ -273,20 +240,20 @@ include::$arg[]
 arg=label_industry.csv
 	# construct the sample industry file
 	head -8 $arg > tmp2.csv
-	echo "...,," >> tmp2.csv
+	echo "...," >> tmp2.csv
 	grep -A 4 -B 4 "31-33" $arg | tail -8  >> tmp2.csv
-	echo "...,," >> tmp2.csv
+	echo "...," >> tmp2.csv
 
 echo "
 ==== Industry
 ( link:${arg}[] )
 
 Only a small subset of available values shown.
-The 2017 NAICS (North American Industry Classification System) is used for all years.
-QWI releases prior to R2018Q1 used the 2012 NAICS classification (see link:../V4.1.3[Schema v4.1.3]).
-For a full listing of all valid 2017 NAICS codes, see http://www.census.gov/cgi-bin/sssd/naics/naicsrch?chart=2017.
+The 2012 NAICS (North American Industry Classification System) is used for all years.
+QWI releases prior to R2015Q3 used the 2007 NAICS classification (see link:../V4.0.1[Schema v4.0.1]).
+For a full listing of all valid 2012 NAICS codes, see http://www.census.gov/cgi-bin/sssd/naics/naicsrch?chart=2012.
 
-[width=\"90%\",format=\"csv\",cols=\"^1,<5,^1\",options=\"header\"]
+[width=\"90%\",format=\"csv\",cols=\"^1,<4\",options=\"header\"]
 |===================================================
 include::tmp2.csv[]
 |===================================================
@@ -318,7 +285,7 @@ done
 	cat tmp3.csv | sort -n -k 1 -t , >> label_geography.csv
 	rm tmp3.csv
 
-	echo "=== [[geography]]$name ===
+  echo "=== $name ===
 
   " >> $asciifile
 
@@ -328,8 +295,7 @@ do
   echo "[[$name]]
 ==== [[geolevel]] Geographic levels
 Geography labels for data files are provided in separate files, by scope. Each file 'label_geograpy_SCOPE.csv' may contain one or more types of records as flagged by <<geolevel,geo_level>>. For convenience, a composite file containing all geocodes is available as link:label_geography.csv[].
-The 2017 vintage of  https://www.census.gov/geo/maps-data/data/tiger-line.html[Census TIGER/Line geography] is used for all tabulations as of the R2018Q1 release.
-
+The 2015 vintage of   https://www.census.gov/geo/maps-data/data/tiger-line.html[Census TIGER/Line geography] is used for all tabulations as of the R2015Q4 release.
 
 
 
@@ -356,17 +322,6 @@ for all entities of <<geolevel,geo_level>> 'N' or 'S', and is a summary of separ
 [width=\"40%\",format=\"csv\",cols=\"^1,<3,^1\",options=\"header\"]
 |===================================================
 include::tmp.csv[]
-|===================================================
-
-==== [[stusps]]State postal codes
-
-Some parts of the schema use (lower or upper-case) state postal codes.
-
-( link:label_stusps.csv[] )
-
-[width=\"60%\",format=\"csv\",cols=\"^1,<4\",options=\"header\"]
-|===================================================
-include::label_stusps.csv[]
 |===================================================
 
 ==== Detailed state and substate level values
@@ -460,7 +415,7 @@ The values and their interpretation are listed in the table below.
 [IMPORTANT]
 .Important
 ==============================================
-Note: Currently, the J2J tables only contain status flags '-1', '1', '5'. Status flags with values 10 or above only appear in online applications, not in CSV files.
+Note: Currently, the J2J tables only contain status flags '-1'  and '1.' Status flags with values 10 or above only appear in online applications, not in CSV files.
 ==============================================
 
 
@@ -470,72 +425,7 @@ include::$arg[]
 |===================================================
 
 <<<
-" >> $asciifile
-arg=variables_version.csv
-sed 's/naming convention/link:lehd_csv_naming{ext-relative}[]/' $arg |
-  sed 's/stusps/<<stusps>>/' |
-  sed 's/geography/<<geography>>/' > tmp_$arg
-echo "
-<<<
 
-== [[metadata]]Metadata
-( link:${arg}[] )
-
-=== [[metadataqwij2j]]Version Metadata for J2J Files (version.txt)
-
-Each data release is accompanied by one or more files with metadata on geographic and temporal coverage, in a compact notation. These files follow the following naming convention:
---------------------------------
-$(awk -F, ' NR == 6 { print $1 }' naming_convention.csv  )
---------------------------------
-where each component is described in more detail in link:lehd_csv_naming{ext-relative}[].
-
-The contents contains the following elements:
-[width=\"90%\",format=\"csv\",cols=\"<1,<2,<5\",options=\"header\"]
-|===================================================
-include::tmp_$arg[]
-|===================================================
-
-For instance, the metadata for the $versionvintage release of
-$(grep -E "^$versionstate," naming_geohi.csv | awk  -F, ' { print $2 } ' | sed 's/"//g') J2J
-tabulations (obtained from $versionj2jurl/version_j2j.txt[here]) has  the following content:
---------------------------------
-$(curl $versionj2jurl/version_j2j.txt)
---------------------------------
-Some J2J metadata may contain multiple lines, as necessary.
-
-=== [[metadataj2jod]]Additional Metadata for J2JOD Files (avail.csv)
-(link:variables_avail.csv[])
-
-Because the origin-destination (J2JOD) data link two regions, we provide an auxiliary file with the time range that cells containing data for each geographic pairing may appear in a data release.
-[width=\"80%\",format=\"csv\",cols=\"<2,<2,<4\",options=\"header\"]
-|===================================================
-include::variables_avail.csv[]
-|===================================================
-The reference region will always be either the origin or the destination. National tabulations contain records where both origin and destination are <<geolevel,geo_level>>=N; state tabulations contain records where <<geolevel,geo_level>> in (N,S); metro tabulations contain records where <<geolevel,geo_level>> in (N,S,B). Data may be suppressed for certain combinations of regions and quarters because the estimates do not meet Census Bureau publication standards.
-" >> $asciifile
-
-
-arg=variables_lags.csv
-lagqwi=lags_qwi.csv
-lagj2j=lags_j2j.csv
-lagj2japp=lags_j2japp.csv
-
-echo "
-=== [[metadatalags]]Metadata on Indicator Availability
-(link:${arg}[])
-
-Each <<indicators,Indicator>> potentially requires leads and/or lags of data to be computed, and thus may not be available for certain time periods.  The date range for J2J and J2JR can be found in <<metadataqwij2j,version.txt>>; the date range for J2JOD can be found in <<metadataj2jod,avail.csv>>.
-
-For each indicator, the following files contain the quarters of data required to be available relative to the overall date range described in the metadata for the release:
-
-* link:${lagj2j}[]
-* link:${lagj2japp}[]
-
-The files are structured as follows:
-[width=\"80%\",format=\"csv\",cols=\"<2,<2,<4\",options=\"header\"]
-|===================================================
-include::$arg[]
-|===================================================
 " >> $asciifile
 
 

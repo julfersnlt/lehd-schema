@@ -25,7 +25,10 @@ case $version in
 	cornell)
 	author=lars.vilhuber@cornell.edu
 	;;
-	official|lehd|draft)
+	draft)
+	author=lars.vilhuber@census.gov
+	;;
+	official|lehd)
 	author=ces.qwi.feedback@census.gov
 	;;
 esac
@@ -37,7 +40,7 @@ sed 's/  /,/g;s/R N/R,N/; s/,,/,/g; s/,,/,/g; s/,,/,/g; s/, /,/g' column_definit
 # create ascii doc version
 asciifile=lehd_public_use_schema.asciidoc
 # this revision is used to dynamically download a sample for the version.txt. should be available for both QWI and J2J
-versionvintage=R2017Q3
+versionvintage=R2016Q3
 versionstate=mo
 versiondemo=sa
 versionfas=f
@@ -67,7 +70,7 @@ link:mailto:lars.vilhuber@cornell.edu?subject=LEHD_Schema_v4[lars.vilhuber@corne
 ==============================================
 	" >> $asciifile
 	;;
-	draft|lehd)
+	draft)
 	echo "
 [IMPORTANT]
 .Important
@@ -76,7 +79,7 @@ This specification is draft. Feedback is welcome. Please write us at link:mailto
 ==============================================
 	" >> $asciifile
 	;;
-	official)
+	official|lehd)
 	echo "
 [IMPORTANT]
 .Important
@@ -92,8 +95,8 @@ Purpose
 -------
 The public-use data from the Longitudinal Employer-Household Dynamics Program, including the Quarterly Workforce Indicators (QWI)
 and Job-to-Job Flows (J2J), are available for download with the following data schema.
-These data are available  through the LEHD website’s Data page at
-http://lehd.ces.census.gov/data/ and through the LED Extraction Tool at http://ledextract.ces.census.gov/.
+These data are available as Comma-Separated Value (CSV) files through the LEHD website’s Data page at
+http://lehd.ces.census.gov/data/ and through LED Extraction Tool at http://ledextract.ces.census.gov/.
 
 This document describes the data schema for LEHD files. LEHD-provided SHP files are separately described in link:lehd_shapefiles{ext-relative}[]. For each variable,
 a set of allowable values is defined. Definitions are provided as CSV files,
@@ -113,7 +116,7 @@ This version supersedes V4.1.0, for files released as of R2017Q1.
 
 Basic Schema
 ------------
-Each data file is structured as a CSV file. The first columns contain <<identifiers>>, subsequent columns contain <<indicators>>, followed by <<statusflags,status flags>>. In some cases, visually formatted Excel (XLSX) files are also available,  containing the same information together with header lines  on each sheet.
+Each data file is structured as a CSV file. The first columns contain <<identifiers>>, subsequent columns contain <<indicators>>, followed by <<statusflags,status flags>>.
 
 === Generic structure
 
@@ -183,16 +186,7 @@ echo "
 <<<
 === [[indicators]]Indicators
 The following tables and associated mapping files
-list the indicators available on each file.  The descriptor files themselves are structured as follows:
-
-- The ''Indicator Variable'' is the short name of the variable on the CSV files, suitable for machine processing in a wide variety of statistical applications.
-- When given, the ''Alternate name'' may appear in related documentation and articles.
-- The ''Status Flag'' is used to indicate publication or data quality status (see <<statusflags,Status Flags>>).
-- The ''Indicator Name'' is a non-abbreviated version of the ''Indicator Variable''.
-- The ''Description'' provides more verbose description of the variable.
-- ''Units'' identify the type of variable according to a very simplified taxonomoy (not formalized yet): counts, rates, monetary amounts.
-- ''Concept'' classifies the variables into higher-level concepts. The taxonomy for these concepts has not been finalized yet, see link:label_concept_draft.csv[label_concept_draft.csv] for a draft version.
-- The ''Base'' indicates the denominator used to compute the statistic, and may be '1'.
+list the indicators available on each file.  The ''Indicator Variable'' is the short name of the variable on the CSV files, suitable for machine processing in a wide variety of statistical applications. When given, the ''Alternate name'' may appear in related documentation and articles. The ''Status Flag'' is used to indicate publication or data quality status (see <<statusflags,Status Flags>>). The ''Indicator Name'' is a more verbose description of the indicator. The ''Base'' indicates the denominator used to compute the statistic, and may be '1'. ''Units'' identify the type of variable: counts, rates, monetary amounts.
 
 ==== National QWI and state-level QWI (QWIPU) ====
 
@@ -208,7 +202,7 @@ Rates are computed from published data, and are provided as a convenience.
 
 
 ( link:variables_qwir.csv[variables_qwir.csv] )
-[width=\"95%\",format=\"csv\",cols=\"3*^2,<5,<5,<2,<2,<2\",options=\"header\"]
+[width=\"95%\",format=\"csv\",cols=\"3*^2,<5,<2,<2\",options=\"header\"]
 |===================================================
 include::variables_qwir.csv[]
 |===================================================
@@ -389,7 +383,7 @@ Categorical variable descriptions are displayed above each table, with the varia
 " >> $asciifile
 
 # we do industry and geo last
-for arg in $(ls label_*csv| grep -vE "geo|ind_level|industry|agg_level|flags|fips|stusps|concept_draft")
+for arg in $(ls label_*csv| grep -vE "geo|ind_level|industry|agg_level|flags|fips")
 do
   name=$(echo ${arg%*.csv}| sed 's/label_//')
   echo "=== $name
@@ -427,20 +421,20 @@ include::$arg[]
 arg=label_industry.csv
 	# construct the sample industry file
 	head -8 $arg > tmp2.csv
-	echo "...,," >> tmp2.csv
+	echo "...," >> tmp2.csv
 	grep -A 4 -B 4 "31-33" $arg | tail -8  >> tmp2.csv
-	echo "...,," >> tmp2.csv
+	echo "...," >> tmp2.csv
 
 echo "
 ==== Industry
 ( link:${arg}[] )
 
 Only a small subset of available values shown.
-The 2017 NAICS (North American Industry Classification System) is used for all years.
-QWI releases prior to R2018Q1 used the 2012 NAICS classification (see link:../V4.1.3[Schema v4.1.3]).
-For a full listing of all valid 2017 NAICS codes, see http://www.census.gov/cgi-bin/sssd/naics/naicsrch?chart=2017.
+The 2012 NAICS (North American Industry Classification System) is used for all years.
+QWI releases prior to R2015Q3 used the 2007 NAICS classification (see link:../V4.0.1[Schema v4.0.1]).
+For a full listing of all valid 2012 NAICS codes, see http://www.census.gov/cgi-bin/sssd/naics/naicsrch?chart=2012.
 
-[width=\"90%\",format=\"csv\",cols=\"^1,<5,^1\",options=\"header\"]
+[width=\"90%\",format=\"csv\",cols=\"^1,<4\",options=\"header\"]
 |===================================================
 include::tmp2.csv[]
 |===================================================
@@ -464,25 +458,12 @@ done
 	head -50 $nsfile | tail -8  >> tmp.csv
 
 	# construct the composite file from separate files
-	# we clean up line endings at the same time
-	[[ -f tmp3.csv ]] && rm tmp3.csv
 	head -1 label_geography_us.csv > label_geography.csv
-	for arg in $(ls label_geography_*.csv | grep -vE "cbsa")
+	for arg in $(ls label_geography_*.csv | grep -vE "cbsa|metro")
 	do
-	  tail -n +2 $arg | unix2dos | dos2unix >> tmp3.csv
+	  tail -n +2 $arg >> tmp3.csv
 	done
-	# split sorting: N, S, C, M, W, B
-	grep -E ",N$" tmp3.csv | sort -n -k 1 -t , >> label_geography.csv
-	grep -E ",S$" tmp3.csv | sort -n -k 1 -t , >> label_geography.csv
-	grep -E ",C$" tmp3.csv | sort -n -k 1 -t , >> label_geography.csv
-	grep -E ",M$" tmp3.csv | sort -n -k 1 -t , >> label_geography.csv
-	grep -E ",W$" tmp3.csv | sort    -k 1 -t , >> label_geography.csv
-	grep -E ",B$" tmp3.csv | sort -n -k 1 -t , >> label_geography.csv
-  # we check that we have the same numbers
-
-	# convert to UTF-8
-	#iconv -t UTF-8 -f ISO-8859-15 label_geography.csv  > tmp3.csv
-	#mv tmp3.csv label_geography.csv
+	cat tmp3.csv | sort -n -k 1 -t , >> label_geography.csv
 	rm tmp3.csv
 
   echo "=== [[geography]]$name ===
@@ -495,7 +476,8 @@ do
   echo "[[$name]]
 ==== [[geolevel]] Geographic levels
 Geography labels for data files are provided in separate files, by scope. Each file 'label_geograpy_SCOPE.csv' may contain one or more types of records as flagged by <<geolevel,geo_level>>. For convenience, a composite file containing all geocodes is available as link:label_geography.csv[].
-The 2017 vintage of  https://www.census.gov/geo/maps-data/data/tiger-line.html[Census TIGER/Line geography] is used for all tabulations as of the R2018Q1 release.
+The 2015 vintage of   https://www.census.gov/geo/maps-data/data/tiger-line.html[Census TIGER/Line geography] is used for all tabulations as of the R2015Q4 release.
+
 
 
 Shapefiles are described in a link:lehd_shapefiles{ext-relative}[separate document].
@@ -523,21 +505,9 @@ for all entities of <<geolevel,geo_level>> 'N' or 'S', and is a summary of separ
 include::tmp.csv[]
 |===================================================
 
-==== [[stusps]]State postal codes
-
-Some parts of the schema use (lower or upper-case) state postal codes.
-
-( link:label_stusps.csv[] )
-
-[width=\"60%\",format=\"csv\",cols=\"^1,<4\",options=\"header\"]
-|===================================================
-include::label_stusps.csv[]
-|===================================================
-
-
 ==== [[geosubstate]]Detailed state and substate level values
 
-Files of type 'label_geography_[ST].csv' will contain identifiers and labels for geographic areas entirely comprised within a given state '[ST]'. State-specific parts of cross-state CBSA, in records of type <<geolevel,geo_level>> = M, are present on files of type 'label_geography_[ST].csv'. The file link:label_geography_metro.csv[] contains labels for records of type <<geolevel,geo_level>> = B, for metropolitan areas only.
+Note: cross-state CBSA, in records of type <<geolevel,geo_level>> = M, are present on files of type 'label_geography_XX.csv'. A particular cross-state CBSA will appear on multiple files.
 
 
 
@@ -551,24 +521,19 @@ Files of type 'label_geography_[ST].csv' will contain identifiers and labels for
 #==============================================
 
 echo "
-[format=\"csv\",width=\"50%\",cols=\"^1,^2,^3\",options=\"header\"]
+[format=\"csv\",width=\"50%\",cols=\"^1,^3\",options=\"header\"]
 |===================================================
-Scope,Types,Format file" >> $asciifile
-	for arg in label_geography_us.csv
+Scope,Format file" >> $asciifile
+	for arg in label_geography_us.csv label_geography_metro.csv
 	do
 	state=$(echo ${arg%*.csv} | awk -F_ ' { print $3 } '| tr [a-z] [A-Z])
-	echo "$state,N,link:${arg}[]" >> $asciifile
+	echo "$state,link:${arg}[]" >> $asciifile
 	done
-	for arg in label_geography_metro.csv
-	do
-	state=$(echo ${arg%*.csv} | awk -F_ ' { print $3 } '| tr [a-z] [A-Z])
-	echo "$state,B,link:${arg}[]" >> $asciifile
-	done
-  echo "*States*,," >> $asciifile
+  echo "*States*," >> $asciifile
   for arg in  $(ls label_geography_??.csv|grep -v geography_us)
   do
   	state=$(echo ${arg%*.csv} | awk -F_ ' { print $3 } '| tr [a-z] [A-Z])
-	echo "$state,S C W M,link:${arg}[]" >> $asciifile
+	echo "$state,link:${arg}[]" >> $asciifile
   done
 echo "|===================================================" >> $asciifile
 
@@ -622,7 +587,7 @@ include::$nsfileshort[]
 arg=label_flags.csv
 echo "
 <<<
-== [[statusflags]]Status Flags
+== [[statusflags]]Status flags
 ( link:${arg}[] )
 
 Each status flag in the tables above contains one of the following valid values.
@@ -631,7 +596,7 @@ The values and their interpretation are listed in the table below.
 [IMPORTANT]
 .Important
 ==============================================
-Note: Currently, the J2J tables only contain status flags '-1', '1', '5'. Status flags with values 10 or above only appear in online applications, not in CSV files.
+Note: Currently, the J2J tables only contain status flags '-1'  and '1.' Status flags with values 10 or above only appear in online applications, not in CSV files.
 ==============================================
 
 
@@ -644,7 +609,7 @@ include::$arg[]
 
 arg=variables_version.csv
 sed 's/naming convention/link:lehd_csv_naming{ext-relative}[]/' $arg |
-  sed 's/stusps/<<stusps>>/' |
+  sed 's/stusps/<<_stusps>>/' |
   sed 's/geography/<<geography>>/' > tmp_$arg
 echo "
 <<<
@@ -652,7 +617,7 @@ echo "
 == [[metadata]]Metadata
 ( link:${arg}[] )
 
-=== [[metadataqwij2j]]Version Metadata for QWI and J2J Files (version.txt)
+=== [[metadataqwij2j]]Metadata for QWI and J2J files (version.txt)
 
 Each data release is accompanied by one or more files with metadata on geographic and temporal coverage, in a compact notation. These files follow the following naming convention:
 --------------------------------
@@ -662,13 +627,13 @@ $(awk -F, ' NR == 6 { print $1 }' naming_convention.csv  )
 where each component is described in more detail in link:lehd_csv_naming{ext-relative}[].
 
 The contents contains the following elements:
-[width=\"90%\",format=\"csv\",cols=\"<1,<2,<5\",options=\"header\"]
+[width=\"90%\",format=\"csv\",cols=\">1,2*<5\",options=\"header\"]
 |===================================================
 include::tmp_$arg[]
 |===================================================
 
 For instance, the metadata for the $versionvintage release of
-$(grep -E "^$versionstate," naming_geohi.csv | awk  -F, ' { print $2 } ' | sed 's/"//g') QWI
+$(grep "$versionstate," naming_geohi.csv | awk  -F, ' { print $2 } ' ) QWI
 $(grep "$versiondemo," naming_demo.csv | awk  -F, ' { print $2 } ' )
 for $(grep "$versionfas," naming_fas.csv | awk  -F, ' { print $2 } ')
 (obtained from $versionurl/version_${versiondemo}_${versionfas}.txt[here]) has  the following content:
@@ -676,45 +641,23 @@ for $(grep "$versionfas," naming_fas.csv | awk  -F, ' { print $2 } ')
 $(curl $versionurl/version_${versiondemo}_${versionfas}.txt)
 --------------------------------
 Similarly, the metadata for the $versionvintage release of
-$(grep -E "^$versionstate," naming_geohi.csv | awk  -F, ' { print $2 } ' | sed 's/"//g') J2J
+$(grep "$versionstate," naming_geohi.csv | awk  -F, ' { print $2 } ' ) J2J
 tabulations (obtained from $versionj2jurl/version_j2j.txt[here]) has  the following content:
 --------------------------------
 $(curl $versionj2jurl/version_j2j.txt)
 --------------------------------
 Some J2J metadata may contain multiple lines, as necessary.
 
-=== [[metadataj2jod]]Additional Metadata for J2JOD Files (avail.csv)
+=== [[metadataj2jod]]Additional metadata for J2JOD files (avail.csv)
 (link:variables_avail.csv[])
 
 Because the origin-destination (J2JOD) data link two regions, we provide an auxiliary file with the time range that cells containing data for each geographic pairing may appear in a data release.
-[width=\"80%\",format=\"csv\",cols=\"<2,<2,<4\",options=\"header\"]
+[width=\"80%\",format=\"csv\",cols=\"^1,<4,<4\",options=\"header\"]
 |===================================================
 include::variables_avail.csv[]
 |===================================================
 The reference region will always be either the origin or the destination. National tabulations contain records where both origin and destination are <<geolevel,geo_level>>=N; state tabulations contain records where <<geolevel,geo_level>> in (N,S); metro tabulations contain records where <<geolevel,geo_level>> in (N,S,B). Data may be suppressed for certain combinations of regions and quarters because the estimates do not meet Census Bureau publication standards.
 
-" >> $asciifile
-arg=variables_lags.csv
-lagqwi=lags_qwi.csv
-lagj2j=lags_j2j.csv
-lagj2japp=lags_j2japp.csv
-
-echo "
-=== [[metadatalags]]Metadata on Indicator Availability
-(link:${arg}[])
-
-Each <<indicators,Indicator>> potentially requires leads and/or lags of data to be computed, and thus may not be available for certain time periods. Only two QWI will be available for all quarters of the time span described by +start+ and +end+ in the <<metadataqwij2j,version.txt>> files:  +EmpTotal+ and +Payroll+.  The date range for QWI, QWIR, J2J, and J2JR can be found in <<metadataqwij2j,version.txt>>; the date range for J2JOD can be found in <<metadataj2jod,avail.csv>>.
-
-For each indicator, the following files contain the quarters of data required to be available relative to the overall date range described in the metadata for the release:
-
-* link:${lagqwi}[]
-* link:${lagj2j}[]
-
-The files are structured as follows:
-[width=\"80%\",format=\"csv\",cols=\"<2,<2,<4\",options=\"header\"]
-|===================================================
-include::$arg[]
-|===================================================
 <<<
 
 " >> $asciifile

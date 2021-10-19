@@ -1,9 +1,9 @@
-= LEHD Public Use Data Schema V4.2a-draft
+= LEHD Public Use Data Schema for J2J Explorer (beta) V4.2a-draft
 Lars Vilhuber <lars.vilhuber@cornell.edu>
-04 April 2017
+03 April 2017
 // a2x: --dblatex-opts "-P latex.output.revhistory=0 --param toc.section.depth=3"
 :ext-relative: {outfilesuffix}
-( link:lehd_public_use_schema.pdf[Printable version] )
+( link:lehd_j2jexplorer_schema.pdf[Printable version] )
 
 
 
@@ -19,26 +19,19 @@ link:mailto:lars.vilhuber@cornell.edu?subject=LEHD_Schema_v4[lars.vilhuber@corne
 
 Purpose
 -------
-The public-use data from the Longitudinal Employer-Household Dynamics Program, including the Quarterly Workforce Indicators (QWI)
-and Job-to-Job Flows (J2J), are available for download with the following data schema.
-These data are available as Comma-Separated Value (CSV) files through the LEHD website’s Data page at
-http://lehd.ces.census.gov/data/ and through LED Extraction Tool at http://ledextract.ces.census.gov/.
+The public-use Job-to-Job Flows (J2J) data provided by the Longitudinal Employer-Household Dynamics Program are accessible through the https://j2jexplorer.ces.census.gov/[J2J Explorer (beta)]. This document provides information on the schema used to format files downloaded through that application.
 
-This document describes the data schema for LEHD files. LEHD-provided SHP files are separately described in link:lehd_shapefiles{ext-relative}[]. For each variable,
-a set of allowable values is defined. Definitions are provided as CSV files,
-with header variable definitions.  Changes relative to the original v4.0 version are listed <<changes,at the end>>.
-
-File naming
------------
-The naming conventions of the data files is documented in link:lehd_csv_naming{ext-relative}[].
+Additional information
+----------------------
+The complete LEHD schema is documented in link:lehd_public_use_schema{ext-relative}[]. LEHD-provided SHP files are separately described in link:lehd_shapefiles{ext-relative}[]. The naming conventions of the data files is documented in link:lehd_csv_naming{ext-relative}[].
 
 Extends
 -------
-This version reimplements some features from  V4.0. Many files compliant with LEHD or QWI Schema v4.0 will also be compliant with this schema, but compatibility is not guaranteed.
+This is the first version of the schema for the J2J Explorer (beta) application.
 
 Supersedes
 ----------
-This version supersedes V4.1.0, for files released as of R2017Q1.
+No prior version.
 
 Basic Schema
 ------------
@@ -63,9 +56,7 @@ Column name
 [ ... ]
 |===================================================
 
-Note: A full list of indicators for each type of file are shown below in the <<indicators,Indicators>> section.
-While all indicators are included in the CSV files, only the requested indicators
-will be included in data outputs from the LED Extraction Tool.
+Note: The J2J Explorer (beta) provides the full set of J2J indicators in addition to two composite Origin-Destination indicators. Files downloadable through other means may be structured differently, please consult the complete LEHD schema in link:lehd_public_use_schema{ext-relative}[].
 
 <<<
 
@@ -119,173 +110,26 @@ include::lehd_identifiers_qwi.csv[]
 <<<
 === [[indicators]]Indicators
 The following tables and associated mapping files
-list the indicators available on each file.  The ''Indicator Variable'' is the short name of the variable on the CSV files, suitable for machine processing in a wide variety of statistical applications. When given, the ''Alternate name'' may appear in related documentation and articles. The ''Status Flag'' is used to indicate publication or data quality status (see <<statusflags,Status Flags>>). The ''Indicator Name'' is a more verbose description of the indicator. The ''Base'' indicates the denominator used to compute the statistic, and may be '1'. ''Units'' identify the type of variable: counts, rates, monetary amounts.
+list the indicators available on each file.
+The ''Indicator Variable'' is the short name of the variable on the
+CSV files, suitable for machine processing in a wide variety of statistical applications.
+When given, the ''Alternate name'' may appear in related documentation and articles.
+The ''Status Flag'' is used to indicate publication or data quality status
+(see <<statusflags,Status Flags>>).
+The ''Indicator Name'' is a more verbose name for the indicator.
+The ''Description'' provides a complete description of the indicator.
+''Units'' identify the type of variable: counts, rates, monetary amounts.
+''Concept'' classifies each indicator in a descriptive category: employment, hire, separation, earnings, or flow.
+The ''Base'' indicates the denominator used to compute the statistic, and may be '1'. 
 
-==== National QWI and state-level QWI (QWIPU) ====
-
-( link:variables_qwi.csv[variables_qwi.csv] )
-[width="95%",format="csv",cols="3*^2,<5,<5,<2,<2,^2",options="header"]
-|===================================================
-include::variables_qwi.csv[]
-|===================================================
-<<<
-
-==== National QWI and state-level QWI rates (QWIPUR) ====
-Rates are computed from published data, and are provided as a convenience.
-
-
-( link:variables_qwir.csv[variables_qwir.csv] )
-[width="95%",format="csv",cols="3*^2,<5,<2,<2",options="header"]
-|===================================================
-include::variables_qwir.csv[]
-|===================================================
-
-
-<<<
-
-==== Job-to-job flow counts (J2J)
-( link:variables_j2j.csv[] )
+( link:variables_j2japp.csv[] )
 [width="95%",format="csv",cols="3*^2,<5,<5,<2,<2,^1",options="header"]
 |===================================================
-include::variables_j2j.csv[]
-|===================================================
-<<<
-
-==== Job-to-job flow rates (J2JR)
-( link:variables_j2jr.csv[] )
-
-Rates are computed from published data, and are provided as a convenience.
-
-
-[width="95%",format="csv",cols="3*^2,<5,<5,<2,<2,^1",options="header"]
-|===================================================
-include::variables_j2jr.csv[]
-|===================================================
-
-
-<<<
-
-==== Job-to-job flow Origin-Destination (J2JOD)
-( link:variables_j2jod.csv[] )
-[width="95%",format="csv",cols="3*^2,<5,<5,<2,<2,^1",options="header"]
-|===================================================
-include::variables_j2jod.csv[]
+include::variables_j2japp.csv[]
 |===================================================
 <<<
 
 <<<
-
-
-<<<
-=== [[vmeasures]]Variability measures
-The following tables and associated mapping files
-list the variability measures available on each file.  The ''Variability Measure'' is the short name of the variable on the CSV files,
-suitable for machine processing in a wide variety of statistical applications. When given, the ''Alternate Name'' may appear in related documentation and articles.
-The ''Variable Name'' is a more verbose description of the variability measure.
-
-Six variability measures are published:
-
-* Total variability, prefixed by vt_
-* Standard error, prefixed by st_, and computed as the square root of Total Variability
-* Between-implicate variability, prefixed by vb_
-* Average within-implicate variability, prefixed by vw_
-* Degrees of freedom, prefixed by df_
-* Missingness ratio, prefixed by mr_
-
-A missing variability measure indicates a structural zero in the corresponding indicator. This is currently not associated with a flag.
-
-//Not all indicators have associated variability measures. For more details, see the following document TBD.
-
-==== Generic structure
-
-[width="30%",format="csv",cols="<2",options="header"]
-|===================================================
-Column name
-[ Identifier1 ]
-[ Identifier2 ]
-[ Identifier3 ]
-[ ... ]
-[ Standard error for Indicator 1 ]
-[ Standard error for Indicator 2 ]
-[ Standard error for Indicator 3 ]
-[ ... ]
-[ Total variation for Indicator 1 ]
-[ Total variation for Indicator 2 ]
-[ Total variation for Indicator 3 ]
-[ ... ]
-[ Between-implicate variability for Indicator 1 ]
-[ Between-implicate variability for Indicator 2 ]
-[ Between-implicate variability for Indicator 3 ]
-[ ... ]
-[ Average within-implicate variability for Indicator 1 ]
-[ Average within-implicate variability for Indicator 2 ]
-[ Average within-implicate variability for Indicator 3 ]
-[ ... ]
-[ Degrees of freedom for Indicator 1 ]
-[ Degrees of freedom for Indicator 2 ]
-[ Degrees of freedom for Indicator 3 ]
-[ ... ]
-[ Missingness ratio for Indicator 1 ]
-[ Missingness ratio for Indicator 2 ]
-[ Missingness ratio for Indicator 3 ]
-[ ... ]
-|===================================================
-
-
-Note: A full list of indicators for each type of file are shown  in the <<indicators,Indicators>> section. In the tables below, only a sample
-of variability measures are printed, but the complete list is available in the linked CSV schema files.
-
-<<<
-
-==== National QWI and state-level QWI ====
-
-( link:variables_qwiv.csv[variables_qwiv.csv] )
-[width="95%",format="csv",cols="2*^2,<5,<5,<2",options="header"]
-|===================================================
-include::tmp_variables_qwiv.csv[]
-|===================================================
-
-<<<
-==== National QWI and state-level QWI rates ====
-
-( link:variables_qwirv.csv[variables_qwirv.csv] )
-[width="95%",format="csv",cols="2*^2,<5,<5,<2",options="header"]
-|===================================================
-include::tmp_variables_qwirv.csv[]
-|===================================================
-
-
-<<<
-
-==== Job-to-job flow counts (J2J)
-Soon.
-//( link:variables_j2j.csv[] )
-//[width="95%",format="csv",cols="3*^2,<5",options="header"]
-//|===================================================
-//include::tmp_variables_j2jv.csv[]
-//|===================================================
-//<<<
-//
-
-==== Job-to-job flow rates (J2JR)
-Soon.
-//( link:variables_j2jr.csv[] )
-//[width="95%",format="csv",cols="3*^2,<5",options="header"]
-//|===================================================
-//include::tmp_variables_j2jrv.csv[]
-//|===================================================
-//<<<
-
-==== Job-to-job flow Origin-Destination (J2JOD)
-Soon.
-//( link:variables_j2jod.csv[] )
-//[width="95%",format="csv",cols="^3,^2,^3,<5",options="header"]
-//|===================================================
-//include::tmp_variables_j2jodv.csv[]
-//|===================================================
-
-<<<
-
 
 
 == [[catvars]]Categorical Variables
@@ -416,7 +260,7 @@ include::tmp2.csv[]
 |===================================================
 <<<
 
-=== [[geography]]Geography ===
+=== Geography ===
 
   
 [[geo_level]]
@@ -438,7 +282,7 @@ include::label_geo_level.csv[]
 
 
 
-==== [[geostate]]National and state-level values ====
+==== National and state-level values ====
 ( link:label_fipsnum.csv[] )
 
 The file link:label_fipsnum.csv[label_fipsnum.csv] contains values and labels
@@ -449,7 +293,7 @@ for all entities of <<geolevel,geo_level>> 'N' or 'S', and is a summary of separ
 include::tmp.csv[]
 |===================================================
 
-==== [[geosubstate]]Detailed state and substate level values
+==== Detailed state and substate level values
 
 Note: cross-state CBSA, in records of type <<geolevel,geo_level>> = M, are present on files of type 'label_geography_XX.csv'. A particular cross-state CBSA will appear on multiple files.
 
@@ -567,68 +411,13 @@ Note: Currently, the J2J tables only contain status flags '-1'  and '1.' Status 
 include::label_flags.csv[]
 |===================================================
 
-
-<<<
-
-== [[metadata]]Metadata
-( link:variables_version.csv[] )
-
-=== [[metadataqwij2j]]Metadata for QWI and J2J files (version.txt)
-
-Each data release is accompanied by one or more files with metadata on geographic and temporal coverage, in a compact notation. These files follow the following naming convention:
---------------------------------
-version_[demo]_[fas].txt
-version_[type].txt
---------------------------------
-where each component is described in more detail in link:lehd_csv_naming{ext-relative}[].
-
-The contents contains the following elements:
-[width="90%",format="csv",cols=">1,2*<5",options="header"]
-|===================================================
-include::tmp_variables_version.csv[]
-|===================================================
-
-For instance, the metadata for the R2016Q3 release of
-Missouri QWI
-Sex by Age tabulations
-for No firm size or age detail
-(obtained from https://lehd.ces.census.gov/pub/mo/R2016Q3/DVD-sa_f//version_sa_f.txt[here]) has  the following content:
---------------------------------
-QWISA_F MO 29 1995:1-2015:4 V4.0.5 R2016Q3 qwipu_mo_20160804_1631
---------------------------------
-Similarly, the metadata for the R2016Q3 release of
-Missouri J2J
-tabulations (obtained from https://lehd.ces.census.gov/data/j2j/R2016Q3/j2j/mo//version_j2j.txt[here]) has  the following content:
---------------------------------
-J2J  MO 29  2000:2-2015:3  V4.1.0 R2016Q3 j2jpu_mo_20161028_1522
---------------------------------
-Some J2J metadata may contain multiple lines, as necessary.
-
-=== [[metadataj2jod]]Additional metadata for J2JOD files (avail.csv)
-(link:variables_avail.csv[])
-
-Because the origin-destination (J2JOD) data link two regions, we provide an auxiliary file with the time range that cells containing data for each geographic pairing may appear in a data release.
-[width="80%",format="csv",cols="^1,<4,<4",options="header"]
-|===================================================
-include::variables_avail.csv[]
-|===================================================
-The reference region will always be either the origin or the destination. National tabulations contain records where both origin and destination are <<geolevel,geo_level>>=N; state tabulations contain records where <<geolevel,geo_level>> in (N,S); metro tabulations contain records where <<geolevel,geo_level>> in (N,S,B). Data may be suppressed for certain combinations of regions and quarters because the estimates do not meet Census Bureau publication standards.
-
 <<<
 
 
-== [[changes]] Changes
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
-=== This version (revisions)
-- 2017-04-04: Initial release
-
-=== Version 4.2a-draft from 4.1.1
-- See github
 
 
 <<<
 *******************
-This revision: Tue Apr  4 15:16:29 EDT 2017
+This revision: Mon Apr  3 16:46:26 EDT 2017
 *******************
 
