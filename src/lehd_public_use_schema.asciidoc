@@ -1,6 +1,6 @@
-= LEHD Public Use Data Schema v4.0.2
-Lars Vilhuber <ces.qwi.feedback@census.gov>
-10 December 2015
+= LEHD Public Use Data Schema V4.0.3
+Lars Vilhuber <lars.vilhuber@cornell.edu>
+22 December 2015
 // a2x: --dblatex-opts "-P latex.output.revhistory=0 --param toc.section.depth=3"
 
 ( link:QWIPU_Data_Schema.pdf[Printable version] )
@@ -10,8 +10,10 @@ Lars Vilhuber <ces.qwi.feedback@census.gov>
 [IMPORTANT]
 .Important
 ==============================================
-Feedback is welcome. Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema_4.0.1[ces.qwi.feedback@census.gov].
-.
+This document is not an official Census Bureau publication. It is compiled from publicly accessible information
+by Lars Vilhuber (http://www.ilr.cornell.edu/ldi/[Labor Dynamics Institute, Cornell University]).
+Feedback is welcome. Please write us at
+link:mailto:lars.vilhuber@cornell.edu?subject=LEHD_Schema_v4[lars.vilhuber@cornell.edu].
 ==============================================
 	
 
@@ -237,7 +239,7 @@ has its own code structure.
 ** In the QWI, the metropolitan/micropolitan areas are the state parts of the full CBSA areas.
 - The WIA code is constructed from the 2-digit state FIPS code and the 6-digit WIA identifier provided by LED State Partners.
 
-The 2014 vintage of Census TIGER geography is used for all tabulations as of the R2014Q3 release.
+The 2015 vintage of Census TIGER/Line geography is used for all tabulations as of the R2015Q4 release.
 
 For convenience, a composite file containing all geocodes is available as
 link:label_geography_all.csv[].
@@ -264,6 +266,7 @@ IN,link:in/label_geography.csv[]
 KS,link:ks/label_geography.csv[]
 KY,link:ky/label_geography.csv[]
 LA,link:la/label_geography.csv[]
+MA,link:ma/label_geography.csv[]
 MD,link:md/label_geography.csv[]
 ME,link:me/label_geography.csv[]
 MI,link:mi/label_geography.csv[]
@@ -316,8 +319,9 @@ include::label_flags.csv[]
 == [[changes]] Changes
 
 === This version (revisions)
-- 2015-08-07: Corrected release that the switch to NAICS 2012 was made
+- 2015-09-14: Initial release
 - 2015-12-10: Added consolidated geography label file label_geography_all.csv
+- 2015-12-22: Updated the identification of the correct geo vintage
 
 === Version 4.0.1 from 4.0
 - 2015-02-24: removed obsolete flag values
@@ -326,9 +330,12 @@ include::label_flags.csv[]
 === Version 4.0.2 from 4.0.1
 - 2015-04-01: switched NAICS coding from 2007 to 2012
 
+=== Version 4.0.3 from 4.0.2
+- 2015-09-14: switched Geovintage to 2014, updated AK and SD files, added MA.
+
 
 <<<
 *******************
-This revision: Thu Dec 10 11:49:46 EST 2015
+This revision: Tue Dec 22 22:35:49 EST 2015
 *******************
 
