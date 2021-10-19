@@ -26,9 +26,9 @@ at <http://lehd.ces.census.gov/data/> as well as through the [LED
 Extraction Tool](http://ledextract.ces.census.gov/).
 
 Shapefiles are used to provide mapping functionality in [QWI
-Explorer](http://qwiexplorer.ces.census.gov/) and Job-to-Job Explorer
-(coming soon). They are created by transforming input shapefiles sourced
-from
+Explorer](http://qwiexplorer.ces.census.gov/) and [Job-to-Job Explorer
+(Beta)](https://j2jexplorer.ces.census.gov/). They are created by
+transforming input shapefiles sourced from
 [TIGER/Line](https://www.census.gov/geo/maps-data/data/tiger-line.html).
 New TIGER/Line shapefiles are typically released by the Census Bureau’s
 Geography Division in August of each year, which are then processed by
@@ -42,19 +42,19 @@ November or December of each year.
 Sources
 =======
 
-Files are derived from  [TIGER/Line 2015
+Files are derived from  [TIGER/Line 2016
 shapefiles](https://www.census.gov/geo/maps-data/data/tiger-line.html):
 
--   [tl\_2015\_us\_state](http://www2.census.gov/geo/tiger/TIGER2015/STATE/)
+-   [tl\_2016\_us\_state](http://www2.census.gov/geo/tiger/TIGER2016/STATE/)
 
--   [tl\_2015\_us\_county](http://www2.census.gov/geo/tiger/TIGER2015/COUNTY/)
+-   [tl\_2016\_us\_county](http://www2.census.gov/geo/tiger/TIGER2016/COUNTY/)
 
--   [tl\_2015\_us\_cbsa](http://www2.census.gov/geo/tiger/TIGER2015/CBSA/)
+-   [tl\_2016\_us\_cbsa](http://www2.census.gov/geo/tiger/TIGER2016/CBSA/)
 
--   [tl\_2015\_(ST)\_place](http://www2.census.gov/geo/tiger/TIGER2015/PLACE/)
+-   [tl\_2016\_(ST)\_place](http://www2.census.gov/geo/tiger/TIGER2016/PLACE/)
     (for creation of WIA/WIB shapefile)
 
--   [tl\_2015\_(ST)\_cousub](http://www2.census.gov/geo/tiger/TIGER2015/COUSUB/)
+-   [tl\_2016\_(ST)\_cousub](http://www2.census.gov/geo/tiger/TIGER2016/COUSUB/)
     (for creation of WIA/WIB shapefile)
 
 Transformations
@@ -110,7 +110,7 @@ where \[type\] = lehd\_shp and [geocat](naming_geocat.csv) contains
 <tbody>
 <tr class="odd">
 <td><p>gb</p></td>
-<td><p>Metropolitan/Micropolitan (complete)</p></td>
+<td><p>Metropolitan (complete)</p></td>
 </tr>
 <tr class="even">
 <td><p>gc</p></td>
@@ -118,7 +118,7 @@ where \[type\] = lehd\_shp and [geocat](naming_geocat.csv) contains
 </tr>
 <tr class="odd">
 <td><p>gm</p></td>
-<td><p>Metropolitan/Micropolitan</p></td>
+<td><p>Metropolitan/Micropolitan (state parts)</p></td>
 </tr>
 <tr class="even">
 <td><p>gn</p></td>
@@ -216,13 +216,15 @@ FIPS State Postal Code as per
 
 ( [label\_geography.csv](label_geography.csv) ) The valid codes
 correspond to those listed on
-[label\_geography.csv](label_geography.csv).
+[label\_geography.csv](label_geography.csv) and
+[label\_geography\_cbsa.csv](label_geography_cbsa.csv).
 
 ### NAME
 
 This is a string that corresponds in general to the *label* field on
-[label\_geography.csv](label_geography.csv). Minor deviations for ease
-of exposition are possible.
+[label\_geography.csv](label_geography.csv) and
+[label\_geography\_cbsa.csv](label_geography_cbsa.csv). Minor deviations
+for ease of exposition are possible.
 
 Common files
 ------------
@@ -274,13 +276,14 @@ LED state partners.
 Job-to-Job Flow Geographies
 ---------------------------
 
-### CBSA - National
+### Metropolitan (complete)
 
 ( [lehd\_shp\_gb.zip](lehd_shp_gb.zip) )
 
--   The state remainder areas are added to the shapefile as
-    new features. They are assigned unique codes (\[STUSPS\]+999) and
-    names (“Not in metro/micro area, \[STUSPS\]”).
+-   Micropolitan areas are removed and state remainder areas are added
+    as new features. State remainders are assigned unique
+    codes (\[STUSPS\]+999) and names ("Not in metropolitan
+    area, \[STUSPS\]").
 
 Versioning
 ==========
@@ -300,4 +303,4 @@ V2.0.0](http://semver.org/spec/v2.0.0.html), which states that
 Changes
 =======
 
-This revision: Tue Mar 7 09:00:54 EST 2017
+This revision: Tue Mar 7 08:58:20 EST 2017
