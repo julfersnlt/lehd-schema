@@ -1,6 +1,6 @@
 = LEHD Public Use Shapefile Data
 Heath Hayward, Matthew Graham, Lars Vilhuber <lars.vilhuber@cornell.edu>
-07 March 2017
+07 September 2017
 // a2x: --dblatex-opts "-P latex.output.revhistory=0 --param toc.section.depth=3"
 ( [Printable version](lehd_shapefiles.pdf) )
 
@@ -217,14 +217,14 @@ FIPS State Postal Code as per
 ( [label\_geography.csv](label_geography.csv) ) The valid codes
 correspond to those listed on
 [label\_geography.csv](label_geography.csv) and
-[label\_geography\_cbsa.csv](label_geography_cbsa.csv).
+[label\_geography\_metro.csv](label_geography_metro.csv).
 
 ### NAME
 
 This is a string that corresponds in general to the *label* field on
 [label\_geography.csv](label_geography.csv) and
-[label\_geography\_cbsa.csv](label_geography_cbsa.csv). Minor deviations
-for ease of exposition are possible.
+[label\_geography\_metro.csv](label_geography_metro.csv). Minor
+deviations for ease of exposition are possible.
 
 Common files
 ------------
@@ -303,4 +303,4 @@ V2.0.0](http://semver.org/spec/v2.0.0.html), which states that
 Changes
 =======
 
-This revision: Tue Mar 7 08:58:20 EST 2017
+This revision: Thu Sep 7 15:26:55 EDT 2017

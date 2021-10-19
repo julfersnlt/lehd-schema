@@ -1,6 +1,6 @@
 = LEHD Public Use Shapefile Data
 Heath Hayward, Matthew Graham, Lars Vilhuber <lars.vilhuber@cornell.edu>
-07 March 2017
+07 September 2017
 // a2x: --dblatex-opts "-P latex.output.revhistory=0 --param toc.section.depth=3"
 :ext-relative: {outfilesuffix}
 ( link:lehd_shapefiles.pdf[Printable version] )
@@ -96,10 +96,10 @@ FIPS State Postal Code as per https://www.census.gov/geo/reference/codes/cou.htm
 
 ==== GEOGRAPHY
 ( link:label_geography.csv[] )
-The valid codes correspond to those listed on link:label_geography.csv[] and link:label_geography_cbsa.csv[].
+The valid codes correspond to those listed on link:label_geography.csv[] and link:label_geography_metro.csv[].
 
 ==== NAME
-This is a string that corresponds in general to the 'label' field on link:label_geography.csv[] and link:label_geography_cbsa.csv[]. Minor deviations for ease of exposition are possible.
+This is a string that corresponds in general to the 'label' field on link:label_geography.csv[] and link:label_geography_metro.csv[]. Minor deviations for ease of exposition are possible.
 
 === Common files
 ==== State
@@ -157,6 +157,6 @@ Changes
 
 <<<
 *******************
-This revision: Tue Mar  7 08:58:20 EST 2017
+This revision: Thu Sep  7 15:26:55 EDT 2017
 *******************
 
