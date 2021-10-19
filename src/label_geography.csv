@@ -1,4 +1,5 @@
 geography,label,geo_level
+
 00,"National (50 States + DC)",N
 01,"Alabama",S
 02,"Alaska",S
@@ -70,7 +71,7 @@ geography,label,geo_level
 47LWIA10,"10 Local Workforce Investment Area",W
 47LWIA11,"11 Local Workforce Investment Area",W
 47LWIA12,"12 Local Workforce Investment Area",W
-47LWIA13,"13 Local Workforce Investment Area",W
+47LWIA13,"13 Local Workforce Investment Area",W
 47,"Tennessee",S
 48,"Texas",S
 49,"Utah",S
@@ -102,7 +103,7 @@ geography,label,geo_level
 420SW045,"045 Westmoreland/Fayette WIA",W
 420SW095,"095 City of Pittsburgh WIA",W
 420SW110,"110 Tri-County WIA",W
-420SW165,"165 Southwest Corner WIA",W
+420SW165,"165 Southwest Corner WIA",W
 01001,"Autauga, AL",C
 01003,"Baldwin, AL",C
 01005,"Barbour, AL",C
@@ -295,7 +296,7 @@ geography,label,geo_level
 5454WIA4,"04 Workforce Investment Area Region 4",W
 5454WIA5,"05 Workforce Investment Area Region 5",W
 5454WIA6,"06 Workforce Investment Area Region 6",W
-5454WIA7,"07 Workforce Investment Area Region 7",W
+5454WIA7,"07 Workforce Investment Area Region 7",W
 06001,"Alameda, CA",C
 06003,"Alpine, CA",C
 06005,"Amador, CA",C
@@ -969,7 +970,7 @@ geography,label,geo_level
 19135,"Monroe, IA",C
 19137,"Montgomery, IA",C
 19139,"Muscatine, IA",C
-19141,"OBrien, IA",C
+19141,"O'Brien, IA",C
 19143,"Osceola, IA",C
 19145,"Page, IA",C
 19147,"Palo Alto, IA",C
@@ -1318,9 +1319,9 @@ geography,label,geo_level
 24027,"Howard, MD",C
 24029,"Kent, MD",C
 24031,"Montgomery, MD",C
-24033,"Prince Georges, MD",C
-24035,"Queen Annes, MD",C
-24037,"St. Marys, MD",C
+24033,"Prince George's, MD",C
+24035,"Queen Anne's, MD",C
+24037,"St. Mary's, MD",C
 24039,"Somerset, MD",C
 24041,"Talbot, MD",C
 24043,"Washington, MD",C
@@ -3270,7 +3271,7 @@ geography,label,geo_level
 080800TR,"Jefferson/Tri-County WIB",W
 080800UA,"Upper Arkansas WIB",W
 080800WE,"Western WIB",W
-080800WL,"Weld WIB",W
+080800WL,"Weld WIB",W
 0110700,"Albertville, AL",M
 0110760,"Alexander City, AL",M
 0111500,"Anniston-Oxford-Jacksonville, AL",M
@@ -3399,16 +3400,13 @@ geography,label,geo_level
 0945860,"Torrington, CT",M
 0949340,"Worcester, MA-CT (CT part)",M
 0999999,"Nonmetropolitan, nonmicropolitan",M
-01010001,"Workforce Development Region 1",W
-01010002,"Workforce Development Region 2",W
-01010003,"Workforce Development Region 3",W
-01010004,"Workforce Development Region 4",W
-01010005,"Workforce Development Region 5",W
-01010006,"Workforce Development Region 6",W
-01010007,"Workforce Development Region 7",W
-01010008,"Workforce Development Region 8",W
-01010009,"Workforce Development Region 9",W
-01010010,"Workforce Development Region 10",W
+01010001,"North Alabama Works",W
+01010002,"East Alabama Works",W
+01010003,"West Alabama Works",W
+01010004,"Central Six Alabama Works",W
+01010005,"Central Alabama Works",W
+01010006,"Southeast Alabama Works",W
+01010007,"Southwest Alabama Works",W
 1020100,"Dover, DE",M
 1037980,"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD (DE part)",M
 1041540,"Salisbury, MD-DE (DE part)",M
@@ -3493,7 +3491,7 @@ geography,label,geo_level
 1613940,"Blackfoot, ID",M
 1614260,"Boise City, ID",M
 1615420,"Burley, ID",M
-1617660,"Coeur dAlene, ID",M
+1617660,"Coeur d'Alene, ID",M
 1625200,"Hailey, ID",M
 1626820,"Idaho Falls, ID",M
 1627220,"Jackson, WY-ID (ID part)",M
@@ -3648,7 +3646,7 @@ geography,label,geo_level
 2121000H,"H Cumberlands WIB",W
 2121000I,"I Bluegrass WIB",W
 2121000J,"J Green River WIB",W
-2121000K,"K Barren River WIB",W
+2121000K,"K Barren River WIB",W
 2121060,"Elizabethtown-Fort Knox, KY",M
 2121780,"Evansville, IN-KY (KY part)",M
 2123180,"Frankfort, KY",M
@@ -4536,24 +4534,21 @@ geography,label,geo_level
 20200003,"03 Local Area III - Kansas City Area WIB",W
 20200004,"04 Local Area IV - South Central WIB",W
 20200005,"05 Local Area V - Southeast WIB",W
-22220010,"1st Planning District Consortium Parish WIA",W
-22220011,"Jefferson WIA",W
-22220012,"Orleans WIA",W
-22220020,"2nd Planning District Consortium WIA",W
-22220021,"East Baton Rouge WIA",W
-22220031,"Terrebonne Consortium WIA",W
-22220032,"St. Charles Consortium WIA",W
-22220040,"4th Planning District Consortium WIA",W
-22220041,"Lafayette WIA",W
-22220050,"5th Planning District Consortium WIA",W
-22220051,"Calcasieu Consortium WIA",W
-22220060,"6th Planning District Consortium WIA",W
-22220061,"Rapides WIA",W
-22220070,"7th Planning District Consortium WIA",W
-22220071,"City of Shreveport WIA",W
-22220081,"Ouachita WIA",W
-22220082,"Union WIA",W
-22220083,"Franklin Parish Consortium WIA",W
+22220005,"East Baton Rouge Parish WIA",W
+22220015,"Jefferson Parish WIA",W
+22220025,"Orleans Parish WIA",W
+22220030,"Ouachita Parish WIA",W
+22220035,"Rapides Parish WIA",W
+22220040,"City of Shreveport WIA",W
+22220045,"First Planning District Consortium WIA",W
+22220050,"Second Planning District Consortium WIA",W
+22220070,"Sixth Planning District Consortium WIA",W
+22220075,"Seventh Planning District Consortium WIA",W
+22220085,"Lafourche Parish WIA",W
+22220090,"St. Charles Parish Consortium WIA",W
+22220105,"Calcasieu Parish Consortium WIA",W
+22220125,"Franklin Parish Consortium WIA",W
+22220130,"Fourth Planning District Consortium WIA",W
 23000001,"01 Aroostook/Washington WIA",W
 23000002,"02 Central/Western WIA",W
 23000003,"03 Six County Coastal WIA",W

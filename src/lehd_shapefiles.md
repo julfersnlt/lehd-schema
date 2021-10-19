@@ -1,6 +1,6 @@
 = LEHD Public Use Shapefile Data
 Heath Hayward, Matthew Graham, Lars Vilhuber <lars.vilhuber@cornell.edu>
-07 September 2017
+20 December 2017
 // a2x: --dblatex-opts "-P latex.output.revhistory=0 --param toc.section.depth=3"
 ( [Printable version](lehd_shapefiles.pdf) )
 
@@ -42,19 +42,19 @@ November or December of each year.
 Sources
 =======
 
-Files are derived from  [TIGER/Line 2016
+Files are derived from  [TIGER/Line 2017
 shapefiles](https://www.census.gov/geo/maps-data/data/tiger-line.html):
 
--   [tl\_2016\_us\_state](http://www2.census.gov/geo/tiger/TIGER2016/STATE/)
+-   [tl\_2017\_us\_state](http://www2.census.gov/geo/tiger/TIGER2017/STATE/)
 
--   [tl\_2016\_us\_county](http://www2.census.gov/geo/tiger/TIGER2016/COUNTY/)
+-   [tl\_2017\_us\_county](http://www2.census.gov/geo/tiger/TIGER2017/COUNTY/)
 
--   [tl\_2016\_us\_cbsa](http://www2.census.gov/geo/tiger/TIGER2016/CBSA/)
+-   [tl\_2017\_us\_cbsa](http://www2.census.gov/geo/tiger/TIGER2017/CBSA/)
 
--   [tl\_2016\_(ST)\_place](http://www2.census.gov/geo/tiger/TIGER2016/PLACE/)
+-   [tl\_2017\_(ST)\_place](http://www2.census.gov/geo/tiger/TIGER2017/PLACE/)
     (for creation of WIA/WIB shapefile)
 
--   [tl\_2016\_(ST)\_cousub](http://www2.census.gov/geo/tiger/TIGER2016/COUSUB/)
+-   [tl\_2017\_(ST)\_cousub](http://www2.census.gov/geo/tiger/TIGER2017/COUSUB/)
     (for creation of WIA/WIB shapefile)
 
 Transformations
@@ -75,8 +75,8 @@ The following major transformations are applied to the input files:
     unnecessary complexity from the features.
 
 -   Features from Guam, American Samoa, and the Northern Mariana Islands
-    have been removed because they are not used in current
-    LEHD tabulations.
+    have been removed because they are not used in current LEHD
+    tabulations.
 
 -   Each shapefile’s attribute table has been updated to conform to the
     standard LEHD output format, defined in [Format](#format) section
@@ -252,15 +252,15 @@ QWI Geographies
 -   All features are split into state-specific CBSA features by
     intersecting each feature with the state shapefile features.
 
--   The STUSPS field is added during the intersect with the
-    state shapefile.
+-   The STUSPS field is added during the intersect with the state
+    shapefile.
 
 -   STFIPS (i.e. FIPS State Code as per
     <https://www.census.gov/geo/reference/ansi_statetables.html>) is
     prepended to the CBSA code
     (<https://www.census.gov/population/metro/data/def.html>) to create
-    the GEOGRAPHY field to distinguish state-parts of the same
-    CBSA (i.e. make them nationally unique).
+    the GEOGRAPHY field to distinguish state-parts of the same CBSA
+    (i.e. make them nationally unique).
 
 -   The text "(\[STUSPS\] part)" is appended to the NAME field only for
     those CBSA features that are split by state lines.
@@ -281,9 +281,8 @@ Job-to-Job Flow Geographies
 ( [lehd\_shp\_gb.zip](lehd_shp_gb.zip) )
 
 -   Micropolitan areas are removed and state remainder areas are added
-    as new features. State remainders are assigned unique
-    codes (\[STUSPS\]+999) and names ("Not in metropolitan
-    area, \[STUSPS\]").
+    as new features. State remainders are assigned unique codes
+    (\[STUSPS\]+999) and names ("Not in metropolitan area, \[STUSPS\]").
 
 Versioning
 ==========
@@ -303,4 +302,4 @@ V2.0.0](http://semver.org/spec/v2.0.0.html), which states that
 Changes
 =======
 
-This revision: Thu Sep 7 15:26:55 EDT 2017
+This revision: Wed Dec 20 10:43:10 EST 2017

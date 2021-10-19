@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-****** LEHD Public Use Data Schema V4.2b-draft ******
+****** LEHD Public Use Data Schema V4.2-rc1 ******
 Lars Vilhuber
 <lars.vilhuber@cornell.edu>
-19 December 2017
+20 December 2017
 Table of Contents
 JavaScript must be enabled in your browser to display the table of contents.
 ( Printable_version )
@@ -153,7 +153,7 @@ on each file. The descriptor files themselves are structured as follows:
       taxonomoy (not formalized yet): counts, rates, monetary amounts.
     * 'Concept' classifies the variables into higher-level concepts. The
       taxonomy for these concepts has not been finalized yet, see
-      label_concept.csv for a draft version.
+      label_concept_draft.csv for a draft version.
     * The 'Base' indicates the denominator used to compute the statistic, and
       may be 1.
 *** 5.3.1. National QWI and state-level QWI (QWIPU) ***
@@ -182,13 +182,6 @@ on each file. The descriptor files themselves are structured as follows:
                                                   the quarter
                                                   with the same
                                                   employer
-    EmpSpv       Fpv       sEmpSpv   Full-Quarter Estimate of   Count   Employment      1
-                                     Employment   stable jobs
-                                     in the       in the
-                                     Previous     quarter
-                                     Quarter      before the
-                                                  reference
-                                                  quarter
    EmpTotal        M      sEmpTotal  Employment - Estimated     Count   Employment      1
                                      Reference    count of
                                      Quarter      people
@@ -196,6 +189,13 @@ on each file. The descriptor files themselves are structured as follows:
                                                   firm at any
                                                   time during
                                                   the quarter
+    EmpSpv       Fpv       sEmpSpv   Full-Quarter Estimate of   Count   Employment      1
+                                     Employment   stable jobs
+                                     in the       in the
+                                     Previous     quarter
+                                     Quarter      before the
+                                                  reference
+                                                  quarter
       HirA         A         sHirA   Hires (All   Estimated     Count   Hire            1
                                      Accessions)  number of
                                                   workers who
@@ -239,10 +239,6 @@ on each file. The descriptor files themselves are structured as follows:
                                                   continued
                                                   into next
                                                   quarter
-   HirAEndR      CAR      sHirAEndR  End-of-      Hires as a    Rate    Hire        (Emp +
-                                     Quarter      percent of                       EmpEnd)/
-                                     Hiring Rate  average                             2
-                                                  employment
     SepBeg        CS       sSepBeg   Beginning-   Estimated     Count   Separation      1
                                      of-Quarter   number of
                                      Separations  workers whose
@@ -252,10 +248,28 @@ on each file. The descriptor files themselves are structured as follows:
                                                   continued and
                                                   ended in the
                                                   given quarter
+HirAEndRepl       EI   sHirAEndRepl  Replacement  Hires into    Count   Hire            1
+                                     Hires        continuous
+                                                  quarter
+                                                  employment in
+                                                  excess of job
+                                                  creation
+   HirAEndR      CAR      sHirAEndR  End-of-      Hires as a    Rate    Hire        (Emp +
+                                     Quarter      percent of                       EmpEnd)/
+                                     Hiring Rate  average                             2
+                                                  employment
    SepBegR       CSR      sSepBegR   Beginning-   Separations   Rate    Separation  (Emp +
                                      of-Quarter   as a percent                     EmpEnd)/
                                      Separation   of average                          2
                                      Rate         employment
+HirAEndReplR     EIR   sHirAEndReplR Replacement  Replacement   Rate    Hire        (Emp +
+                                     Hiring Rate  hires as a                       EmpEnd)/
+                                                  percent of                          2
+                                                  the average
+                                                  of beginning-
+                                                  and end-of-
+                                                  quarter
+                                                  employment
      HirAS        FA        sHirAS   Hires (All   Estimated     Count   Hire            1
                                      Hires into   number of
                                      Full-Quarter workers that
@@ -303,47 +317,33 @@ on each file. The descriptor files themselves are structured as follows:
                                      (Stable)     which stable
                                                   jobs begin
                                                   and end
-   FrmJbGn        JC      sFrmJbGn   Firm Job     Estimated     Count   Hire            1
+   FrmJbGn        JC      sFrmJbGn   Firm Job     Estimated     Count   Job Flows       1
                                      Gains (Job   number of
                                      Creation)    jobs gained
                                                   at firms
                                                   throughout
                                                   the quarter
-   FrmJbLs        JD      sFrmJbLs   Firm Job     Estimated     Count   Separation      1
+   FrmJbLs        JD      sFrmJbLs   Firm Job     Estimated     Count   Job Flows       1
                                      Loss (Job    number of
                                      Destruction) jobs lost at
                                                   firms
                                                   throughout
                                                   the quarter
-    FrmJbC        JF       sFrmJbC   Firm Job     Difference    Count   Employment      1
+    FrmJbC        JF       sFrmJbC   Firm Job     Difference    Count   Job Flows       1
                                      Change (Net  between firm
                                      Change)      job gain and
                                                   firm job loss
-HirAEndRepl       EI   sHirAEndRepl  Replacement  Hires into    Count   Hire            1
-                                     Hires        continuous
-                                                  quarter
-                                                  employment in
-                                                  excess of job
-                                                  creation
-HirAEndReplr     EIR   sHirAEndReplr Replacement  Replacement   Rate    Hire        (Emp +
-                                     Hiring Rate  hires as a                       EmpEnd)/
-                                                  percent of                          2
-                                                  the average
-                                                  of beginning-
-                                                  and end-of-
-                                                  quarter
-                                                  employment
-   FrmJbGnS      FJC      sFrmJbGnS  Firm Job     Estimated     Count   Hire            1
+   FrmJbGnS      FJC      sFrmJbGnS  Firm Job     Estimated     Count   Job Flows       1
                                      Gains        number of
                                      (Stable)     full-quarter
                                                   jobs gained
                                                   at firms
-   FrmJbLsS      FJD      sFrmJbLsS  Firm Job     Estimated     Count   Separation      1
+   FrmJbLsS      FJD      sFrmJbLsS  Firm Job     Estimated     Count   Job Flows       1
                                      Loss         number of
                                      (Stable)     full-quarter
                                                   jobs lost at
                                                   firms
-   FrmJbCS       FJF      sFrmJbCS   Firm Job     Net growth in Count   Employment      1
+   FrmJbCS       FJF      sFrmJbCS   Firm Job     Net growth in Count   Job Flows       1
                                      Change       jobs that
                                      (Stable; Net last a full
                                      Change)      quarter
@@ -353,7 +353,7 @@ HirAEndReplr     EIR   sHirAEndReplr Replacement  Replacement   Rate    Hire    
                                      (Full-       employees
                                      Quarter      with stable
                                      Employment)  jobs
-   EarnBeg       ZW1      sEarnBeg   Average      Average       Dollars Earnings      Emp
+   EarnBeg      ZW2B      sEarnBeg   Average      Average       Dollars Earnings      Emp
                                      Monthly      monthly
                                      Earnings     earnings of
                                      (Beginning-  employees who
@@ -393,7 +393,7 @@ HirAEndReplr     EIR   sHirAEndReplr Replacement  Replacement   Rate    Hire    
 Rates are computed from published data, and are provided as a convenience.
 ( variables_qwir.csv )
   Indicator  Alternate  Status Flag  Indicator    Description Units Concept    Base
-   Variable    name                  Name
+   Variable    Name                  Name
      HirAR        AR        sHirAR   Hiring Rate  All         Rate  Hire       (Emp +
                                      (All         accessions                   EmpEnd)/
                                      Accessions)  as a                         2
@@ -425,7 +425,12 @@ Rates are computed from published data, and are provided as a convenience.
                                      Separation   percent of                   2
                                      Rate         average
                                                   employment
-    HirAsR       FAR       sHirAsR   Hiring Rate  Flows into  Rate  Hire       (EmpSpv
+HirAEndReplR     EIR   sHirAEndReplR Replacement  Replacement Rate  Hire       (Emp +
+                                     Hiring Rate  hires as a                   EmpEnd)/
+                                                  percent of                   2
+                                                  average
+                                                  employment
+    HirASR       FAR       sHirASR   Hiring Rate  Flows into  Rate  Hire       (EmpSpv
                                      (Flows into  stable                       + EmpS)/
                                      Full-Quarter employment                   2
                                      Employment)  as a
@@ -433,7 +438,7 @@ Rates are computed from published data, and are provided as a convenience.
                                                   average
                                                   stable
                                                   employment
-    HirNsR       FHR       sHirNsR   New Hiring   New hires   Rate  Hire       (EmpSpv
+    HirNSR       FHR       sHirNSR   New Hiring   New hires   Rate  Hire       (EmpSpv
                                      Rate (New    into stable                  + EmpS)/
                                      Hires to     employment                   2
                                      Full-Quarter as a
@@ -460,7 +465,7 @@ Rates are computed from published data, and are provided as a convenience.
                                      (Stable)     stable jobs
                                                   begin and
                                                   end
-   FrmJbGnR      JCR      sFrmJbGnR  Firm Job     Estimated   Rate  Hire       (Emp +
+   FrmJbGnR      JCR      sFrmJbGnR  Firm Job     Estimated   Rate  Job Flows  (Emp +
                                      Gain Rate    number of                    EmpEnd)/
                                      (Job         jobs gained                  2
                                      Creation     at firms
@@ -470,7 +475,7 @@ Rates are computed from published data, and are provided as a convenience.
                                                   percent of
                                                   average
                                                   employment
-   FrmJbLsR      JDR      sFrmJbLsR  Firm Job     Estimated   Rate  Separation (Emp +
+   FrmJbLsR      JDR      sFrmJbLsR  Firm Job     Estimated   Rate  Job Flows  (Emp +
                                      Loss Rate    number of                    EmpEnd)/
                                      (Job         jobs lost                    2
                                      Destruction  at firms
@@ -480,7 +485,7 @@ Rates are computed from published data, and are provided as a convenience.
                                                   percent of
                                                   average
                                                   employment
-   FrmJbCR       JFR      sFrmJbCR   Firm Job     Difference  Rate  Flow       (Emp +
+   FrmJbCR       JFR      sFrmJbCR   Firm Job     Difference  Rate  Job Flows  (Emp +
                                      Change Rate  between                      EmpEnd)/
                                      (Net Change  firm job                     2
                                      Rate)        gain and
@@ -489,12 +494,7 @@ Rates are computed from published data, and are provided as a convenience.
                                                   percent of
                                                   average
                                                   employment
-HirAEndReplR     EIR   sHirAEndReplR Replacement  Replacement Rate  Hire       (Emp +
-                                     Hiring Rate  hires as a                   EmpEnd)/
-                                                  percent of                   2
-                                                  average
-                                                  employment
-  FrmJbGnSR     FJCR     sFrmJbGnSR  Firm Job     Estimated   Rate  Hire       (EmpSpv
+  FrmJbGnSR     FJCR     sFrmJbGnSR  Firm Job     Estimated   Rate  Job Flows  (EmpSpv
                                      Gain Rate    number of                    + EmpS)/
                                      (Stable)     full-                        2
                                                   quarter
@@ -504,7 +504,7 @@ HirAEndReplR     EIR   sHirAEndReplR Replacement  Replacement Rate  Hire       (
                                                   of average
                                                   stable
                                                   employment
-  FrmJbLsSR     FJDR     sFrmJbLsSR  Firm Job     Estimated   Rate  Separation (EmpSpv
+  FrmJbLsSR     FJDR     sFrmJbLsSR  Firm Job     Estimated   Rate  Job Flows  (EmpSpv
                                      Loss Rate    number of                    + EmpS)/
                                      (Stable)     full-                        2
                                                   quarter
@@ -514,7 +514,7 @@ HirAEndReplR     EIR   sHirAEndReplR Replacement  Replacement Rate  Hire       (
                                                   of average
                                                   stable
                                                   employment
-   FrmJbCSR     FJFR      sFrmJbCSR  Firm Job     Net growth  Rate  Flow       (EmpSpv
+   FrmJbCSR     FJFR      sFrmJbCSR  Firm Job     Net growth  Rate  Job Flows  (EmpSpv
                                      Change Rate  in jobs                      + EmpS)/
                                      (Stable; Net that last a                  2
                                      Change Rate) full
@@ -904,17 +904,7 @@ agegrp label
   A06  45-54
   A07  55-64
   A08  65-99
-**** 6.2. concept ****
-( label_concept.csv )
-  Concept  Definition
-    Hire   Measure derived from the the first quarter that a job is the main
-           source of income (usually a hire)
-Separation Measure derived from the last quarter that a job is the main source
-           of income (usually a separation)
-Employment Measure counting the stock of all jobs at a point in time
- Earnings  Measure of average earnings associated with a base employment or job
-           transition measure
-**** 6.3. education ****
+**** 6.2. education ****
 ( label_education.csv )
 education label
      E0   All Education Categories
@@ -923,13 +913,13 @@ education label
      E3   Some college or Associate degree
      E4   Bachelor’s degree or advanced degree
      E5   Educational attainment not available (workers aged 24 or younger)
-**** 6.4. ethnicity ****
+**** 6.3. ethnicity ****
 ( label_ethnicity.csv )
 ethnicity label
      A0   All Ethnicities
      A1   Not Hispanic or Latino
      A2   Hispanic or Latino
-**** 6.5. firmage ****
+**** 6.4. firmage ****
 ( label_firmage.csv )
 firmage label
     0   All Firm Ages
@@ -939,7 +929,7 @@ firmage label
     4   6-10 Years
     5   11+ Years
     N   Firm Age Not Available For Public-Sector Firms
-**** 6.6. firmsize ****
+**** 6.5. firmsize ****
 ( label_firmsize.csv )
 firmsize label
      0   All Firm Sizes
@@ -949,25 +939,25 @@ firmsize label
      4   250-499 Employees
      5   500+ Employees
      N   Firm Size Not Available For Public-Sector Firms
-**** 6.7. ownercode ****
+**** 6.6. ownercode ****
 ( label_ownercode.csv )
 ownercode label
-    A00   All (1-5)
+    A00   State and local government plus private ownership
     A01   Federal government
-    A05   All Private (5)
-**** 6.8. periodicity ****
+    A05   All Private
+**** 6.7. periodicity ****
 ( label_periodicity.csv )
 periodicity label
        A    Annual data
        Q    Quarterly data
-**** 6.9. quarter ****
+**** 6.8. quarter ****
 ( label_quarter.csv )
 quarter label
     1   1st Quarter of the Year (January-March)
     2   2nd Quarter of the Year (April-June)
     3   3rd Quarter of the Year (July-September)
     4   4th Quarter of the Year (October-December)
-**** 6.10. race ****
+**** 6.9. race ****
 ( label_race.csv )
 race label
  A0  All Races
@@ -978,57 +968,57 @@ race label
  A5  Native Hawaiian or Other Pacific Islander Alone
  A6  Some Other Race Alone (Not Used)
  A7  Two or More Race Groups
-**** 6.11. seasonadj ****
+**** 6.10. seasonadj ****
 ( label_seasonadj.csv )
 seasonadj label
       S   Seasonally adjusted
       U   Not seasonally adjusted
-**** 6.12. sex ****
+**** 6.11. sex ****
 ( label_sex.csv )
 sex label
  0  All Sexes
  1  Male
  2  Female
-**** 6.13. Industry ****
-*** 6.13.1. Industry levels ***
+**** 6.12. Industry ****
+*** 6.12.1. Industry levels ***
 ( label_ind_level.csv )
 ind_level label
       A   All Industries
       S   NAICS Sectors
       3   NAICS Subsectors
       4   NAICS Industry Groups
-*** 6.13.2. Industry ***
+*** 6.12.2. Industry ***
 ( label_industry.csv )
-Only a small subset of available values shown. The 2012 NAICS (North American
+Only a small subset of available values shown. The 2017 NAICS (North American
 Industry Classification System) is used for all years. QWI releases prior to
-R2015Q3 used the 2007 NAICS classification (see Schema_v4.0.1). For a full
-listing of all valid 2012 NAICS codes, see http://www.census.gov/cgi-bin/sssd/
-naics/naicsrch?chart=2012.
-industry label
-    00   All NAICS Sectors
-   000   All NAICS Subsectors
-   0000  All NAICS Industry Groups
-    11   Agriculture, Forestry, Fishing and Hunting
-   111   Crop Production
-   1111  Oilseed and Grain Farming
-   1112  Vegetable and Melon Farming
+R2018Q1 used the 2012 NAICS classification (see Schema_v4.1.3). For a full
+listing of all valid 2017 NAICS codes, see http://www.census.gov/cgi-bin/sssd/
+naics/naicsrch?chart=2017.
+industry label                                         ind_level
+    00   All NAICS Sectors                                   A
+   000   All NAICS Subsectors                                A
+   0000  All NAICS Industry Groups                           A
+    11   Agriculture, Forestry, Fishing and Hunting          2
+   111   Crop Production                                     3
+   1111  Oilseed and Grain Farming                           4
+   1112  Vegetable and Melon Farming                         4
     …
-   2382  Building Equipment Contractors
-   2383  Building Finishing Contractors
-   2389  Other Specialty Trade Contractors
-  31-33  Manufacturing
-   311   Food Manufacturing
-   3111  Animal Food Manufacturing
-   3112  Grain and Oilseed Milling
-   3113  Sugar and Confectionery Product Manufacturing
+   2382  Building Equipment Contractors                      4
+   2383  Building Finishing Contractors                      4
+   2389  Other Specialty Trade Contractors                   4
+  31-33  Manufacturing                                       2
+   311   Food Manufacturing                                  3
+   3111  Animal Food Manufacturing                           4
+   3112  Grain and Oilseed Milling                           4
+   3113  Sugar and Confectionery Product Manufacturing       4
     …
-6.14. Geography
-6.14.1.  Geographic levels
+6.13. Geography
+6.13.1.  Geographic levels
 Geography labels for data files are provided in separate files, by scope. Each
 file label_geograpy_SCOPE.csv may contain one or more types of records as
 flagged by geo_level. For convenience, a composite file containing all geocodes
-is available as label_geography.csv. The 2015 vintage of  Census_TIGER/Line
-geography is used for all tabulations as of the R2015Q4 release.
+is available as label_geography.csv. The 2017 vintage of Census_TIGER/Line
+geography is used for all tabulations as of the R2018Q1 release.
 Shapefiles are described in a separate_document.
 ( label_geo_level.csv )
 geo_level label         description                                                                  sourceurl
@@ -1051,7 +1041,7 @@ geo_level label         description                                             
       W   Workforce     2-digit state FIPS code and the 6-digit WIA identifier provided by LED State
           Investment    Partners
           Areas
-6.14.2. National and state-level values
+6.13.2. National and state-level values
 ( label_fipsnum.csv )
 The file label_fipsnum.csv contains values and labels for all entities of
 geo_level N or S, and is a summary of separately available files.
@@ -1072,7 +1062,7 @@ geography label                     geo_level
      50   Vermont                         S
      51   Virginia                        S
      53   Washington                      S
-6.14.3. State postal codes
+6.13.3. State postal codes
 Some parts of the schema use (lower or upper-case) state postal codes.
 ( label_stusps.csv )
 geography stusps
@@ -1130,7 +1120,7 @@ geography stusps
      56   WY
      72   PR
      78   VI
-6.14.4. Detailed state and substate level values
+6.13.4. Detailed state and substate level values
 Files of type label_geography_[ST].csv will contain identifiers and labels for
 geographic areas entirely comprised within a given state [ST]. State-specific
 parts of cross-state CBSA, in records of type geo_level = M, are present on
@@ -1191,7 +1181,7 @@ States
    WI  S C W M   label_geography_wi.csv
    WV  S C W M   label_geography_wv.csv
    WY  S C W M   label_geography_wy.csv
-**** 6.15. Aggregation level ****
+**** 6.14. Aggregation level ****
 ( label_agg_level.csv )
 Measures within the J2J and QWI data products are tabulated on many different
 dimensions, including demographic characteristics, geography, industry, and
@@ -1243,7 +1233,7 @@ agg_level worker_char firm_char    firm_orig_char j2j j2jr j2jod qwi geo_level
      1037 Race *      State                       1   1    1     0   S
           Ethnicity
         …
-7. Status flags
+7. Status Flags
 ( label_flags.csv )
 Each status flag in the tables above contains one of the following valid
 values. The values and their interpretation are listed in the table below.
@@ -1267,7 +1257,7 @@ flag label
  12  Aggregate of cells - some of which have significantly distorted data
 8. Metadata
 ( variables_version.csv )
-8.1. Metadata for QWI and J2J files (version.txt)
+8.1. Version Metadata for QWI and J2J Files (version.txt)
 Each data release is accompanied by one or more files with metadata on
 geographic and temporal coverage, in a compact notation. These files follow the
 following naming convention:
@@ -1290,15 +1280,15 @@ schema    Vx.y.z            Version of the schema
 release   RyyyyQq           Release quarter (identifies when the data was
                             created)
 internal  various           Internal identifier used for provenance tracking
-For instance, the metadata for the R2017Q1 release of Missouri QWI Sex by Age
+For instance, the metadata for the R2017Q3 release of Missouri QWI Sex by Age
 tabulations for No firm size or age detail (obtained from here) has the
 following content:
-QWISA_F MO 29 1995:1-2016:2 V4.1.1 R2017Q1 qwipu_mo_20170301_1230
-Similarly, the metadata for the R2017Q1 release of Missouri J2J tabulations
+QWISA_F MO 29 1995:1-2016:4 V4.1.2 R2017Q3 qwipu_mo_20170928_1714
+Similarly, the metadata for the R2017Q3 release of Missouri J2J tabulations
 (obtained from here) has the following content:
-J2J MO 29 2000:2-2016:1 V4.2a-draft R2017Q1 j2jpu_mo_20170425_1760
+J2J MO 29 2000:2-2016:3 V4.2b-draft R2017Q3 j2jpu_mo_20171023_1412
 Some J2J metadata may contain multiple lines, as necessary.
-8.2. Additional metadata for J2JOD files (avail.csv)
+8.2. Additional Metadata for J2JOD Files (avail.csv)
 (variables_avail.csv)
 Because the origin-destination (J2JOD) data link two regions, we provide an
 auxiliary file with the time range that cells containing data for each
@@ -1318,29 +1308,47 @@ geo_level=N; state tabulations contain records where geo_level in (N,S); metro
 tabulations contain records where geo_level in (N,S,B). Data may be suppressed
 for certain combinations of regions and quarters because the estimates do not
 meet Census Bureau publication standards.
+8.3. Metadata on Indicator Availability
+(variables_lags.csv)
+Each Indicator potentially requires leads and/or lags of data to be computed,
+and thus may not be available for certain time periods. Only two QWI will be
+available for all quarters of the time span described by start and end in the
+version.txt files: EmpTotal and Payroll. The date range for QWI, QWIR, J2J, and
+J2JR can be found in version.txt; the date range for J2JOD can be found in
+avail.csv.
+For each indicator, the following files contain the quarters of data required
+to be available relative to the overall date range described in the metadata
+for the release:
+    * lags_qwi.csv
+    * lags_j2j.csv
+    * lags_j2japp.csv
+The files are structured as follows:
+variable                     type label
+Indicator Variable           Num  Name of the Indicator
+Quarters_Required_Prior      Num  Number of quarters of data required to
+                                  compute indicator relative to start quarter
+Quarters_Required_Subsequent Num  Number of quarters of data required to
+                                  compute indicator relative to end quarter
 9.  Changes
 For a description of how schema files are versioned, see main_directory.
 **** 9.1. This version (revisions) ****
-    * 2017-08-21: Initial release
-    * 2017-09-01: Incorporates forgotten updates to j2japp descriptions. This
-      does not affect the structure or contents of any released data files, but
-      it affects the unreleased J2J app updates downstream.
-    * 2017-09-07: clarifying the version.txt description - removed the mention
-      of fips replacing by geonum
-    * 2017-09-07: Moved stusps to the geography section, where it rightfully
-      belongs.
-    * 2017-09-07: Clarified language and usage of metropolitan area codes in
-      label_geography_metro.csv, removed unused label_geography_cbsa.csv
-    * 2017-09-07: Expanded definition of [geohi] to include CBSA codes for
-      metropolitan areas
-    * 2017-10-30: Description on J2JOD earnings measures reversed, fixed. Only
-      affects the J2J app metadata.
-    * 2017-12-18: Description on J2JOD earnings measures reversed, should have
-      also fixed on J2JOD description.
-**** 9.2. Version 4.2b-draft from V4.2a-draft ****
-    * See Github
-**** 9.3. Version 4.2a-draft from 4.1.1 ****
-    * See Github
-This revision: Tue Dec 19 16:02:40 EST 2017
+    * 2017-12-15: Initial release
+**** 9.2. Version 4.2.0 from 4.1.3 ****
+    * Updated industry classification from NAICS 2012 to NAICS 2017
+    * Added J2J Explorer-specific description of metadata for convenience
+      (lehd_j2jexplorer_schema.html)
+    * Added a column ind_level to label_industry.csv similar to the geo_level
+    * Added additional columns to the variable metadata schema for greater
+      clarity
+          o Description,
+          o Concept,
+          o Base
+    * Added a (draft) taxonomy of concepts used in the LEHD data world
+      (label_concept_draft.csv)
+    * Fixed the labeling of ownership code A00 to correctly reflect scope
+    * Added files describing the number of quarters of data availability
+      required relative to start and end quarters (lags_qwi.csv and
+      lags_j2j.csv), and its metadata (variables_lags.csv)
+This revision: Wed Dec 20 18:18:46 EST 2017
 ===============================================================================
-Last updated 2017-12-19 16:02:40 EST
+Last updated 2017-12-20 18:18:46 EST
