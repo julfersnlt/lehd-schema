@@ -929,6 +929,44 @@ include::$arg[]
 
 " >> $asciifile
 
+arg=variables_pseo_institutions.csv
+echo "
+=== [[metadatapseo]] Additional Metadata for PSEO Files
+
+Several additional files within each state release are included to provide information on the institutions within the scope of PSEO. The ALL directory consolidates the individual state files.
+
+==== PSEO Data Partners and Coverage (pseo_[ST]_partners.txt)
+
+This file contains information on PSEO coverage of graduates, as well as the partner organization(s) providing data. This is presented on several lines of a text file, as follows:
+
+* State numeric FIPS code and state name
+* Share of statewide graduates covered by PSEO
+* Name(s) of data provider(s) (multiple lines, as required)
+
+The share is derived from https://nces.ed.gov/ipeds/use-the-data[Integrated Postsecondary Education Data System (IPEDS)] data, using program graduates from 2015 for degree levels within the scope of PSEO. It calculates the number of graduates from institutions that are available to PSEO as a fraction of graduates from all institutions within IPEDS for the reference state.
+
+A sample file follows:
+
+----
+08 Colorado
+72% of statewide graduates covered (2015 estimate)
+Colorado Department of Higher Education
+----
+
+==== Institutions Available Within PSEO (pseo_[ST]_institutions.csv)
+
+(link:${arg}[])
+
+This file provides the list of institutions that are included in the PSEO release. This file is an extract from link:label_institution.csv[].
+
+The files are structured as follows:
+[width=\"80%\",format=\"csv\",cols=\"<2,<1,<4\",options=\"header\"]
+|===================================================
+include::$arg[]
+|===================================================
+
+" >> $asciifile
+
 
 cat CHANGES_SCHEMA.txt >> $asciifile
 
@@ -940,12 +978,16 @@ Released: $(date '+%F')
 *******************
 " >> $asciifile
 echo "$asciifile created"
+
+# create HTML docs
 asciidoctor -b html5 -a icons -a toc -a numbered -a linkcss -a toclevels=$toclevels -a sectnumlevels=$toclevels -a outfilesuffix=.html $asciifile
 [[ -f $(basename $asciifile .asciidoc).html  ]] && echo "$(basename $asciifile .asciidoc).html created"
-asciidoctor-pdf -a pdf-page-size=letter -a icons -a toc -a numbered -a outfilesuffix=.pdf $asciifile
-[[ -f $(basename $asciifile .asciidoc).pdf  ]] && echo "$(basename $asciifile .asciidoc).pdf created"
-#html2text $(basename $asciifile .asciidoc).html > $(basename $asciifile .asciidoc).txt
-#[[ -f $(basename $asciifile .asciidoc).txt  ]] && echo "$(basename $asciifile .asciidoc).txt created"
+
+# create PDF docs, only if an official release
+if [[ "$version" = "official" ]]; then
+  asciidoctor-pdf -a pdf-page-size=letter -a icons -a toc -a numbered -a outfilesuffix=.pdf $asciifile
+  [[ -f $(basename $asciifile .asciidoc).pdf  ]] && echo "$(basename $asciifile .asciidoc).pdf created"
+fi
+
 echo "Removing tmp files"
 rm -f $cwd/tmp.* #remove files made by mktemp
-#rm tmp*

@@ -124,7 +124,7 @@ Files downloaded through the  LED Extraction Tool at https://ledextract.ces.cens
 where +[id]+ is the Request ID (a unique string of characters) generated every time ``Submit Request'' is clicked. The ID references each query submission made to the database.
 
 
-=== [[versionqwi]]Metadata for QWI and J2J data files (version.txt)
+=== [[versionqwi]]Metadata for QWI, J2J, and PSEO data files (version.txt)
 Metadata accompanies the data files, identifying provenance, geographic and temporal coverage. These files follow the following naming convention:
 ....................................
 $(awk -F, ' NR == 5 { print $1 }' naming_convention.csv  )
@@ -239,11 +239,16 @@ Released: $(date '+%F')
 *******************
 " >> $asciifile
 echo "$asciifile created"
+
+# create HTML docs
 asciidoctor -b html5 -a icons -a toc -a numbered -a linkcss -a outfilesuffix=.html $asciifile
 echo "$(basename $asciifile .asciidoc).html created"
-asciidoctor-pdf -a pdf-page-size=letter -a icons -a toc -a numbered -a linkcss -a outfilesuffix=.pdf $asciifile
-echo "$(basename $asciifile .asciidoc).pdf created"
-#html2text $(basename $asciifile .asciidoc).html > $(basename $asciifile .asciidoc).txt
-#echo "$(basename $asciifile .asciidoc).txt created"
+
+# create PDF docs, only if an official release
+if [[ "$version" = "official" ]]; then
+  asciidoctor-pdf -a pdf-page-size=letter -a icons -a toc -a numbered -a linkcss -a outfilesuffix=.pdf $asciifile
+  echo "$(basename $asciifile .asciidoc).pdf created"
+fi
+
 echo "Deleting tmp files"
 rm tmp*

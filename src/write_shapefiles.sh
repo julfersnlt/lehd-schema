@@ -83,20 +83,18 @@ Released: $(date '+%F')
 *******************
 " >> $asciifile
 echo "$asciifile created"
+
+# create HTML docs
 asciidoctor -b html5 -a icons -a toc -a numbered -a linkcss -a toclevels=$toclevels -a sectnumlevels=$toclevels -a outfilesuffix=.html $asciifile
 [[ -f ${basefile}.html  ]] && echo "${basefile}.html created"
-asciidoctor-pdf -a pdf-page-size=letter  -a icons -a toc -a numbered -a outfilesuffix=.pdf $asciifile
-[[ -f ${basefile}.pdf  ]] && echo "${basefile}.pdf created"
-#a2x -f docbook -a icons -a toc -a numbered -a outfilesuffix=.md  $asciifile
-#[[ -f ${basefile}.xml  ]] || echo "Error: ${basefile}.xml not created"
-# workaround for missing title
-#head -4 $asciifile > ${basefile}.md
-#pandoc -t markdown_strict -f docbook ${basefile}.xml >> ${basefile}.md
-#[[ -f ${basefile}.md  ]] && echo "${basefile}.md created"
+
+# create PDF docs, only if an official release
+if [[ "$version" = "official" ]]; then
+  asciidoctor-pdf -a pdf-page-size=letter  -a icons -a toc -a numbered -a outfilesuffix=.pdf $asciifile
+  [[ -f ${basefile}.pdf  ]] && echo "${basefile}.pdf created"
+fi
+
 echo "Removing tmp files and $asciifile"
-#rm tmp*
-#rm $asciifile
-#rm ${basefile}.xml
 exit 0
 #
 # ==================== end of script
@@ -122,13 +120,13 @@ New TIGER/Line shapefiles are typically released by the Census Bureau's Geograph
 
 Sources
 -------
-Files are derived from   https://www.census.gov/geo/maps-data/data/tiger-line.html[TIGER/Line 2019 shapefiles]:
+Files are derived from   https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2020.html[TIGER/Line 2020 shapefiles] (except the "gb" and "gm" shapefile types, which are still sourced from https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2019.html[TIGER/Line 2019]):
 
-* https://www2.census.gov/geo/tiger/TIGER2019/STATE/[tl_2019_us_state]
-* https://www2.census.gov/geo/tiger/TIGER2019/COUNTY/[tl_2019_us_county]
+* https://www2.census.gov/geo/tiger/TIGER2020/STATE/[tl_2020_us_state]
+* https://www2.census.gov/geo/tiger/TIGER2020/COUNTY/[tl_2020_us_county]
 * https://www2.census.gov/geo/tiger/TIGER2019/CBSA/[tl_2019_us_cbsa]
-* https://www2.census.gov/geo/tiger/TIGER2019/PLACE/[tl_2019_(ST)_place]  (for creation of WIA/WIB shapefile)
-* https://www2.census.gov/geo/tiger/TIGER2019/COUSUB/[tl_2019_(ST)_cousub] (for creation of WIA/WIB shapefile)
+* https://www2.census.gov/geo/tiger/TIGER2020/PLACE/[tl_2020_(ST)_place]  (for creation of WIA/WIB shapefile)
+* https://www2.census.gov/geo/tiger/TIGER2020/COUSUB/[tl_2020_(ST)_cousub] (for creation of WIA/WIB shapefile)
 
 Transformations
 ---------------
