@@ -5,16 +5,13 @@ geography,label,geo_level
 01005,"Barbour, AL",C
 01007,"Bibb, AL",C
 01009,"Blount, AL",C
-01010001,"Workforce Development Region 1",W
-01010002,"Workforce Development Region 2",W
-01010003,"Workforce Development Region 3",W
-01010004,"Workforce Development Region 4",W
-01010005,"Workforce Development Region 5",W
-01010006,"Workforce Development Region 6",W
-01010007,"Workforce Development Region 7",W
-01010008,"Workforce Development Region 8",W
-01010009,"Workforce Development Region 9",W
-01010010,"Workforce Development Region 10",W
+01010001,"North Alabama Works",W
+01010002,"East Alabama Works",W
+01010003,"West Alabama Works",W
+01010004,"Central Six Alabama Works",W
+01010005,"Central Alabama Works",W
+01010006,"Southeast Alabama Works",W
+01010007,"Southwest Alabama Works",W
 01011,"Bullock, AL",C
 01013,"Butler, AL",C
 01015,"Calhoun, AL",C

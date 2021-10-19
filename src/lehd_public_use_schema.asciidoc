@@ -1,4 +1,4 @@
-= LEHD Public Use Data Schema V4.1.1
+= LEHD Public Use Data Schema V4.1.2
 Lars Vilhuber <lars.vilhuber@cornell.edu>
 21 August 2017
 // a2x: --dblatex-opts "-P latex.output.revhistory=0 --param toc.section.depth=3"
@@ -574,9 +574,12 @@ include::label_flags.csv[]
 For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
 
 === This version (revisions)
-- 2017-03-06: Initial release
+- 2017-06-19: Initial release
 - 2017-08-21: Corrected naming of three of the status flags that have "Rate" at the end. That should be just "R". 
 
+
+=== Version 4.1.2 from 4.1.1
+- 2017-06-19: Updated LEHD shape files, Louisiana and Alabama WIB definitions
 
 === Version 4.1.1 from 4.1.0
 - 2017-03-06: Modifed naming_geo_cat.csv, gb value to read "Metropolitan (complete)", gm to "Metropolitan/Micropolitan (state parts)"
@@ -594,6 +597,6 @@ For a description of how schema files are versioned, see link:../VERSIONING{ext-
 
 <<<
 *******************
-This revision: Mon Aug 21 13:13:46 EDT 2017
+This revision: Mon Aug 21 13:15:11 EDT 2017
 *******************
 
