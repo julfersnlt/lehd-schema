@@ -1,6 +1,6 @@
-= LEHD Public Use  Schema documents - File and Directory Naming Convention
-Lars Vilhuber <lars.vilhuber@cornell.edu>
-28 February 2019
+= LEHD Public Use  Schema V4.4.0 - File and Directory Naming Convention
+Lars Vilhuber <ces.qwi.feedback@census.gov>
+28 March 2019
 :ext-relative: {outfilesuffix}
 
 ( link:lehd_csv_naming.pdf[Printable version] )
@@ -10,19 +10,16 @@ Lars Vilhuber <lars.vilhuber@cornell.edu>
 [IMPORTANT]
 .Important
 ==============================================
-This document is not an official Census Bureau publication. It is compiled from publicly accessible information
-by Lars Vilhuber (http://www.ilr.cornell.edu/ldi/[Labor Dynamics Institute, Cornell University]).
-Feedback is welcome. Please write us at
-link:mailto:lars.vilhuber@cornell.edu?subject=LEHD_Schema_v4[lars.vilhuber@cornell.edu].
+Feedback is welcome. Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema_draft[ces.qwi.feedback@census.gov].
 ==============================================
-
+	
 
 Purpose
 -------
 The public-use data from the Longitudinal Employer-Household Dynamics Program, including the Quarterly Workforce Indicators (QWI)
 and Job-to-Job Flows (J2J), are available for download with the following data schema.
 These data are available as Comma-Separated Value (CSV) files through the LEHD website’s Data page at
-http://lehd.ces.census.gov/data/ and through LED Extraction Tool at http://ledextract.ces.census.gov/.
+https://lehd.ces.census.gov/data/ and through LED Extraction Tool at https://ledextract.ces.census.gov/.
 
 This document describes the file and directory naming schema for LEHD-provided CSV files.
 
@@ -38,7 +35,7 @@ This version modifies a portion of the structure of the metadata. Many files com
 
 Supersedes
 ----------
-This version supersedes V4.2, for files released as of R2018Q3
+This version supersedes V4.3.1, for files released as of R2019Q1.
 
 
 Basic Filename Schema
@@ -60,7 +57,7 @@ include::tmp_naming_convention.csv[]
 |===================================================
 
 === QWIPU from the LED Extraction Tool
-Files downloaded through the  LED Extraction Tool at http://ledextract.ces.census.gov/ follow the following naming convention:
+Files downloaded through the  LED Extraction Tool at https://ledextract.ces.census.gov/ follow the following naming convention:
 ....................................
  [type]_[id].[EXT]
 ....................................
@@ -220,16 +217,14 @@ include::naming_ext.csv[]
 For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
 
 === This version (revisions)
-- 2018-10-30: Initial release
-- 2019-02-28: Switch to different rendering engine, only stylistic changes
+- 2019-02-21: Initial release
 
-=== Version 4.3.1 from 4.3.0
-- 2018-10-30: Due to a change of the geographic boundaries for a WIB   in Iowa, the shape files need to be updated.
-- Adjust the "supersedes" definition to correctly reference the prior version.
-
-=== Version 4.3.0 from 4.2.0
-- Changed the format of the version.txt file. This does not affect data files, but it does affect the metadata, and thus requires an increase in the minor version.
-- Changed the description of the download locations of the QWI files, as part of the "naming" schema.
+=== Version 4.4.0 from 4.3.1
+- Underlying geovintage updated to reflect 2018 census geography
+- Updated shapefiles based on TIGER 2018
+- PR geography labels added
+- Added state part to non-metro/non-micro areas in state label files
+- Removed nonexistent VT geography from labels
 
 [IMPORTANT]
 .Important
@@ -239,6 +234,6 @@ Some of the data products noted above do not exist yet.
 
 <<<
 *******************
-This revision: Thu Feb 28 21:17:02 UTC 2019
+This revision: Thu Mar 28 19:30:36 UTC 2019
 *******************
 

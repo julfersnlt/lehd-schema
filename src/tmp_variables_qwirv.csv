@@ -1,0 +1,21 @@
+Variability measure,Alternate name,Variable name,Units,Base
+st_HirAR,st_AR,Standard error of Hiring Rate (All Accessions),Rate,1
+st_HirNR,st_HR,Standard error of New Hiring Rate,Rate,1
+st_HirRR,st_RR,Standard error of Recall Rate,Rate,1
+...,,,,
+vt_HirAR,vt_AR,Total variation of Hiring Rate (All Accessions),Rate,1
+vt_HirNR,vt_HR,Total variation of New Hiring Rate,Rate,1
+vt_HirRR,vt_RR,Total variation of Recall Rate,Rate,1
+...,,,,
+vb_HirAR,vb_AR,Between-implicate variability for Hiring Rate (All Accessions),Rate,1
+vb_HirNR,vb_HR,Between-implicate variability for New Hiring Rate,Rate,1
+vb_HirRR,vb_RR,Between-implicate variability for Recall Rate,Rate,1
+...,,,,
+...,,,,
+df_HirAR,df_AR,Degrees of freedom for VT of Hiring Rate (All Accessions),Rate,1
+df_HirNR,df_HR,Degrees of freedom for VT of New Hiring Rate,Rate,1
+df_HirRR,df_RR,Degrees of freedom for VT of Recall Rate,Rate,1
+...,,,,
+mr_HirAR,mr_AR,Missingness ratio for Hiring Rate (All Accessions),Rate,1
+mr_HirNR,mr_HR,Missingness ratio for New Hiring Rate,Rate,1
+mr_HirRR,mr_RR,Missingness ratio for Recall Rate,Rate,1
