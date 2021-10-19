@@ -30,6 +30,7 @@ cwd=$(pwd)
 numversion=${cwd##*/}
 # convert the column definitions to CSV
 sed 's/  /,/g;s/R N/R,N/; s/,,/,/g; s/,,/,/g; s/,,/,/g; s/, /,/g' column_definitions.txt | tail -n +2 > tmp.csv
+previousvintage=$(cd ..; ls -1d * | grep -E "V[0-9]" | tail -2 | head -1)
 
 # create ascii doc version
 asciifile=lehd_csv_naming.asciidoc
@@ -89,7 +90,7 @@ This version modifies a portion of the structure of the metadata. Many files com
 
 Supersedes
 ----------
-This version supersedes V4.6.0, for files released as of R2020Q4.
+This version supersedes ${previousvintage}.
 
 
 Basic Filename Schema
@@ -183,7 +184,7 @@ include::naming_type.csv[]
 # start with fips postal
 name=geohi
   arg=naming_$name.csv
-  echo "=== [[$name]]$name
+  echo "=== [[$name]]${name^}
 ( link:${arg}[] )
 
 The $name component in *filenames* is based on one of two possible code sets:
@@ -208,7 +209,7 @@ metro,Indicates collection of CBSA-level files (*directory names only*)
 for name in demo fas geocat indcat owncat sa ext
 do
   arg=naming_$name.csv
-  echo "=== $name
+  echo "=== ${name^}
 ( link:${arg}[] )
 
 [width=\"60%\",format=\"csv\",cols=\"^1,<4\",options=\"header\"]
@@ -250,5 +251,5 @@ if [[ "$version" = "official" ]]; then
   echo "$(basename $asciifile .asciidoc).pdf created"
 fi
 
-echo "Deleting tmp files"
-rm tmp*
+# echo "Deleting tmp files"
+rm -f tmp*
