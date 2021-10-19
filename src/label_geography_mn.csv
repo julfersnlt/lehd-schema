@@ -53,9 +53,7 @@ geography,label,geo_level
 27101,"Murray, MN",C
 27103,"Nicollet, MN",C
 27105,"Nobles, MN",C
-2710660,"Albert Lea, MN",M
 27107,"Norman, MN",C
-2710820,"Alexandria, MN",M
 27109,"Olmsted, MN",C
 27111,"Otter Tail, MN",C
 27113,"Pennington, MN",C
@@ -64,20 +62,17 @@ geography,label,geo_level
 27119,"Polk, MN",C
 27121,"Pope, MN",C
 27123,"Ramsey, MN",C
-2712380,"Austin, MN",M
 27125,"Red Lake, MN",C
 27127,"Redwood, MN",C
 27129,"Renville, MN",C
 27131,"Rice, MN",C
 27133,"Rock, MN",C
-2713420,"Bemidji, MN",M
 27135,"Roseau, MN",C
 27137,"St. Louis, MN",C
 27139,"Scott, MN",C
 27141,"Sherburne, MN",C
 27143,"Sibley, MN",C
 27145,"Stearns, MN",C
-2714660,"Brainerd, MN",M
 27147,"Steele, MN",C
 27149,"Stevens, MN",C
 27151,"Swift, MN",C
@@ -92,6 +87,11 @@ geography,label,geo_level
 27169,"Winona, MN",C
 27171,"Wright, MN",C
 27173,"Yellow Medicine, MN",C
+2710660,"Albert Lea, MN",M
+2710820,"Alexandria, MN",M
+2712380,"Austin, MN",M
+2713420,"Bemidji, MN",M
+2714660,"Brainerd, MN",M
 2720260,"Duluth, MN-WI (MN part)",M
 2721860,"Fairmont, MN",M
 2722020,"Fargo, ND-MN (MN part)",M

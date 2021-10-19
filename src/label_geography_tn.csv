@@ -60,7 +60,6 @@ geography,label,geo_level
 47115,"Marion, TN",C
 47117,"Marshall, TN",C
 47119,"Maury, TN",C
-4711940,"Athens, TN",M
 47121,"Meigs, TN",C
 47123,"Monroe, TN",C
 47125,"Montgomery, TN",C
@@ -77,7 +76,6 @@ geography,label,geo_level
 47147,"Robertson, TN",C
 47149,"Rutherford, TN",C
 47151,"Scott, TN",C
-4715140,"Brownsville, TN",M
 47153,"Sequatchie, TN",C
 47155,"Sevier, TN",C
 47157,"Shelby, TN",C
@@ -86,21 +84,23 @@ geography,label,geo_level
 47163,"Sullivan, TN",C
 47165,"Sumner, TN",C
 47167,"Tipton, TN",C
-4716860,"Chattanooga, TN-GA (TN part)",M
 47169,"Trousdale, TN",C
 47171,"Unicoi, TN",C
 47173,"Union, TN",C
-4717300,"Clarksville, TN-KY (TN part)",M
-4717420,"Cleveland, TN",M
 47175,"Van Buren, TN",C
 47177,"Warren, TN",C
 47179,"Washington, TN",C
 47181,"Wayne, TN",C
-4718260,"Cookeville, TN",M
 47183,"Weakley, TN",C
 47185,"White, TN",C
 47187,"Williamson, TN",C
 47189,"Wilson, TN",C
+4711940,"Athens, TN",M
+4715140,"Brownsville, TN",M
+4716860,"Chattanooga, TN-GA (TN part)",M
+4717300,"Clarksville, TN-KY (TN part)",M
+4717420,"Cleveland, TN",M
+4718260,"Cookeville, TN",M
 4718900,"Crossville, TN",M
 4719420,"Dayton, TN",M
 4720540,"Dyersburg, TN",M
