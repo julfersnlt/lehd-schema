@@ -9,7 +9,7 @@ echo "
 
 	will build the format documentation from CSV files and a template.
 
-	Providing a format version overrides the automatically defined one
+	Version = cornell|draft|official changes a note in the document
 	"
 	exit 1
 fi
@@ -17,32 +17,71 @@ fi
 if [[ "$1" = "start" ]]
 then
 # parse version from directory
-   cwd=$(pwd)
-   version=${cwd##*/}
+   version=cornell
 else
    version=$1
 fi
+case $version in
+	cornell|draft)
+	author=lars.vilhuber@cornell.edu
+	;;
+	official)
+	author=lars.vilhuber@census.gov
+	;;
+esac
+cwd=$(pwd)
+numversion=${cwd##*/}
 # convert the column definitions to CSV
 sed 's/  /,/g;s/R N/R,N/; s/,,/,/g; s/,,/,/g; s/,,/,/g; s/, /,/g' column_definitions.txt | tail -n +2 > tmp.csv
 
 # create ascii doc version
 asciifile=lehd_public_use_schema.asciidoc
-echo "= LEHD Public Use Data Schema $version" > $asciifile
-echo 'Lars Vilhuber <lars.vilhuber@cornell.edu>' >> $asciifile
+echo "= LEHD Public Use Data Schema $numversion" > $asciifile
+echo "Lars Vilhuber <${author}>" >> $asciifile
 echo "$(date +%d\ %B\ %Y)
-// a2x: --dblatex-opts \"--param toc.section.depth=${toclevels}\"
+// a2x: --dblatex-opts \"-P latex.output.revhistory=0 --param toc.section.depth=${toclevels}\"
 
-( link:$(basename $asciifile .asciidoc).pdf[Printable version] )
+( link:QWIPU_Data_Schema.pdf[Printable version] )
 
+" >> $asciifile
+# A note on the relevance/beta/draft status of this file.
+
+case $version in
+	cornell)
+	echo "
 [IMPORTANT]
 .Important
 ==============================================
 This document is not an official Census Bureau publication. It is compiled from publicly accessible information
-(in particular (http://lehd.ces.census.gov/doc/QWIPU_Data_Schema.pdf)[QWIPU_Data_Schema.pdf] as of link:QWIPU_Data_Schema.pdf[2015-02-25]) by Lars Vilhuber (http://www.ilr.cornell.edu/ldi/[Labor Dynamics Institute, Cornell University]).
+by Lars Vilhuber (http://www.ilr.cornell.edu/ldi/[Labor Dynamics Institute, Cornell University]).
 Feedback is welcome. Please write us at
 link:mailto:lars.vilhuber@cornell.edu?subject=LEHD_Schema_v4[lars.vilhuber@cornell.edu].
 ==============================================
+	" >> $asciifile
+	;;
+	draft)
+	echo "
+[IMPORTANT]
+.Important
+==============================================
+This specification is draft. Feedback is welcome. Please write us at link:mailto:erika.mcentarfer@census.gov?subject=LEHD_Schema_draft[erika.mcentarfer@census.gov]
+or link:mailto:lars.vilhuber@census.gov?subject=LEHD_Schema_draft[lars.vilhuber@census.gov].
+==============================================
+	" >> $asciifile
+	;;
+	official)
+	echo "
+[IMPORTANT]
+.Important
+==============================================
+Feedback is welcome. Please write us at link:mailto:erika.mcentarfer@census.gov?subject=LEHD_Schema_4.0.1[erika.mcentarfer@census.gov]
+or link:mailto:lars.vilhuber@census.gov?subject=LEHD_Schema_4.0.1[lars.vilhuber@census.gov].
+==============================================
+	" >> $asciifile
+	;;
+esac
 
+echo "
 
 The public-use Quarterly Workforce Indicators (QWI) data from the Longitudinal Employer-Household Dynamics Program
  are available for download with the following data schema.
@@ -51,7 +90,7 @@ http://lehd.ces.census.gov/data/ and at an (occassional) mirror site at http://d
 
 This document describes the data schema for QWI files. For each variable,
 a set of allowable values is defined. Definitions are provided as CSV files,
-with header variable definitions. The naming conventions of the data files is documented in link:lehd_csv_naming.html[].
+with header variable definitions. The naming conventions of the data files is documented in link:lehd_csv_naming.html[]. Changes relative to the original v4.0 version are listed <<changes,at the end>>.
 
 
 Basic Schema
@@ -196,7 +235,7 @@ done
 	# construct the NS file
 	nsfile=label_fipsnum.csv
 	echo "geography,label" > $nsfile
-	grep -h -E "^[0-9][0-9]," label_geography_??.csv >> $nsfile
+	grep -h -E "^[0-9][0-9]," ??/label_geography.csv >> $nsfile
 
 	# construct the sample fips file
 	head -8 $nsfile > tmp.csv
@@ -224,7 +263,7 @@ include::$arg[]
 done
 
 echo "
-Geography labels are provided in separate files by state. Note that cross-state CBSA will have
+Geography labels are provided in separate files, in directories by state. Note that cross-state CBSA will have
 state-specific parts, and thus will appear in multiple files.
 A separate link:$nsfile[$nsfile] contains values and labels
 for all entities of geo_level 'n' or 's', and is a summary of separately available files.
@@ -239,7 +278,7 @@ include::tmp.csv[]
 
 ==== Detailed state and substate level values
 
-For a full listing of all valid geography codes, see http://www.census.gov/geo/maps-data/data/tiger.html.
+For a full listing of all valid geography codes (except for WIA codes), see http://www.census.gov/geo/maps-data/data/tiger.html.
 Note about geography codes: Four types of geography codes are represented with this field. Each geography
 has its own code structure.
 
@@ -256,9 +295,9 @@ The 2014 vintage of Census TIGER geography is used for all tabulations as of the
 |===================================================
 State,Format file" >> $asciifile
 
-  for arg in $(ls label_geography_??.csv)
+  for arg in $(ls  ??/label_geography.csv)
   do
-  	state=$(echo ${arg%*.csv} | awk -F_ ' { print $3 } '| tr [a-z] [A-Z])
+  	state=$(dirname ${arg}|tr [a-z] [A-Z])
 	echo "$state,link:${arg}[]" >> $asciifile
   done
 echo "|===================================================" >> $asciifile
@@ -283,19 +322,17 @@ include::$arg[]
 |===================================================
 
 <<<
-== Changes
-From previous releases of this document:
 
-- 2015-02-25: added date of production (replaces Revision)
-- 2015-02-25: corrected flag values to reflect 2015 version of QWIPU_Data_Schema.pdf
-- 2015-02-25: added reference to source document
+" >> $asciifile
 
-From previous versions of the schema:
 
-- v4.0: replaces v3.5
+cat CHANGES.txt >> $asciifile
 
+echo "
+
+<<<
 *******************
-This version: $(date)
+This revision: $(date)
 *******************
 " >> $asciifile
 echo "$asciifile created"
@@ -303,5 +340,6 @@ asciidoc -a icons -a toc -a numbered -a linkcss -a toclevels=$toclevels $asciifi
 [[ -f $(basename $asciifile .asciidoc).html  ]] && echo "$(basename $asciifile .asciidoc).html created"
 a2x -f pdf -a icons -a toc -a numbered $asciifile
 [[ -f $(basename $asciifile .asciidoc).pdf  ]] && echo "$(basename $asciifile .asciidoc).pdf created"
+mv $(basename $asciifile .asciidoc).pdf "QWIPU_Data_Schema.pdf" && echo "$(basename $asciifile .asciidoc).pdf moved to QWIPU_Data_Schema.pdf"
 html2text $(basename $asciifile .asciidoc).html > $(basename $asciifile .asciidoc).txt
 [[ -f $(basename $asciifile .asciidoc).txt  ]] && echo "$(basename $asciifile .asciidoc).txt created"
