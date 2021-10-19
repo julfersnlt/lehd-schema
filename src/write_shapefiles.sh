@@ -1,23 +1,121 @@
-= LEHD Public Use Shapefile Data
-Heath Hayward, Matthew Graham, Lars Vilhuber <lars.vilhuber@cornell.edu>
-13 July 2018
-// a2x: --dblatex-opts "-P latex.output.revhistory=0 --param toc.section.depth=3"
+#!/bin/bash
+# set defaults
+toclevels=3
+# print out info
+if [[ -z $1 ]]
+then
+echo "
+	$0 [start|version]
+
+	will build the format documentation from CSV files and a template.
+
+	Version = cornell|draft|official changes a note in the document
+	"
+	exit 1
+fi
+
+if [[ "$1" = "start" ]]
+then
+# parse version from directory
+   version=cornell
+else
+   version=$1
+fi
+case $version in
+	cornell)
+	author=lars.vilhuber@cornell.edu
+	;;
+	draft|*)
+	author=Patrick.Hayward@census.gov
+	;;
+	official)
+	author=ces.qwi.feedback@census.gov
+	;;
+esac
+cwd=$(pwd)
+numversion=${cwd##*/}
+
+# create ascii doc version
+basefile=lehd_shapefiles
+asciifile=${basefile}.asciidoc
+
+echo "= LEHD Public Use Shapefile Data" > $asciifile
+echo "Heath Hayward, Matthew Graham, Lars Vilhuber <${author}>" >> $asciifile
+echo "$(date +%d\ %B\ %Y)
+// a2x: --dblatex-opts \"-P latex.output.revhistory=0 --param toc.section.depth=${toclevels}\"
 :ext-relative: {outfilesuffix}
 ( link:lehd_shapefiles.pdf[Printable version] )
 
-
-
+" >> $asciifile
+# A note on the relevance/beta/draft status of this file.
+case $version in
+	cornell)
+	echo "
 [IMPORTANT]
 .Important
 ==============================================
 This document is not an official Census Bureau publication. It is compiled from publicly accessible information
 by Lars Vilhuber (http://www.ilr.cornell.edu/ldi/[Labor Dynamics Institute, Cornell University]).
-Feedback is welcome. 
-Please write us at
-link:mailto:lars.vilhuber@cornell.edu?subject=LEHD_Shapefiles[lars.vilhuber@cornell.edu].
+Feedback is welcome. " >> $asciifile
+	;;
+	draft|*)
+	echo "
+[IMPORTANT]
+.Important
+==============================================
+This specification is draft. Feedback is welcome. 	" >> $asciifile
+	;;
+	official)
+	echo "
+[IMPORTANT]
+.Important
+==============================================
+Feedback is welcome. 	" >> $asciifile
+	;;
+esac
+echo "Please write us at
+link:mailto:${author}?subject=LEHD_Shapefiles[${author}].
 ==============================================
 
+" >> $asciifile
 
+# Extract ASCIIDOC payload from this script
+function untar_payload()
+{
+	match=$(grep --text --line-number '^PAYLOAD:$' $0 | cut -d ':' -f 1)
+	payload_start=$((match + 1))
+	tail -n +$payload_start $0
+}
+
+untar_payload >> $asciifile
+
+echo "
+
+<<<
+*******************
+This revision: $(date)
+*******************
+" >> $asciifile
+echo "$asciifile created"
+asciidoc -a icons -a toc -a numbered -a linkcss -a toclevels=$toclevels -a outfilesuffix=.html $asciifile
+[[ -f ${basefile}.html  ]] && echo "${basefile}.html created"
+a2x -f pdf -a icons -a toc -a numbered -a outfilesuffix=.pdf $asciifile
+[[ -f ${basefile}.pdf  ]] && echo "${basefile}.pdf created"
+a2x -f docbook -a icons -a toc -a numbered -a outfilesuffix=.md  $asciifile
+[[ -f ${basefile}.xml  ]] || echo "Error: ${basefile}.xml not created"
+# workaround for missing title
+head -4 $asciifile > ${basefile}.md
+pandoc -t markdown_strict -f docbook ${basefile}.xml >> ${basefile}.md
+[[ -f ${basefile}.md  ]] && echo "${basefile}.md created"
+echo "Removing tmp files and $asciifile"
+#rm tmp*
+#rm $asciifile
+rm ${basefile}.xml
+exit 0
+#
+# ==================== end of script
+#
+PAYLOAD:
 
 Scope
 -----
@@ -153,10 +251,3 @@ ________________________________________________________________________________
 [[changes]]
 Changes
 -------
-
-
-<<<
-*******************
-This revision: Fri Jul 13 09:46:41 EDT 2018
-*******************
-

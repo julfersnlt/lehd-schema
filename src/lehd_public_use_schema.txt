@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-****** LEHD Public Use Data Schema V4.2-rc1 ******
+****** LEHD Public Use Data Schema V4.3.0 ******
 Lars Vilhuber
 <lars.vilhuber@cornell.edu>
-20 December 2017
+13 July 2018
 Table of Contents
 JavaScript must be enabled in your browser to display the table of contents.
 ( Printable_version )
@@ -1261,16 +1261,14 @@ flag label
 Each data release is accompanied by one or more files with metadata on
 geographic and temporal coverage, in a compact notation. These files follow the
 following naming convention:
-version_[demo]_[fas].txt
 version_[type].txt
 where each component is described in more detail in lehd_csv_naming.html.
 The contents contains the following elements:
 Component Source            Description
 product   [type]            Type as described in lehd_csv_naming.html
-demo_fas  [demo]_[fas]      (optional - concatenated with product) used for QWI
+fas       [fas]             (optional - concatenated with product) used for QWI
                             to distinguish separate tabulations from the legal
-                            [demo]_[fas] combinations as described in
-                            lehd_csv_naming.html
+                            [fas] values as described in lehd_csv_naming.html
 geo       [stusps] or METRO Covered [geography] (uppercase state postal code
                             including entire nation or the word METRO)
 geonum    [geography]       Numeric geography code
@@ -1280,13 +1278,23 @@ schema    Vx.y.z            Version of the schema
 release   RyyyyQq           Release quarter (identifies when the data was
                             created)
 internal  various           Internal identifier used for provenance tracking
-For instance, the metadata for the R2017Q3 release of Missouri QWI Sex by Age
-tabulations for No firm size or age detail (obtained from here) has the
-following content:
-QWISA_F MO 29 1995:1-2016:4 V4.1.2 R2017Q3 qwipu_mo_20170928_1714
-Similarly, the metadata for the R2017Q3 release of Missouri J2J tabulations
+For instance, the metadata for the R2018Q3 QWI release of Delaware (obtained
+from here) has the following content:
+QWI_F DE 10 1998:3-2017:4 V4.3.0 R2018Q3 qwipu_de_20180701_1003
+QWI_FA DE 10 1998:3-2017:3 V4.3.0 R2018Q3 qwipu_de_20180701_1003
+QWI_FS DE 10 1998:3-2017:3 V4.3.0 R2018Q3 qwipu_de_20180701_1003
+Similarly, the metadata for the R2018Q3 release of Delaware J2J tabulations
 (obtained from here) has the following content:
-J2J MO 29 2000:2-2016:3 V4.2b-draft R2017Q3 j2jpu_mo_20171023_1412
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL /data/j2j/R2018Q3/j2j/de/version_j2j.txt was not found on
+this server.</p>
+<hr>
+<address>Apache Server at lehd.ces.census.gov Port 80</address>
+</body></html>
 Some J2J metadata may contain multiple lines, as necessary.
 8.2. Additional Metadata for J2JOD Files (avail.csv)
 (variables_avail.csv)
@@ -1321,7 +1329,6 @@ to be available relative to the overall date range described in the metadata
 for the release:
     * lags_qwi.csv
     * lags_j2j.csv
-    * lags_j2japp.csv
 The files are structured as follows:
 variable                     type label
 Indicator Variable           Num  Name of the Indicator
@@ -1332,23 +1339,13 @@ Quarters_Required_Subsequent Num  Number of quarters of data required to
 9.  Changes
 For a description of how schema files are versioned, see main_directory.
 **** 9.1. This version (revisions) ****
-    * 2017-12-15: Initial release
-**** 9.2. Version 4.2.0 from 4.1.3 ****
-    * Updated industry classification from NAICS 2012 to NAICS 2017
-    * Added J2J Explorer-specific description of metadata for convenience
-      (lehd_j2jexplorer_schema.html)
-    * Added a column ind_level to label_industry.csv similar to the geo_level
-    * Added additional columns to the variable metadata schema for greater
-      clarity
-          o Description,
-          o Concept,
-          o Base
-    * Added a (draft) taxonomy of concepts used in the LEHD data world
-      (label_concept_draft.csv)
-    * Fixed the labeling of ownership code A00 to correctly reflect scope
-    * Added files describing the number of quarters of data availability
-      required relative to start and end quarters (lags_qwi.csv and
-      lags_j2j.csv), and its metadata (variables_lags.csv)
-This revision: Wed Dec 20 18:18:46 EST 2017
+    * 2018-06-25: Initial release
+**** 9.2. Version 4.3.0 from 4.2.0 ****
+    * Changed the format of the version.txt file. This does not affect data
+      files, but it does affect the metadata, and thus requires an increase in
+      the minor version.
+    * Changed the description of the download locations of the QWI files, as
+      part of the "naming" schema.
+This revision: Fri Jul 13 09:46:31 EDT 2018
 ===============================================================================
-Last updated 2017-12-20 18:18:46 EST
+Last updated 2018-07-13 09:46:31 EDT
