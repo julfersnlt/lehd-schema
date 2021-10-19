@@ -1,6 +1,6 @@
 #!/bin/bash
 # set defaults
-toclevels=3
+toclevels=4
 # print out info
 if [[ -z $1 ]]
 then
@@ -9,7 +9,7 @@ echo "
 
 	will build the format documentation from CSV files and a template.
 
-	Version = cornell|draft|official changes a note in the document
+	Version = draft|official changes a note in the document
 	"
 	exit 1
 fi
@@ -17,18 +17,12 @@ fi
 if [[ "$1" = "start" ]]
 then
 # parse version from directory
-   version=cornell
+   version=draft
 else
    version=$1
 fi
 case $version in
-	cornell)
-	author=lars.vilhuber@cornell.edu
-	;;
-	draft)
-	author=lars.vilhuber@census.gov
-	;;
-	official|lehd)
+	official|draft)
 	author=ces.qwi.feedback@census.gov
 	;;
 esac
@@ -45,7 +39,7 @@ versionstate=mo
 versionj2jurl=https://lehd.ces.census.gov/data/j2j/$versionvintage/j2j/$versionstate/
 
 echo "= LEHD Public Use Data Schema for $appname $numversion" > $asciifile
-echo "Lars Vilhuber <${author}>" >> $asciifile
+echo "<${author}>" >> $asciifile
 echo "$(date +%d\ %B\ %Y)
 :ext-relative: {outfilesuffix}
 ( link:$(basename $asciifile .asciidoc).pdf[Printable version] )
@@ -54,18 +48,6 @@ echo "$(date +%d\ %B\ %Y)
 # A note on the relevance/beta/draft status of this file.
 
 case $version in
-	cornell)
-	echo "
-[IMPORTANT]
-.Important
-==============================================
-This document is not an official Census Bureau publication. It is compiled from publicly accessible information
-by Lars Vilhuber (http://www.ilr.cornell.edu/ldi/[Labor Dynamics Institute, Cornell University]).
-Feedback is welcome. Please write us at
-link:mailto:lars.vilhuber@cornell.edu?subject=LEHD_Schema_v4[lars.vilhuber@cornell.edu].
-==============================================
-	" >> $asciifile
-	;;
 	draft)
 	echo "
 [IMPORTANT]
@@ -543,11 +525,11 @@ echo "
 
 <<<
 *******************
-This revision: $(date)
+Released: $(date '+%F')
 *******************
 " >> $asciifile
 echo "$asciifile created"
-asciidoctor -b html5 -a icons -a toc -a numbered -a linkcss -a toclevels=$toclevels -a outfilesuffix=.html $asciifile
+asciidoctor -b html5 -a icons -a toc -a numbered -a linkcss -a toclevels=$toclevels -a sectnumlevels=$toclevels -a outfilesuffix=.html $asciifile
 [[ -f $(basename $asciifile .asciidoc).html  ]] && echo "$(basename $asciifile .asciidoc).html created"
 asciidoctor-pdf -a pdf-page-size=letter -a icons -a toc -a numbered -a outfilesuffix=.pdf $asciifile
 [[ -f $(basename $asciifile .asciidoc).pdf  ]] && echo "$(basename $asciifile .asciidoc).pdf created"

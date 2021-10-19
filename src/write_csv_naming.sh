@@ -1,6 +1,6 @@
 #!/bin/bash
 # set defaults
-toclevels=3
+toclevels=4
 # print out info
 if [[ -z $1 ]]
 then
@@ -9,22 +9,19 @@ echo "
 
 	will build the format documentation from CSV files and a template.
 
-	Version = cornell|draft|official changes a note in the document
+	Version = draft|official changes a note in the document
 	"
 	exit 1
 fi
 
 if [[ "$1" = "start" ]]
 then
-	version=cornell
+	version=draft
 else
 	version=$1
 fi
 case $version in
-	cornell)
-	author=lars.vilhuber@cornell.edu
-	;;
-	official|lehd|draft|*)
+	official|draft)
 	author=ces.qwi.feedback@census.gov
 	;;
 esac
@@ -49,18 +46,6 @@ echo "$(date +%d\ %B\ %Y)
 # A note on the relevance/beta/draft status of this file.
 
 case $version in
-	cornell)
-echo "
-[IMPORTANT]
-.Important
-==============================================
-This document is not an official Census Bureau publication. It is compiled from publicly accessible information
-by Lars Vilhuber (https://www.ilr.cornell.edu/ldi/[Labor Dynamics Institute, Cornell University]).
-Feedback is welcome. Please write us at
-link:mailto:${author}?subject=LEHD_Schema_v4[${author}].
-==============================================
-" >> $asciifile
-  ;;
 	draft)
 	echo "
 [IMPORTANT]
@@ -104,7 +89,7 @@ This version modifies a portion of the structure of the metadata. Many files com
 
 Supersedes
 ----------
-This version supersedes V4.4.0, for files released as of R2020Q1.
+This version supersedes V4.6.0, for files released as of R2020Q4.
 
 
 Basic Filename Schema
@@ -239,7 +224,7 @@ done
 # extensions
 
 
-cat CHANGES.txt >> $asciifile
+cat CHANGES_NAMING.txt >> $asciifile
 
 echo "
 [IMPORTANT]
@@ -250,7 +235,7 @@ Some of the data products noted above do not exist yet.
 
 <<<
 *******************
-This revision: $(date)
+Released: $(date '+%F')
 *******************
 " >> $asciifile
 echo "$asciifile created"

@@ -1,11 +1,18 @@
-= LEHD Public Use  Schema V4.6.0 - File and Directory Naming Convention
+= LEHD Public Use  Schema V4.7.0 - File and Directory Naming Convention
 <ces.qwi.feedback@census.gov>
-21 January 2020
+21 August 2020
 :ext-relative: {outfilesuffix}
 
 ( link:lehd_csv_naming.pdf[Printable version] )
 
 
+
+[IMPORTANT]
+.Important
+==============================================
+Feedback is welcome. Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema_draft[ces.qwi.feedback@census.gov].
+==============================================
+	
 
 Purpose
 -------
@@ -28,7 +35,7 @@ This version modifies a portion of the structure of the metadata. Many files com
 
 Supersedes
 ----------
-This version supersedes V4.4.0, for files released as of R2020Q1.
+This version supersedes V4.6.0, for files released as of R2020Q4.
 
 
 Basic Filename Schema
@@ -209,13 +216,8 @@ include::naming_ext.csv[]
 == [[changes]] Changes
 For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
 
-=== This version (revisions)
-- 2020-01-21: Initial release
-
-=== Version 4.6.0 from 4.4.0
-- Underlying geovintage updated to reflect 2019 census geography
-- Updated shapefiles based on TIGER 2019
-- Added documentation of new J2J Earnings indicators (coming soon in next release of J2J data)
+=== Changes from 4.6.0
+- Adding PSEO data product
 
 
 [IMPORTANT]
@@ -226,6 +228,6 @@ Some of the data products noted above do not exist yet.
 
 <<<
 *******************
-This revision: Tue Jan 21 20:03:22 UTC 2020
+Released: 2020-08-21
 *******************
 
