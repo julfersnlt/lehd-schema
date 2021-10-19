@@ -25,7 +25,7 @@ case $version in
 	author=lars.vilhuber@cornell.edu
 	;;
 	official|draft)
-	author=ces.qwi.feedback@census.gov
+	author=lars.vilhuber@census.gov
 	;;
 esac
 cwd=$(pwd)
@@ -40,7 +40,6 @@ echo "= LEHD Public Use CSV Naming Schema $numversion - CSV Naming Convention"> 
 echo "Lars Vilhuber <${author}>" >> $asciifile
 echo "$(date +%d\ %B\ %Y)
 // a2x: --dblatex-opts \"-P latex.output.revhistory=0 --param toc.section.depth=${toclevels}\"
-:ext-relative: {outfilesuffix}
 
 ( link:$(basename $asciifile .asciidoc).pdf[Printable version] )
 
@@ -66,7 +65,8 @@ link:mailto:lars.vilhuber@cornell.edu?subject=LEHD_Schema_v4[lars.vilhuber@corne
 [IMPORTANT]
 .Important
 ==============================================
-This specification is draft. Feedback is welcome. Please write us at link:mailto:${author}?subject=LEHD_Schema_draft[${author}].
+This specification is draft. Feedback is welcome. Please write us at link:mailto:erika.mcentarfer@census.gov?subject=LEHD_Schema_draft[erika.mcentarfer@census.gov]
+or link:mailto:${author}?subject=LEHD_Schema_draft[${author}].
 ==============================================
 	" >> $asciifile
 	;;
@@ -75,7 +75,8 @@ echo "
 [IMPORTANT]
 .Important
 ==============================================
-Feedback is welcome. Please write us at link:mailto:${author}?subject=LEHD_Schema_draft[${author}].
+Feedback is welcome. Please write us at link:mailto:erika.mcentarfer@census.gov?subject=LEHD_Schema_4.0.1[erika.mcentarfer@census.gov]
+or link:mailto:${author}?subject=LEHD_Schema[${author}].
 ==============================================
 	" >> $asciifile
 	;;
@@ -90,21 +91,15 @@ and Job-to-Job Flows (J2J), are available for download with the following data s
 These data are available as Comma-Separated Value (CSV) files through the LEHD website’s Data page at
 http://lehd.ces.census.gov/data/ and through LED Extraction Tool at http://ledextract.ces.census.gov/.
 
-This document describes the file naming schema for LEHD-provided CSV files.
-
-Schema for Data File Contents
------------------------------
-
-The contents (schema) for LEHD data files are described in  link:lehd_public_use_schema{ext-relative}[].
-The contents (schema) for shapefiles are described in link:lehd_shapefiles{ext-relative}[].
+This document describes the file naming schema for LEHD-provided CSV files. The contents (schema) are described in  link:lehd_public_use_schema.html[].
 
 Extends
 -------
-This version reimplements some features from  V4.0. Many files compliant with LEHD or QWI Schema v4.0 will also be compliant with this schema, but compatibility is not guaranteed.
+This version extends v4.0. Any file compliant with LEHD or QWI Schema v4.0 will also be compliant with this schema.
 
 Supersedes
 ----------
-This version supersedes V4.0.5, for files released as of RXXXX.
+For the specified files, this is the first schema.
 
 
 Basic Schema
@@ -114,31 +109,20 @@ All files are preceded by a file type definition, followed by additional informa
 some other identifier.
 
 -------------------
-[TYPE]_[DETAILS].[EXT]
+[TYPE]_[DETAILS].csv
 -------------------
 
-( link:naming_convention.csv[] )
-" >> $asciifile
-
-# transform the convention file to prevent typographical interpretation by asciidoc
-cat naming_convention.csv | sed 's+_+\\_+g' | sed 's+\\_\[id\]+_[id]+' | sed 's+\\_\[sa\]+_[sa]+'> tmp_naming_convention.csv
-echo "
-[width=\"90%\",format=\"csv\",delim=\",\",cols=\"^1,<3,<5\",options=\"header\"]
-|===================================================
-include::tmp_naming_convention.csv[]
-|===================================================
-
 === QWIPU from the LED Extraction Tool
-Files downloaded through the  LED Extraction Tool at http://ledextract.ces.census.gov/ follow the following naming convention:
+CSV files downloaded through the  LED Extraction Tool at http://ledextract.ces.census.gov/ follow the following naming convention:
 ------------------------------------
-[type]_[id].[EXT]
+[type]_[id].csv
 ------------------------------------
 where +[id]+ is the Request ID (a unique string of characters) generated every time ``Submit Request'' is clicked. The ID references each query submission made to the database.
 
 === Other files
-Files downloaded from the LEHD website at http://lehd.ces.census.gov/data follow the following naming convention:
+Full CSV files downloaded from the LEHD website at http://lehd.ces.census.gov/data follow the following naming convention:
 --------------------------------
-[type]_[geohi]_[demo]_[fas]_[geocat]_[indcat]_[ownercat]_[sa].[EXT]
+[type]_[geohi]_[demo]_[fas]_[geocat]_[indcat]_[ownercat]_[sa]
 --------------------------------
 where each component is described in more detail below. Schema files detailing legal values for each component can be downloaded from this website.
 
@@ -177,7 +161,7 @@ st,Any legal 2-character state postal code (see link:${arg}[] )
 |===================================================
 " >> $asciifile
 
-for name in demo fas geocat indcat owncat sa ext
+for name in demo fas geocat indcat owncat sa
 do
   arg=naming_$name.csv
   echo "=== $name
@@ -192,9 +176,6 @@ include::$arg[]
 
 " >> $asciifile
 done
-
-# extensions
-
 
 cat CHANGES.txt >> $asciifile
 
@@ -211,11 +192,9 @@ This revision: $(date)
 *******************
 " >> $asciifile
 echo "$asciifile created"
-asciidoc -a icons -a toc -a numbered -a linkcss -a outfilesuffix=.html $asciifile
+asciidoc -a icons -a toc -a numbered -a linkcss $asciifile
 echo "$(basename $asciifile .asciidoc).html created"
-a2x -f pdf -a icons -a toc -a numbered -a linkcss -a outfilesuffix=.pdf $asciifile
+a2x -f pdf -a icons -a toc -a numbered -a linkcss $asciifile
 echo "$(basename $asciifile .asciidoc).pdf created"
 html2text $(basename $asciifile .asciidoc).html > $(basename $asciifile .asciidoc).txt
 echo "$(basename $asciifile .asciidoc).txt created"
-echo "Deleting tmp files"
-rm tmp*

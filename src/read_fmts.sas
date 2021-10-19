@@ -6,8 +6,8 @@
    into a SAS formats library.
 */
 
-%let schemaver=V4.1-rc1;
-%let baseurl=http://lehd.ces.census.gov/data/schema/&schemaver.;
+%let schemaver=v4.1b-draft;
+%let baseurl=http://download.vrdc.cornell.edu/qwipu.experimental/formats/&schemaver.;
 
 
 data fmtnames;
