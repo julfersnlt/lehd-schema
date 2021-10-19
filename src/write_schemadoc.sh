@@ -22,11 +22,14 @@ else
    version=$1
 fi
 case $version in
-	cornell|draft)
+	cornell)
 	author=lars.vilhuber@cornell.edu
 	;;
-	official)
+	draft)
 	author=lars.vilhuber@census.gov
+	;;
+	official)
+	author=ces.qwi.feedback@census.gov
 	;;
 esac
 cwd=$(pwd)
@@ -64,8 +67,7 @@ link:mailto:lars.vilhuber@cornell.edu?subject=LEHD_Schema_v4[lars.vilhuber@corne
 [IMPORTANT]
 .Important
 ==============================================
-This specification is draft. Feedback is welcome. Please write us at link:mailto:erika.mcentarfer@census.gov?subject=LEHD_Schema_draft[erika.mcentarfer@census.gov]
-or link:mailto:lars.vilhuber@census.gov?subject=LEHD_Schema_draft[lars.vilhuber@census.gov].
+This specification is draft. Feedback is welcome. Please write us at link:mailto:${author}?subject=LEHD_Schema_draft[${author}].
 ==============================================
 	" >> $asciifile
 	;;
@@ -74,8 +76,8 @@ or link:mailto:lars.vilhuber@census.gov?subject=LEHD_Schema_draft[lars.vilhuber@
 [IMPORTANT]
 .Important
 ==============================================
-Feedback is welcome. Please write us at link:mailto:erika.mcentarfer@census.gov?subject=LEHD_Schema_4.0.1[erika.mcentarfer@census.gov]
-or link:mailto:lars.vilhuber@census.gov?subject=LEHD_Schema_4.0.1[lars.vilhuber@census.gov].
+Feedback is welcome. Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema_4.0.1[ces.qwi.feedback@census.gov].
+.
 ==============================================
 	" >> $asciifile
 	;;
@@ -86,7 +88,7 @@ echo "
 The public-use Quarterly Workforce Indicators (QWI) data from the Longitudinal Employer-Household Dynamics Program
  are available for download with the following data schema.
 These data are available as Comma-Separated Value (CSV) files through the LEHD website’s Data page at
-http://lehd.ces.census.gov/data/ and at an (occassional) mirror site at http://download.vrdc.cornell.edu/qwipu/.
+http://lehd.ces.census.gov/data/ .
 
 This document describes the data schema for QWI files. For each variable,
 a set of allowable values is defined. Definitions are provided as CSV files,
@@ -217,7 +219,8 @@ echo "
 ( link:${arg}[] )
 
 Only a small subset of available values shown.
-The 2007 NAICS (North American Industry Classification System) is used for all years.
+The 2012 NAICS (North American Industry Classification System) is used for all years.
+QWI releases prior to R2015Q3 used the 2007 NAICS classification (see Schema v4.0.1).
 For a full listing of all valid NAICS codes, see http://www.census.gov/eos/www/naics/.
 
 [width=\"90%\",format=\"csv\",cols=\"^1,<4\",options=\"header\"]
@@ -241,6 +244,16 @@ done
 	head -8 $nsfile > tmp.csv
 	echo "...," >> tmp.csv
 	head -50 $nsfile | tail -8  >> tmp.csv
+
+	# construct the composite file from separate files
+  head -1 ak/label_geography.csv > label_geography_all.csv
+	echo '00,"National (50 States + DC)"' >> label_geography_all.csv
+	for arg in $(ls ??/label_geography.csv)
+	do
+	  tail -n +2 $arg >> tmp3.csv
+	done
+	cat tmp3.csv | sort -n -k 1 -t , >> label_geography_all.csv
+	rm tmp3.csv
 
   echo "=== $name ===
 
@@ -288,8 +301,10 @@ has its own code structure.
 ** In the QWI, the metropolitan/micropolitan areas are the state parts of the full CBSA areas.
 - The WIA code is constructed from the 2-digit state FIPS code and the 6-digit WIA identifier provided by LED State Partners.
 
-The 2014 vintage of Census TIGER geography is used for all tabulations as of the 2014Q3 release.
+The 2014 vintage of Census TIGER geography is used for all tabulations as of the R2014Q3 release.
 
+For convenience, a composite file containing all geocodes is available as
+link:label_geography_all.csv[].
 
 [format=\"csv\",width=\"50%\",cols=\"^1,^3\",options=\"header\"]
 |===================================================
@@ -343,3 +358,5 @@ a2x -f pdf -a icons -a toc -a numbered $asciifile
 mv $(basename $asciifile .asciidoc).pdf "QWIPU_Data_Schema.pdf" && echo "$(basename $asciifile .asciidoc).pdf moved to QWIPU_Data_Schema.pdf"
 html2text $(basename $asciifile .asciidoc).html > $(basename $asciifile .asciidoc).txt
 [[ -f $(basename $asciifile .asciidoc).txt  ]] && echo "$(basename $asciifile .asciidoc).txt created"
+echo "Removing tmp files"
+rm tmp*

@@ -1,21 +1,19 @@
 
-****** LEHD Public Use Data Schema v4.0.1 ******
+****** LEHD Public Use Data Schema v4.0.2 ******
 Lars Vilhuber
-<lars.vilhuber@cornell.edu>
-30 April 2015
+<ces.qwi.feedback@census.gov>
+10 December 2015
 Table of Contents
 JavaScript must be enabled in your browser to display the table of contents.
 ( Printable_version )
             Important
-            This document is not an official Census Bureau publication. It is
-[Important] compiled from publicly accessible information by Lars Vilhuber
-            (Labor_Dynamics_Institute,_Cornell_University). Feedback is
-            welcome. Please write us at lars.vilhuber@cornell.edu.
+[Important] Feedback is welcome. Please write us at
+            ces.qwi.feedback@census.gov. .
 The public-use Quarterly Workforce Indicators (QWI) data from the Longitudinal
 Employer-Household Dynamics Program are available for download with the
 following data schema. These data are available as Comma-Separated Value (CSV)
 files through the LEHD website’s Data page at http://lehd.ces.census.gov/data/
-and at an (occassional) mirror site at http://download.vrdc.cornell.edu/qwipu/.
+.
 This document describes the data schema for QWI files. For each variable, a set
 of allowable values is defined. Definitions are provided as CSV files, with
 header variable definitions. The naming conventions of the data files is
@@ -86,24 +84,24 @@ Indicator Variable Alternate name  Status Flag  Indicator Name
        EmpTotal             M        sEmpTotal  Employment - Reference Quarter:
                                                 Counts
           HirA              A           sHirA   Hires All: Counts (Accessions)
-          HirN              H           sHirN   Hires New: Counts
-          HirR              R           sHirR   Hires Recalls: Counts
+          HirN              H1          sHirN   Hires New: Counts
+          HirR              R1          sHirR   Hires Recalls: Counts
            Sep              S           sSep    Separations: Counts
-        HirAEnd             CA       sHirAEnd   End-of-Quarter Hires
-       HirAEndR            CAR       sHirAEndR  End-of-Quarter Hiring Rate
-         SepBeg             CS        sSepBeg   Beginning-of-Quarter
+        HirAEnd             A2       sHirAEnd   End-of-Quarter Hires
+       HirAEndR            A2R       sHirAEndR  End-of-Quarter Hiring Rate
+         SepBeg             S2        sSepBeg   Beginning-of-Quarter
                                                 Separations
-        SepBegR            CSR       sSepBegR   Beginning-of-Quarter Separation
+        SepBegR            S2R       sSepBegR   Beginning-of-Quarter Separation
                                                 Rate
-         HirAs              FA         sHirAs   Hires All (Stable): Counts
+         HirAs              A3         sHirAs   Hires All (Stable): Counts
                                                 (Flows into Full-Quarter
                                                 Employment)
-         HirNs              FH         sHirNs   Hires New (Stable): Counts (New
+         HirNs              H3         sHirNs   Hires New (Stable): Counts (New
                                                 Hires to Full-Quarter Status)
-          SepS              FS          sSepS   Separations (Stable): Counts
+          SepS              S3          sSepS   Separations (Stable): Counts
                                                 (Flow out of Full-Quarter
                                                 Employment)
-         SepSnx           FSnx        sSepSnx   Separations (Stable): Next
+         SepSnx            S3R        sSepSnx   Separations (Stable): Next
                                                 Quarter: Counts (Flow out of
                                                 Full-Quarter Employment)
        TurnOvrS             FT       sTurnOvrS  Turnover (Stable)
@@ -112,15 +110,15 @@ Indicator Variable Alternate name  Status Flag  Indicator Name
        FrmJobLs             JD       sFrmJobLs  Firm Job Loss: Counts (Job
                                                 Destruction)
          FrmJbC             JF        sFrmJbC   Firm Job Change: Net Change
-     HirAEndRepl            RH    sHirAEndRepl  Replacement Hires
-    HirAEndReplr           RHR    sHirAEndReplr Replacement Hiring Rate
+     HirAEndRepl            EI    sHirAEndRepl  Replacement Hires
+    HirAEndReplr           EIR    sHirAEndReplr Replacement Hiring Rate
        FrmJbGnS            FJC       sFrmJbGnS  Firm Job Gains (Stable): Counts
        FrmJbLsS            FJD       sFrmJbLsS  Firm Job Loss (Stable): Counts
         FrmJbCS            FJF       sFrmJbCS   Job Change (Stable): Net Change
          EarnS             ZW3         sEarnS   Full Quarter Employment
                                                 (Stable): Average Monthly
                                                 Earnings
-        EarnBeg           ZW2B       sEarnBeg   Beginning-of-Quarter
+        EarnBeg            ZW1       sEarnBeg   Beginning-of-Quarter
                                                 Employment: Average Monthly
                                                 Earnings
       EarnHirAS           ZWFA      sEarnHirAS  Hires All (Stable): Average
@@ -222,9 +220,10 @@ ind_level label
       S   NAICS Sectors
 *** 2.11.2. Industry ***
 ( label_industry.csv )
-Only a small subset of available values shown. The 2007 NAICS (North American
-Industry Classification System) is used for all years. For a full listing of
-all valid NAICS codes, see http://www.census.gov/eos/www/naics/.
+Only a small subset of available values shown. The 2012 NAICS (North American
+Industry Classification System) is used for all years. QWI releases prior to
+R2015Q3 used the 2007 NAICS classification (see Schema v4.0.1). For a full
+listing of all valid NAICS codes, see http://www.census.gov/eos/www/naics/.
 industry label
     00   All NAICS Sectors
    000   All NAICS Subsectors
@@ -289,7 +288,9 @@ geography has its own code structure.
     * The WIA code is constructed from the 2-digit state FIPS code and the 6-
       digit WIA identifier provided by LED State Partners.
 The 2014 vintage of Census TIGER geography is used for all tabulations as of
-the 2014Q3 release.
+the R2014Q3 release.
+For convenience, a composite file containing all geocodes is available as
+label_geography_all.csv.
 State         Format file
   AK  ak/label_geography.csv
   AL  al/label_geography.csv
@@ -360,9 +361,15 @@ flag label
      Census Bureau publication standards
  12  Aggregate of cells - some of which have significantly distorted data
 4.  Changes
-**** 4.1. Version 4.0.1 from 4.0 ****
+**** 4.1. This version (revisions) ****
+    * 2015-08-07: Corrected release that the switch to NAICS 2012 was made
+    * 2015-12-10: Added consolidated geography label file
+      label_geography_all.csv
+**** 4.2. Version 4.0.1 from 4.0 ****
     * 2015-02-24: removed obsolete flag values
     * 2015-04-01: updated IL, NE geography definitions
-This revision: Thu Apr 30 11:36:23 EDT 2015
+**** 4.3. Version 4.0.2 from 4.0.1 ****
+    * 2015-04-01: switched NAICS coding from 2007 to 2012
+This revision: Thu Dec 10 11:49:46 EST 2015
 ===============================================================================
-Last updated 2015-04-30 11:36:23 EDT
+Last updated 2015-12-10 11:49:46 EST
