@@ -1,9 +1,9 @@
 
-****** LEHD Public Use CSV Naming Schema V4.1-rc2 - CSV Naming Convention
+****** LEHD Public Use CSV Naming Schema V4.1-rc3 - CSV Naming Convention
 ******
 Lars Vilhuber
 <ces.qwi.feedback@census.gov>
-12 August 2016
+26 September 2016
 Table of Contents
 JavaScript must be enabled in your browser to display the table of contents.
 ( Printable_version )
@@ -188,6 +188,8 @@ For a description of how schema files are versioned, see main_directory.
       beta), added J2J, National QWI spec
     * added additional geo_level for CBSA (complete), additional description,
       sources in label_geo_level.csv 1eb399f,27a2674
+    * 2016-08-31: adjusted AL, AR, GA, IA, KY, LA, MN, MS, NM, PA, TN, TX
+      metropolitan areas for 2016 geo vintage
 *** 7.2.1. In more detail ***
     * added geohi category of ALL, US, add naming_geohi.csv 89617e3
     * added naming convention for additional filesb
@@ -218,6 +220,9 @@ For a description of how schema files are versioned, see main_directory.
 **** 7.3. Version 4.1-rc2 from 4.1-rc1 ****
     * 2016-08-10: Added description,definition of SHP files
     * 2016-08-11: Modified Indicator Names for J2J variable metadata.
+**** 7.4. Version 4.1-rc3 from 4.1-rc2 ****
+    * 2016-08-31: adjusted AL, AR, GA, IA, KY, LA, MN, MS, NM, PA, TN, TX
+      metropolitan areas for 2016 geo vintage
 For additional details, please consult the previous draft versions:
     * ../V4.1-draft
     * ../V4.1b-draft
@@ -225,6 +230,6 @@ For additional details, please consult the previous draft versions:
     * ../V4.1d-draft
 [Important] Important
             Some of the data products noted above do not exist yet.
-This revision: Fri Aug 12 14:13:54 EDT 2016
+This revision: Mon Sep 26 20:39:47 EDT 2016
 ===============================================================================
-Last updated 2016-08-12 14:13:54 EDT
+Last updated 2016-09-26 20:39:47 EDT

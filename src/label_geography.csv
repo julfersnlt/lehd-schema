@@ -3272,7 +3272,9 @@ geography,label,geo_level
 080800WE,"Western WIB",W
 080800WL,"Weld WIB",W
 0110700,"Albertville, AL",M
+0110760,"Alexander City, AL",M
 0111500,"Anniston-Oxford-Jacksonville, AL",M
+0112120,"Atmore, AL",M
 0112220,"Auburn-Opelika, AL",M
 0113820,"Birmingham-Hoover, AL",M
 0117980,"Columbus, GA-AL (AL part)",M
@@ -3281,7 +3283,9 @@ geography,label,geo_level
 0119460,"Decatur, AL",M
 0120020,"Dothan, AL",M
 0121460,"Enterprise, AL",M
+0121640,"Eufaula, AL-GA (AL part)",M
 0122520,"Florence-Muscle Shoals, AL",M
+0122840,"Fort Payne, AL",M
 0123460,"Gadsden, AL",M
 0126620,"Huntsville, AL",M
 0133660,"Mobile, AL",M
@@ -3321,6 +3325,7 @@ geography,label,geo_level
 0522900,"Fort Smith, AR-OK (AR part)",M
 0525460,"Harrison, AR",M
 0525760,"Helena-West Helena, AR",M
+0526260,"Hope, AR",M
 0526300,"Hot Springs, AR",M
 0527860,"Jonesboro, AR",M
 0530780,"Little Rock-North Little Rock-Conway, AR",M
@@ -3456,13 +3461,14 @@ geography,label,geo_level
 1319140,"Dalton, GA",M
 1320060,"Douglas, GA",M
 1320140,"Dublin, GA",M
+1321640,"Eufaula, AL-GA (GA part)",M
 1322340,"Fitzgerald, GA",M
 1323580,"Gainesville, GA",M
 1325980,"Hinesville, GA",M
 1327600,"Jefferson, GA",M
 1327700,"Jesup, GA",M
 1329300,"LaGrange, GA",M
-1331420,"Macon, GA",M
+1331420,"Macon-Bibb County, GA",M
 1333300,"Milledgeville, GA",M
 1334220,"Moultrie, GA",M
 1340660,"Rome, GA",M
@@ -3578,6 +3584,7 @@ geography,label,geo_level
 1911180,"Ames, IA",M
 1914340,"Boone, IA",M
 1915460,"Burlington, IA-IL (IA part)",M
+1916140,"Carroll, IA",M
 1916300,"Cedar Rapids, IA",M
 1917540,"Clinton, IA",M
 1919340,"Davenport-Moline-Rock Island, IA-IL (IA part)",M
@@ -3594,6 +3601,7 @@ geography,label,geo_level
 1936540,"Omaha-Council Bluffs, NE-IA (IA part)",M
 1936820,"Oskaloosa, IA",M
 1936900,"Ottumwa, IA",M
+1937800,"Pella, IA",M
 1943580,"Sioux City, IA-NE-SD (IA part)",M
 1943980,"Spencer, IA",M
 1944020,"Spirit Lake, IA",M
@@ -3627,6 +3635,7 @@ geography,label,geo_level
 2112680,"Bardstown, KY",M
 2114540,"Bowling Green, KY",M
 2115820,"Campbellsville, KY",M
+2116420,"Central City, KY",M
 2117140,"Cincinnati, OH-KY-IN (KY part)",M
 2117300,"Clarksville, TN-KY (KY part)",M
 2119220,"Danville, KY",M
@@ -3668,6 +3677,7 @@ geography,label,geo_level
 2222860,"Fort Polk South, LA",M
 2225220,"Hammond, LA",M
 2226380,"Houma-Thibodaux, LA",M
+2227660,"Jennings, LA",M
 2229180,"Lafayette, LA",M
 2229340,"Lake Charles, LA",M
 2233740,"Monroe, LA",M
@@ -3745,10 +3755,12 @@ geography,label,geo_level
 2713420,"Bemidji, MN",M
 2714660,"Brainerd, MN",M
 2720260,"Duluth, MN-WI (MN part)",M
+2721860,"Fairmont, MN",M
 2722020,"Fargo, ND-MN (MN part)",M
 2722060,"Faribault-Northfield, MN",M
 2722260,"Fergus Falls, MN",M
 2724220,"Grand Forks, ND-MN (MN part)",M
+2724330,"Grand Rapids, MN",M
 2726780,"Hutchinson, MN",M
 2729100,"La Crosse-Onalaska, WI-MN (MN part)",M
 2731860,"Mankato-North Mankato, MN",M
@@ -3786,6 +3798,7 @@ geography,label,geo_level
 2844260,"Starkville, MS",M
 2846180,"Tupelo, MS",M
 2846980,"Vicksburg, MS",M
+2848500,"West Point, MS",M
 2899999,"Nonmetropolitan, nonmicropolitan",M
 2914700,"Branson, MO",M
 2916020,"Cape Girardeau, MO-IL (MO part)",M
@@ -3879,6 +3892,7 @@ geography,label,geo_level
 3531060,"Los Alamos, NM",M
 3538780,"Portales, NM",M
 3540740,"Roswell, NM",M
+3540760,"Ruidoso, NM",M
 3542140,"Santa Fe, NM",M
 3543500,"Silver City, NM",M
 3545340,"Taos, NM",M
@@ -4092,6 +4106,7 @@ geography,label,geo_level
 4238300,"Pittsburgh, PA",M
 4239060,"Pottsville, PA",M
 4239740,"Reading, PA",M
+4241260,"St. Marys, PA",M
 4242380,"Sayre, PA",M
 4242540,"Scranton--Wilkes-Barre--Hazleton, PA",M
 4242780,"Selinsgrove, PA",M
@@ -4137,6 +4152,7 @@ geography,label,geo_level
 4649460,"Yankton, SD",M
 4699999,"Nonmetropolitan, nonmicropolitan",M
 4711940,"Athens, TN",M
+4715140,"Brownsville, TN",M
 4716860,"Chattanooga, TN-GA (TN part)",M
 4717300,"Clarksville, TN-KY (TN part)",M
 4717420,"Cleveland, TN",M
@@ -4173,6 +4189,7 @@ geography,label,geo_level
 4813140,"Beaumont-Port Arthur, TX",M
 4813300,"Beeville, TX",M
 4813700,"Big Spring, TX",M
+4814300,"Bonham, TX",M
 4814420,"Borger, TX",M
 4814780,"Brenham, TX",M
 4815180,"Brownsville-Harlingen, TX",M

@@ -1,6 +1,6 @@
-= LEHD Public Use Data Schema V4.1-rc2
+= LEHD Public Use Data Schema V4.1-rc3
 Lars Vilhuber <lars.vilhuber@census.gov>
-12 August 2016
+26 September 2016
 // a2x: --dblatex-opts "-P latex.output.revhistory=0 --param toc.section.depth=3"
 :ext-relative: {outfilesuffix}
 ( link:lehd_public_use_schema.pdf[Printable version] )
@@ -578,6 +578,7 @@ For a description of how schema files are versioned, see link:../VERSIONING{ext-
   - Changed structure of state-level geography labels (flat directory structure) e5dbe97
   - Describes National QWI files and J2J files (both of which are still in beta), added J2J, National QWI spec
   - added additional geo_level for CBSA (complete), additional description, sources in label_geo_level.csv 1eb399f,27a2674
+- 2016-08-31: adjusted AL, AR, GA, IA, KY, LA, MN, MS, NM, PA, TN, TX metropolitan areas for 2016 geo vintage
 
 ==== In more detail
   - added geohi category of ALL, US, add naming_geohi.csv 89617e3
@@ -602,6 +603,9 @@ For a description of how schema files are versioned, see link:../VERSIONING{ext-
 - 2016-08-10: Added description,definition of SHP files
 - 2016-08-11: Modified Indicator Names for J2J variable metadata.
 
+=== Version 4.1-rc3 from 4.1-rc2
+- 2016-08-31: adjusted AL, AR, GA, IA, KY, LA, MN, MS, NM, PA, TN, TX metropolitan areas for 2016 geo vintage
+
 For additional details, please consult the previous draft versions:
 
 - link:../V4.1-draft[../V4.1-draft]
@@ -612,6 +616,6 @@ For additional details, please consult the previous draft versions:
 
 <<<
 *******************
-This revision: Fri Aug 12 14:14:05 EDT 2016
+This revision: Mon Sep 26 20:39:56 EDT 2016
 *******************
 
