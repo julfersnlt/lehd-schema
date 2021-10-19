@@ -12,8 +12,8 @@ st_HirAEnd,st_CA,Standard error of End-of-Quarter Hires
 st_HirAEndR,st_CAR,Standard error of End-of-Quarter Hiring Rate
 st_SepBeg,st_CS,Standard error of Beginning-of-Quarter Separations
 st_SepBegR,st_CSR,Standard error of Beginning-of-Quarter Separation Rate
-st_HirAs,st_FA,Standard error of Hires All (Stable): Counts (Flows into Full-Quarter Employment)
-st_HirNs,st_FH,Standard error of Hires New (Stable): Counts (New Hires to Full-Quarter Status)
+st_HirAS,st_FA,Standard error of Hires All (Stable): Counts (Flows into Full-Quarter Employment)
+st_HirNS,st_FH,Standard error of Hires New (Stable): Counts (New Hires to Full-Quarter Status)
 st_SepS,st_FS,Standard error of Separations (Stable): Counts (Flow out of Full-Quarter Employment)
 st_SepSnx,st_FSnx,Standard error of Separations (Stable): Next Quarter: Counts (Flow out of Full-Quarter Employment)
 st_TurnOvrS,st_FT,Standard error of Turnover (Stable)
@@ -44,8 +44,8 @@ vt_HirAEnd,vt_CA,Total variation of End-of-Quarter Hires
 vt_HirAEndR,vt_CAR,Total variation of End-of-Quarter Hiring Rate
 vt_SepBeg,vt_CS,Total variation of Beginning-of-Quarter Separations
 vt_SepBegR,vt_CSR,Total variation of Beginning-of-Quarter Separation Rate
-vt_HirAs,vt_FA,Total variation of Hires All (Stable): Counts (Flows into Full-Quarter Employment)
-vt_HirNs,vt_FH,Total variation of Hires New (Stable): Counts (New Hires to Full-Quarter Status)
+vt_HirAS,vt_FA,Total variation of Hires All (Stable): Counts (Flows into Full-Quarter Employment)
+vt_HirNS,vt_FH,Total variation of Hires New (Stable): Counts (New Hires to Full-Quarter Status)
 vt_SepS,vt_FS,Total variation of Separations (Stable): Counts (Flow out of Full-Quarter Employment)
 vt_SepSnx,vt_FSnx,Total variation of Separations (Stable): Next Quarter: Counts (Flow out of Full-Quarter Employment)
 vt_TurnOvrS,vt_FT,Total variation of Turnover (Stable)
@@ -76,8 +76,8 @@ vb_HirAEnd,vb_CA,Between-implicate variability for End-of-Quarter Hires
 vb_HirAEndR,vb_CAR,Between-implicate variability for End-of-Quarter Hiring Rate
 vb_SepBeg,vb_CS,Between-implicate variability for Beginning-of-Quarter Separations
 vb_SepBegR,vb_CSR,Between-implicate variability for Beginning-of-Quarter Separation Rate
-vb_HirAs,vb_FA,Between-implicate variability for Hires All (Stable): Counts (Flows into Full-Quarter Employment)
-vb_HirNs,vb_FH,Between-implicate variability for Hires New (Stable): Counts (New Hires to Full-Quarter Status)
+vb_HirAS,vb_FA,Between-implicate variability for Hires All (Stable): Counts (Flows into Full-Quarter Employment)
+vb_HirNS,vb_FH,Between-implicate variability for Hires New (Stable): Counts (New Hires to Full-Quarter Status)
 vb_SepS,vb_FS,Between-implicate variability for Separations (Stable): Counts (Flow out of Full-Quarter Employment)
 vb_SepSnx,vb_FSnx,Between-implicate variability for Separations (Stable): Next Quarter: Counts (Flow out of Full-Quarter Employment)
 vb_TurnOvrS,vb_FT,Between-implicate variability for Turnover (Stable)
@@ -108,8 +108,8 @@ vm_HirAEnd,vm_CA,Average within-implicate variability for End-of-Quarter Hires
 vm_HirAEndR,vm_CAR,Average within-implicate variability for End-of-Quarter Hiring Rate
 vm_SepBeg,vm_CS,Average within-implicate variability for Beginning-of-Quarter Separations
 vm_SepBegR,vm_CSR,Average within-implicate variability for Beginning-of-Quarter Separation Rate
-vm_HirAs,vm_FA,Average within-implicate variability for Hires All (Stable): Counts (Flows into Full-Quarter Employment)
-vm_HirNs,vm_FH,Average within-implicate variability for Hires New (Stable): Counts (New Hires to Full-Quarter Status)
+vm_HirAS,vm_FA,Average within-implicate variability for Hires All (Stable): Counts (Flows into Full-Quarter Employment)
+vm_HirNS,vm_FH,Average within-implicate variability for Hires New (Stable): Counts (New Hires to Full-Quarter Status)
 vm_SepS,vm_FS,Average within-implicate variability for Separations (Stable): Counts (Flow out of Full-Quarter Employment)
 vm_SepSnx,vm_FSnx,Average within-implicate variability for Separations (Stable): Next Quarter: Counts (Flow out of Full-Quarter Employment)
 vm_TurnOvrS,vm_FT,Average within-implicate variability for Turnover (Stable)
@@ -140,8 +140,8 @@ df_HirAEnd,df_CA,Degrees of freedom for VT of End-of-Quarter Hires
 df_HirAEndR,df_CAR,Degrees of freedom for VT of End-of-Quarter Hiring Rate
 df_SepBeg,df_CS,Degrees of freedom for VT of Beginning-of-Quarter Separations
 df_SepBegR,df_CSR,Degrees of freedom for VT of Beginning-of-Quarter Separation Rate
-df_HirAs,df_FA,Degrees of freedom for VT of Hires All (Stable): Counts (Flows into Full-Quarter Employment)
-df_HirNs,df_FH,Degrees of freedom for VT of Hires New (Stable): Counts (New Hires to Full-Quarter Status)
+df_HirAS,df_FA,Degrees of freedom for VT of Hires All (Stable): Counts (Flows into Full-Quarter Employment)
+df_HirNS,df_FH,Degrees of freedom for VT of Hires New (Stable): Counts (New Hires to Full-Quarter Status)
 df_SepS,df_FS,Degrees of freedom for VT of Separations (Stable): Counts (Flow out of Full-Quarter Employment)
 df_SepSnx,df_FSnx,Degrees of freedom for VT of Separations (Stable): Next Quarter: Counts (Flow out of Full-Quarter Employment)
 df_TurnOvrS,df_FT,Degrees of freedom for VT of Turnover (Stable)
@@ -172,8 +172,8 @@ mr_HirAEnd,mr_CA,Missingness ratio for End-of-Quarter Hires
 mr_HirAEndR,mr_CAR,Missingness ratio for End-of-Quarter Hiring Rate
 mr_SepBeg,mr_CS,Missingness ratio for Beginning-of-Quarter Separations
 mr_SepBegR,mr_CSR,Missingness ratio for Beginning-of-Quarter Separation Rate
-mr_HirAs,mr_FA,Missingness ratio for Hires All (Stable): Counts (Flows into Full-Quarter Employment)
-mr_HirNs,mr_FH,Missingness ratio for Hires New (Stable): Counts (New Hires to Full-Quarter Status)
+mr_HirAS,mr_FA,Missingness ratio for Hires All (Stable): Counts (Flows into Full-Quarter Employment)
+mr_HirNS,mr_FH,Missingness ratio for Hires New (Stable): Counts (New Hires to Full-Quarter Status)
 mr_SepS,mr_FS,Missingness ratio for Separations (Stable): Counts (Flow out of Full-Quarter Employment)
 mr_SepSnx,mr_FSnx,Missingness ratio for Separations (Stable): Next Quarter: Counts (Flow out of Full-Quarter Employment)
 mr_TurnOvrS,mr_FT,Missingness ratio for Turnover (Stable)

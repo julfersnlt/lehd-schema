@@ -1,6 +1,6 @@
-= LEHD Public Use Data Schema v4.1b-draft
-Lars Vilhuber <lars.vilhuber@cornell.edu>
-09 June 2015
+= LEHD Public Use Data Schema V4.1c-draft
+Lars Vilhuber <ces.qwi.feedback@census.gov>
+13 April 2016
 // a2x: --dblatex-opts "-P latex.output.revhistory=0 --param toc.section.depth=3"
 
 ( link:lehd_public_use_schema.pdf[Printable version] )
@@ -10,10 +10,7 @@ Lars Vilhuber <lars.vilhuber@cornell.edu>
 [IMPORTANT]
 .Important
 ==============================================
-This document is not an official Census Bureau publication. It is compiled from publicly accessible information
-by Lars Vilhuber (http://www.ilr.cornell.edu/ldi/[Labor Dynamics Institute, Cornell University]).
-Feedback is welcome. Please write us at
-link:mailto:lars.vilhuber@cornell.edu?subject=LEHD_Schema_v4[lars.vilhuber@cornell.edu].
+This specification is draft. Feedback is welcome. Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema_draft[ces.qwi.feedback@census.gov].
 ==============================================
 	
 
@@ -426,25 +423,24 @@ For a full listing of all valid geography codes (except for WIA codes), see http
 Note about geography codes: Four types of geography codes are represented with this field. Each geography
 has its own code structure.
 
-- State is the 2-digit http://quickfacts.census.gov/qfd/meta/long_fips.htm[FIPS] code.
+- State is the 2-digit http://quickfacts.census.gov/qfd/meta/long_fips.htm[FIPS] code. 'us' stands for national scope.
 - County is the 5-digit FIPS code.
 - Metropolitan/Micropolitan codes are constructed from the 2-digit state FIPS code and the 5-digit http://www.census.gov/population/metro/[CBSA] code provided by the Census Bureau’s Geography Division.
 ** In the QWI, the metropolitan/micropolitan areas are the state parts of the full CBSA areas.
 ** In J2J, tabulations are based on the complete metropolitan/micropolitan area.
 - The WIA code is constructed from the 2-digit state FIPS code and the 6-digit WIA identifier provided by LED State Partners.
 
-The 2014 vintage of Census TIGER geography is used for all tabulations as of the 2014Q3 release.
+The 2014 vintage of Census TIGER geography is used for all tabulations as of the R2014Q3 release.
 
-[IMPORTANT]
-.Important
-==============================================
-The above section should include hyperlinks to
-the appropriate reference.
-==============================================
+For convenience, a composite file containing all geocodes is available as
+link:label_geography_all.csv[].
+
+
 
 [format="csv",width="50%",cols="^1,^3",options="header"]
 |===================================================
 State,Format file
+US,link:label_geography_us.csv[]
 AK,link:label_geography_ak.csv[]
 AL,link:label_geography_al.csv[]
 AR,link:label_geography_ar.csv[]
@@ -502,7 +498,8 @@ WY,link:label_geography_wy.csv[]
 === Aggregation level
 ( link:label_agg_level.csv[] )
 
-Measures within the J2J and QWI data products are tabulated on many different dimensions, including demographic characteristics, geography, industry, and other firm characteristics. These different tabulations are each assigned a unique aggregation level, represented by the *agg_level* variable. This index starts from 1, representing a national level grand total (all industries, workers, etc.), and progresses through different combinations of characteristics. There are gaps in the progression to leave space for aggregation levels that may be included in future data releases.
+Measures within the J2J and QWI data products are tabulated on many different dimensions, including demographic characteristics, geography, industry, and other firm characteristics. For Origin-Destination (O-D) tables, characteristics of the origin and destination firm can be tabulated separately.  Every tabulation level is assigned a unique aggregation index, represented by the agg_level variable. This index starts from 1, representing a national level grand total (all industries, workers, etc.), and progresses through different combinations of characteristics. There are gaps in the progression to leave space for aggregation levels that may be included in future data releases.
+
 *agg_level* is currently  reported only for  J2J data products.
 
 
@@ -510,9 +507,12 @@ The following variables are included in the link:label_agg_level.csv[agg_level.c
 
 - agg_level - index representing level of aggregation reported on a given record.
 - worker_char - demographic (worker) characteristics reported on record.
-- firm_char - firm/establishment characteristics reported on record. In origin-destination tabulations, these will be the characteristics of the destination firm.
-- firm_orig_char - firm/establishment characteristics of origin firm reported on record (origin-destination tabulations, only)
-- j2j, j2jr, qwi - flags indicating which tabulations are included with each data product. The variable will be filled in with 1 if the data product is available on listed dimensions.
+- firm_char - firm characteristics reported on record. In origin-destination  tabulations, these will be the characteristics of the destination firm.
+- firm_orig_char - characteristics of origin firm reported on record (O-D tabulations, only)
+- j2j - Flag: Aggregation level available on J2J counts tables
+- j2jr - Flag: Aggregation level available on J2J rates tables
+- j2jod - Flag: Aggregation level available on J2J O-D  tables.
+- qwi - Flag: Aggregation level available on QWI (placeholder for future integration)
 
 The characteristics available on an aggregation level are repeated using a series of flags following the standard schema:
 
@@ -520,12 +520,12 @@ The characteristics available on an aggregation level are repeated using a serie
 - <<ind_level,ind_level>> - industry level of table, as per 2.12.1.
 - by_ variables - flags indicating other dimensions reported, including ownership, demographics, firm age and size.
 
-These flags will be expanded to include origin characteristics in a later release.
+These flags will be expanded to include origin characteristics in a later release. A shortened representation of the file is provided below, the complete file is available in the link above.
 
 
-[width="90%",format="csv",cols=">1,3*<2,14*<1",options="header"]
+[width="90%",format="csv",cols=">1,3*<2,5*<1",options="header"]
 |===================================================
-include::label_agg_level.csv[]
+include::tmp_label_agg_level.csv[]
 |===================================================
 
 
@@ -565,7 +565,14 @@ include::label_flags.csv[]
 - 2015-04-28: Fixed small typos in QWI variable short names
 - 2015-05-18: Updated agg_level description, replaced agg_level.csv file
 - 2015-05-22: Fixed minor rendering bug for QWI rate variability names. No change to actual metadata.
-- 2015-06-09: Fixed a minor coding error in label_fipsnum.csv
+- 2015-06-09: Fixed a minor coding error in label_fipsnum.csv, added a concatenation of geography files as label_geography_all.csv.
+- 2015-08-07: Minor text change for agg_level, modified agg_level file.
+- 2015-08-12: Removed the last 4 rows of variables_j2jod.csv, since they are not on the current beta J2JOD files.
+- 2015-08-25: Added a extension component [ext] to the file naming convention to reflect availability of Excel files (and PDF files)
+- 2016-03-16: Removed extraneous empty lines
+- 2016-04-12: Fixed typo in variables_qwi.csv (FrmJbLsS, EarnHirNS and status variables)
+- 2016-04-13: Fixed typo in variables_qwi.csv (HirAS, HirNS, and status variables)
+- 2016-04-13: Fixed typo in variables_qwi*v.csv (HirAS, HirNS)
 
 === Version 4.1c-draft from 4.0
 - added J2J, National QWI spec
@@ -574,12 +581,10 @@ include::label_flags.csv[]
 - added definitions of rates on separate file
 - added naming convention for additional files
 - added agg_level variable
-- added a concatenation of geography files as label_geography_all.csv.
-- added label_geography_us.csv for completeness
 
 
 <<<
 *******************
-This revision: Tue Jun  9 15:45:13 EDT 2015
+This revision: Wed Apr 13 08:35:56 EDT 2016
 *******************
 

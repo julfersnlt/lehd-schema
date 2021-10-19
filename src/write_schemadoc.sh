@@ -26,7 +26,7 @@ case $version in
 	author=lars.vilhuber@cornell.edu
 	;;
 	official|draft)
-	author=lars.vilhuber@census.gov
+	author=ces.qwi.feedback@census.gov
 	;;
 esac
 cwd=$(pwd)
@@ -64,8 +64,7 @@ link:mailto:lars.vilhuber@cornell.edu?subject=LEHD_Schema_v4[lars.vilhuber@corne
 [IMPORTANT]
 .Important
 ==============================================
-This specification is draft. Feedback is welcome. Please write us at link:mailto:erika.mcentarfer@census.gov?subject=LEHD_Schema_draft[erika.mcentarfer@census.gov]
-or link:mailto:${author}?subject=LEHD_Schema_draft[${author}].
+This specification is draft. Feedback is welcome. Please write us at link:mailto:${author}?subject=LEHD_Schema_draft[${author}].
 ==============================================
 	" >> $asciifile
 	;;
@@ -74,8 +73,7 @@ or link:mailto:${author}?subject=LEHD_Schema_draft[${author}].
 [IMPORTANT]
 .Important
 ==============================================
-Feedback is welcome. Please write us at link:mailto:erika.mcentarfer@census.gov?subject=LEHD_Schema_4.0.1[erika.mcentarfer@census.gov]
-or link:mailto:${author}?subject=LEHD_Schema[${author}].
+Feedback is welcome. Please write us at link:mailto:${author}?subject=LEHD_Schema[${author}].
 ==============================================
 	" >> $asciifile
 	;;
@@ -424,13 +422,22 @@ done
 	# construct the NS file
 	nsfile=label_fipsnum.csv
 	#echo "geography,label" > $nsfile
-	#echo "00,National (50 States + DC)" >> $nsfile
+	#echo '00,"National (50 States + DC)"' >> $nsfile
 	#grep -h -E "^[0-9][0-9]," label_geography_??.csv | sort -n -k 1 >> $nsfile
 
 	# construct the sample fips file
 	head -8 $nsfile > tmp.csv
 	echo "...," >> tmp.csv
 	head -50 $nsfile | tail -8  >> tmp.csv
+
+	# construct the composite file from separate files
+	head -1 label_geography_us.csv > label_geography_all.csv
+	for arg in $(ls label_geography_??.csv)
+	do
+	  tail -n +2 $arg >> tmp3.csv
+	done
+	cat tmp3.csv | sort -n -k 1 -t , >> label_geography_all.csv
+	rm tmp3.csv
 
   echo "=== $name ===
 
@@ -472,27 +479,33 @@ For a full listing of all valid geography codes (except for WIA codes), see http
 Note about geography codes: Four types of geography codes are represented with this field. Each geography
 has its own code structure.
 
-- State is the 2-digit http://quickfacts.census.gov/qfd/meta/long_fips.htm[FIPS] code.
+- State is the 2-digit http://quickfacts.census.gov/qfd/meta/long_fips.htm[FIPS] code. 'us' stands for national scope.
 - County is the 5-digit FIPS code.
 - Metropolitan/Micropolitan codes are constructed from the 2-digit state FIPS code and the 5-digit http://www.census.gov/population/metro/[CBSA] code provided by the Census Bureau’s Geography Division.
 ** In the QWI, the metropolitan/micropolitan areas are the state parts of the full CBSA areas.
 ** In J2J, tabulations are based on the complete metropolitan/micropolitan area.
 - The WIA code is constructed from the 2-digit state FIPS code and the 6-digit WIA identifier provided by LED State Partners.
 
-The 2014 vintage of Census TIGER geography is used for all tabulations as of the 2014Q3 release.
+The 2014 vintage of Census TIGER geography is used for all tabulations as of the R2014Q3 release.
 
-[IMPORTANT]
-.Important
-==============================================
-The above section should include hyperlinks to
-the appropriate reference.
-==============================================
+For convenience, a composite file containing all geocodes is available as
+link:label_geography_all.csv[].
 
+">> $asciifile
+
+#[IMPORTANT]
+#.Important
+#==============================================
+#The above section should include hyperlinks to
+#the appropriate reference.
+#==============================================
+
+echo "
 [format=\"csv\",width=\"50%\",cols=\"^1,^3\",options=\"header\"]
 |===================================================
 State,Format file" >> $asciifile
 
-  for arg in $(ls label_geography_??.csv)
+  for arg in label_geography_us.csv $(ls label_geography_??.csv|grep -v geography_us)
   do
   	state=$(echo ${arg%*.csv} | awk -F_ ' { print $3 } '| tr [a-z] [A-Z])
 	echo "$state,link:${arg}[]" >> $asciifile
@@ -503,16 +516,22 @@ echo "|===================================================" >> $asciifile
 # finish file
 
 nsfile=label_agg_level.csv
-nsfileshort=label_agg_level-reduced.csv
+nsfileshort=tmp_label_agg_level.csv
 
-#head -11 $nsfile > $nsfileshort
+head -8 $nsfile > $nsfileshort
+echo "...,,,,,,,,,," >> $nsfileshort
+head -14 $nsfile | tail -3 >> $nsfileshort
+echo "...,,,,,,,,,," >> $nsfileshort
+head -29 $nsfile | tail -3 >> $nsfileshort
+echo "...,,,,,,,,,," >> $nsfileshort
 
 echo "
 <<<
 === Aggregation level
 ( link:$nsfile[] )
 
-Measures within the J2J and QWI data products are tabulated on many different dimensions, including demographic characteristics, geography, industry, and other firm characteristics. These different tabulations are each assigned a unique aggregation level, represented by the *agg_level* variable. This index starts from 1, representing a national level grand total (all industries, workers, etc.), and progresses through different combinations of characteristics. There are gaps in the progression to leave space for aggregation levels that may be included in future data releases.
+Measures within the J2J and QWI data products are tabulated on many different dimensions, including demographic characteristics, geography, industry, and other firm characteristics. For Origin-Destination (O-D) tables, characteristics of the origin and destination firm can be tabulated separately.  Every tabulation level is assigned a unique aggregation index, represented by the agg_level variable. This index starts from 1, representing a national level grand total (all industries, workers, etc.), and progresses through different combinations of characteristics. There are gaps in the progression to leave space for aggregation levels that may be included in future data releases.
+
 *agg_level* is currently  reported only for  J2J data products.
 
 
@@ -520,9 +539,12 @@ The following variables are included in the link:$nsfile[agg_level.csv]   file:
 
 - agg_level - index representing level of aggregation reported on a given record.
 - worker_char - demographic (worker) characteristics reported on record.
-- firm_char - firm/establishment characteristics reported on record. In origin-destination tabulations, these will be the characteristics of the destination firm.
-- firm_orig_char - firm/establishment characteristics of origin firm reported on record (origin-destination tabulations, only)
-- j2j, j2jr, qwi - flags indicating which tabulations are included with each data product. The variable will be filled in with 1 if the data product is available on listed dimensions.
+- firm_char - firm characteristics reported on record. In origin-destination  tabulations, these will be the characteristics of the destination firm.
+- firm_orig_char - characteristics of origin firm reported on record (O-D tabulations, only)
+- j2j - Flag: Aggregation level available on J2J counts tables
+- j2jr - Flag: Aggregation level available on J2J rates tables
+- j2jod - Flag: Aggregation level available on J2J O-D  tables.
+- qwi - Flag: Aggregation level available on QWI (placeholder for future integration)
 
 The characteristics available on an aggregation level are repeated using a series of flags following the standard schema:
 
@@ -530,12 +552,12 @@ The characteristics available on an aggregation level are repeated using a serie
 - <<ind_level,ind_level>> - industry level of table, as per 2.12.1.
 - by_ variables - flags indicating other dimensions reported, including ownership, demographics, firm age and size.
 
-These flags will be expanded to include origin characteristics in a later release.
+These flags will be expanded to include origin characteristics in a later release. A shortened representation of the file is provided below, the complete file is available in the link above.
 
 
-[width=\"90%\",format=\"csv\",cols=\">1,3*<2,14*<1\",options=\"header\"]
+[width=\"90%\",format=\"csv\",cols=\">1,3*<2,5*<1\",options=\"header\"]
 |===================================================
-include::$nsfile[]
+include::$nsfileshort[]
 |===================================================
 ">> $asciifile
 

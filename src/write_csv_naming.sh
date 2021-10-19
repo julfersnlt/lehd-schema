@@ -25,7 +25,7 @@ case $version in
 	author=lars.vilhuber@cornell.edu
 	;;
 	official|draft)
-	author=lars.vilhuber@census.gov
+	author=ces.qwi.feedback@census.gov
 	;;
 esac
 cwd=$(pwd)
@@ -65,8 +65,7 @@ link:mailto:lars.vilhuber@cornell.edu?subject=LEHD_Schema_v4[lars.vilhuber@corne
 [IMPORTANT]
 .Important
 ==============================================
-This specification is draft. Feedback is welcome. Please write us at link:mailto:erika.mcentarfer@census.gov?subject=LEHD_Schema_draft[erika.mcentarfer@census.gov]
-or link:mailto:${author}?subject=LEHD_Schema_draft[${author}].
+This specification is draft. Feedback is welcome. Please write us at link:mailto:${author}?subject=LEHD_Schema_draft[${author}].
 ==============================================
 	" >> $asciifile
 	;;
@@ -75,8 +74,7 @@ echo "
 [IMPORTANT]
 .Important
 ==============================================
-Feedback is welcome. Please write us at link:mailto:erika.mcentarfer@census.gov?subject=LEHD_Schema_4.0.1[erika.mcentarfer@census.gov]
-or link:mailto:${author}?subject=LEHD_Schema[${author}].
+Feedback is welcome. Please write us at link:mailto:${author}?subject=LEHD_Schema_draft[${author}].
 ==============================================
 	" >> $asciifile
 	;;
@@ -109,20 +107,21 @@ All files are preceded by a file type definition, followed by additional informa
 some other identifier.
 
 -------------------
-[TYPE]_[DETAILS].csv
+[TYPE]_[DETAILS].[EXT]
 -------------------
 
+
 === QWIPU from the LED Extraction Tool
-CSV files downloaded through the  LED Extraction Tool at http://ledextract.ces.census.gov/ follow the following naming convention:
+Files downloaded through the  LED Extraction Tool at http://ledextract.ces.census.gov/ follow the following naming convention:
 ------------------------------------
-[type]_[id].csv
+[type]_[id].[EXT]
 ------------------------------------
 where +[id]+ is the Request ID (a unique string of characters) generated every time ``Submit Request'' is clicked. The ID references each query submission made to the database.
 
 === Other files
-Full CSV files downloaded from the LEHD website at http://lehd.ces.census.gov/data follow the following naming convention:
+Files downloaded from the LEHD website at http://lehd.ces.census.gov/data follow the following naming convention:
 --------------------------------
-[type]_[geohi]_[demo]_[fas]_[geocat]_[indcat]_[ownercat]_[sa]
+[type]_[geohi]_[demo]_[fas]_[geocat]_[indcat]_[ownercat]_[sa].[EXT]
 --------------------------------
 where each component is described in more detail below. Schema files detailing legal values for each component can be downloaded from this website.
 
@@ -161,7 +160,7 @@ st,Any legal 2-character state postal code (see link:${arg}[] )
 |===================================================
 " >> $asciifile
 
-for name in demo fas geocat indcat owncat sa
+for name in demo fas geocat indcat owncat sa ext
 do
   arg=naming_$name.csv
   echo "=== $name
@@ -176,6 +175,9 @@ include::$arg[]
 
 " >> $asciifile
 done
+
+# extensions
+
 
 cat CHANGES.txt >> $asciifile
 
