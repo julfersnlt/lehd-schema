@@ -21,11 +21,11 @@ else
 	version=$1
 fi
 case $version in
-	cornell)
+	cornell|draft)
 	author=lars.vilhuber@cornell.edu
 	;;
-	official|draft)
-	author=ces.qwi.feedback@census.gov
+	official)
+	author=lars.vilhuber@census.gov
 	;;
 esac
 cwd=$(pwd)
@@ -65,7 +65,8 @@ link:mailto:lars.vilhuber@cornell.edu?subject=LEHD_Schema_v4[lars.vilhuber@corne
 [IMPORTANT]
 .Important
 ==============================================
-This specification is draft. Feedback is welcome. Please write us at link:mailto:${author}?subject=LEHD_Schema_draft[${author}].
+This specification is draft. Feedback is welcome. Please write us at link:mailto:erika.mcentarfer@census.gov?subject=LEHD_Schema_draft[erika.mcentarfer@census.gov]
+or link:mailto:lars.vilhuber@census.gov?subject=LEHD_Schema_draft[lars.vilhuber@census.gov].
 ==============================================
 	" >> $asciifile
 	;;
@@ -74,7 +75,8 @@ echo "
 [IMPORTANT]
 .Important
 ==============================================
-Feedback is welcome. Please write us at link:mailto:${author}?subject=LEHD_Schema_draft[${author}].
+Feedback is welcome. Please write us at link:mailto:erika.mcentarfer@census.gov?subject=LEHD_Schema_4.0.1[erika.mcentarfer@census.gov]
+or link:mailto:lars.vilhuber@census.gov?subject=LEHD_Schema_4.0.1[lars.vilhuber@census.gov].
 ==============================================
 	" >> $asciifile
 	;;
@@ -107,31 +109,20 @@ All files are preceded by a file type definition, followed by additional informa
 some other identifier.
 
 -------------------
-[TYPE]_[DETAILS].[EXT]
+[TYPE]_[DETAILS].csv
 -------------------
 
-( link:naming_convention.csv[] )
-" >> $asciifile
-
-# transform the convention file to prevent typographical interpretation by asciidoc
-cat naming_convention.csv | sed 's+_+\\_+g' | sed 's+\\_\[id\]+_[id]+' | sed 's+\\_\[sa\]+_[sa]+'> tmp_naming_convention.csv
-echo "
-[width=\"90%\",format=\"csv\",delim=\",\",cols=\"^1,<3,<5\",options=\"header\"]
-|===================================================
-include::tmp_naming_convention.csv[]
-|===================================================
-
 === QWIPU from the LED Extraction Tool
-Files downloaded through the  LED Extraction Tool at http://ledextract.ces.census.gov/ follow the following naming convention:
+CSV files downloaded through the  LED Extraction Tool at http://ledextract.ces.census.gov/ follow the following naming convention:
 ------------------------------------
-[type]_[id].[EXT]
+[type]_[id].csv
 ------------------------------------
 where +[id]+ is the Request ID (a unique string of characters) generated every time ``Submit Request'' is clicked. The ID references each query submission made to the database.
 
 === Other files
-Files downloaded from the LEHD website at http://lehd.ces.census.gov/data follow the following naming convention:
+Full CSV files downloaded from the LEHD website at http://lehd.ces.census.gov/data follow the following naming convention:
 --------------------------------
-[type]_[geohi]_[demo]_[fas]_[geocat]_[indcat]_[ownercat]_[sa].[EXT]
+[type]_[geohi]_[demo]_[fas]_[geocat]_[indcat]_[ownercat]_[sa]
 --------------------------------
 where each component is described in more detail below. Schema files detailing legal values for each component can be downloaded from this website.
 
@@ -154,27 +145,28 @@ include::naming_type.csv[]
 
 ######################## other components
 # start with fips postal
-name=geohi
+name=fipsalpha
   arg=naming_$name.csv
   echo "=== $name
 ( link:${arg}[] )
 
-This component is based on the alphabetic FIPS state code equivalent to the numeric FIPS code in link:label_fipsnum.csv[], based on https://catalog.data.gov/dataset/fips-state-codes[FIPS PUB 5-2]. It is expanded to encompass additional codes denoting national coverage, or a collection of states.
+This component is the alphabetic FIPS state code equivalent to the numeric FIPS code in link:label_fipsnum.csv[], based on FIPS PUB 5-2.
 
 [width=\"60%\",format=\"csv\",cols=\"^1,<4\",options=\"header\"]
 |===================================================
 type,Description
-$(egrep "^all" $arg)
-$(egrep "^us" $arg)
-st,Any legal 2-character state postal code (see link:${arg}[] )
+st,Any legal 2-character state postal code (see link:${arg}[] ))
+us,National data (50 states + DC)
 |===================================================
 " >> $asciifile
 
-for name in demo fas geocat indcat owncat sa ext
+for name in demo fas geocat indcat owncat sa
 do
   arg=naming_$name.csv
   echo "=== $name
 ( link:${arg}[] )
+
+$( [[ $name = geohi ]] && echo 'This component is the alphabetic FIPS state code equivalent to the numeric FIPS code in link:label_geohi.csv[], based on https://catalog.data.gov/dataset/fips-state-codes[FIPS PUB 5-2].')
 
 [width=\"60%\",format=\"csv\",cols=\"^1,<4\",options=\"header\"]
 |===================================================
@@ -185,9 +177,6 @@ include::$arg[]
 
 " >> $asciifile
 done
-
-# extensions
-
 
 cat CHANGES.txt >> $asciifile
 
@@ -210,5 +199,3 @@ a2x -f pdf -a icons -a toc -a numbered -a linkcss $asciifile
 echo "$(basename $asciifile .asciidoc).pdf created"
 html2text $(basename $asciifile .asciidoc).html > $(basename $asciifile .asciidoc).txt
 echo "$(basename $asciifile .asciidoc).txt created"
-echo "Deleting tmp files"
-rm tmp*
