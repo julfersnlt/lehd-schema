@@ -1,4 +1,4 @@
-= LEHD Public Use CSV Naming Schema V4.0.4 - CSV Naming Convention
+= LEHD Public Use CSV Naming Schema V4.0.5 - CSV Naming Convention
 Lars Vilhuber <lars.vilhuber@cornell.edu>
 15 March 2016
 // a2x: --dblatex-opts "-P latex.output.revhistory=0 --param toc.section.depth=3"
@@ -164,9 +164,7 @@ include::naming_sa.csv[]
 == [[changes]] Changes
 
 === This version (revisions)
-- 2015-12-22: Initial release
-- 2016-03-15: Added better cross-links between CSV naming schame, and datafile schema
-- 2016-03-15: Corrected label_geo_level.csv to include the national level value.
+- 2015-03-15: Initial release
 
 === Version 4.0.1 from 4.0
 - 2015-02-24: removed obsolete flag values
@@ -185,9 +183,14 @@ include::naming_sa.csv[]
 - 2015-12-22: Added a link to NAICS 2012 tables
 - 2015-12-22: Removing the 99 row in industry values - only used for internal error checking
 
+=== Version 4.0.5 from 4.0.4
+- 2016-03-15: updated MO (new WIB code).
+- 2016-03-15: Moved label_geography_all.csv to us/label_geography.csv
+- 2016-03-15: Added better cross-links between CSV naming schame, and datafile schema
+
 
 <<<
 *******************
-This revision: Tue Mar 15 16:06:14 EDT 2016
+This revision: Tue Mar 15 10:57:39 EDT 2016
 *******************
 

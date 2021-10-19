@@ -43,7 +43,7 @@ echo "= LEHD Public Use Data Schema $numversion" > $asciifile
 echo "Lars Vilhuber <${author}>" >> $asciifile
 echo "$(date +%d\ %B\ %Y)
 // a2x: --dblatex-opts \"-P latex.output.revhistory=0 --param toc.section.depth=${toclevels}\"
-
+:ext-relative: {outfilesuffix}
 ( link:QWIPU_Data_Schema.pdf[Printable version] )
 
 " >> $asciifile
@@ -76,8 +76,7 @@ This specification is draft. Feedback is welcome. Please write us at link:mailto
 [IMPORTANT]
 .Important
 ==============================================
-Feedback is welcome. Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema_4.0.1[ces.qwi.feedback@census.gov].
-.
+Feedback is welcome. Please write us at link:mailto:${author}?subject=LEHD_Schema[${author}].
 ==============================================
 	" >> $asciifile
 	;;
@@ -230,7 +229,7 @@ echo "
 
 Only a small subset of available values shown.
 The 2012 NAICS (North American Industry Classification System) is used for all years.
-QWI releases prior to R2015Q3 used the 2007 NAICS classification (see (../V4.0.1)[Schema v4.0.1]).
+QWI releases prior to R2015Q3 used the 2007 NAICS classification (see link:../V4.0.1[Schema v4.0.1]).
 For a full listing of all valid 2012 NAICS codes, see http://www.census.gov/cgi-bin/sssd/naics/naicsrch?chart=2012.
 
 [width=\"90%\",format=\"csv\",cols=\"^1,<4\",options=\"header\"]
@@ -304,8 +303,9 @@ For a full listing of all valid geography codes (except for WIA codes), see http
 Note about geography codes: Four types of geography codes are represented with this field, depending on the value of <<geo_level,geo_level>>.
 Each geography has its own code structure:
 
-- State is the 2-digit http://quickfacts.census.gov/qfd/meta/long_fips.htm[FIPS] code (<<geo_level,geo_level>> = 's')
-- County is the 5-digit FIPS code (<<geo_level,geo_level>> = 'c')
+- State is the 2-digit http://www.census.gov/geo/reference/ansi_statetables.html[FIPS 55-2] (now INCITS 38:200x) code (<<geo_level,geo_level>> = 's')
+- A two-digit '00' reflects coverage for \"National (50 States + DC)\" (<<geo_level,geo_level>> = 'n')
+- County is the 5-digit http://www.census.gov/geo/reference/codes/cou.html[FIPS 6-4] (now INCITS 31:200x) code (<<geo_level,geo_level>> = 'c')
 - Metropolitan/Micropolitan codes are constructed from the 2-digit state FIPS code and the 5-digit http://www.census.gov/population/metro/[CBSA] code provided by the Census Bureau’s Geography Division. (<<geo_level,geo_level>> = 'm')
 ** In the QWI, the metropolitan/micropolitan areas are the state parts of the full CBSA areas.
 - The WIA code is constructed from the 2-digit state FIPS code and the 6-digit WIA identifier provided by LED State Partners. (<<geo_level,geo_level>> = 'w')
@@ -313,13 +313,13 @@ Each geography has its own code structure:
 The 2015 vintage of Census TIGER/Line geography is used for all tabulations as of the R2015Q4 release.
 
 For convenience, a composite file containing all geocodes is available as
-link:us/label_geography.csv[].
+link:label_geography_all.csv[].
 
 [format=\"csv\",width=\"50%\",cols=\"^1,^3\",options=\"header\"]
 |===================================================
 State,Format file" >> $asciifile
 
-  for arg in $(ls  ??/label_geography.csv | grep -v "us/label_geography.csv")
+  for arg in $(ls  ??/label_geography.csv )
   do
   	state=$(dirname ${arg}|tr [a-z] [A-Z])
 	echo "$state,link:${arg}[]" >> $asciifile
@@ -360,9 +360,9 @@ This revision: $(date)
 *******************
 " >> $asciifile
 echo "$asciifile created"
-asciidoc -a icons -a toc -a numbered -a linkcss -a toclevels=$toclevels $asciifile
+asciidoc -a icons -a toc -a numbered -a linkcss -a toclevels=$toclevels -a outfilesuffix=.html $asciifile
 [[ -f $(basename $asciifile .asciidoc).html  ]] && echo "$(basename $asciifile .asciidoc).html created"
-a2x -f pdf -a icons -a toc -a numbered $asciifile
+a2x -f pdf -a icons -a toc -a numbered -a outfilesuffix=.pdf $asciifile
 [[ -f $(basename $asciifile .asciidoc).pdf  ]] && echo "$(basename $asciifile .asciidoc).pdf created"
 mv $(basename $asciifile .asciidoc).pdf "QWIPU_Data_Schema.pdf" && echo "$(basename $asciifile .asciidoc).pdf moved to QWIPU_Data_Schema.pdf"
 html2text $(basename $asciifile .asciidoc).html > $(basename $asciifile .asciidoc).txt
