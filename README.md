@@ -46,3 +46,14 @@ Migrate the existing schema structure into git
 4. Create `gh-pages` build process and index page
 5. Migrate existing generated docs to `gh-pages`
 6. Publish releases, add change-notes
+
+## Technical notes
+Asciidoctor does not include the ability to subset a csv by column. This was a major functionality that a bash wrapper provided. In switching to an Asciidoctor specific solution an extension was used: [Asciidoctor-CSV-SubColumn](https://github.com/yugp2005/Asciidoctor-CSV-SubColumn). The extension lives in the `lib/` directory. It is added to asciidoctor when the process runs. E.g.:
+```shell
+asciidoctor -r ./lib/csvsubcolumn-include-processor.rb ./sample.adoc
+```
+
+Real example
+```shell
+cd src && asciidoctor -r ../lib/csvsubcolumn-include-processor.rb -b html5 -a icons -a toc -a numbered -a linkcss -a toclevels=4 -a sectnumlevels=4 -a outfilesuffix=.html lehd_public_use_schema.asciidoc && cd -
+```
