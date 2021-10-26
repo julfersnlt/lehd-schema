@@ -38,10 +38,12 @@ Migrate the existing schema structure into git
 ```
 
 ## TODO
-1. Remove bash-isms
+1. ~~Remove bash-isms~~
 2. Correct asciidoc format
    1. ~~remove internal adoc link refs~~
    2. parameterize vars (e.g. ext-relative, schema version)
+   3. add step to build composite files e.g. `label_geography.csv`
+   4. auto pull version text files (search for `wget` or `curl` to find)
 3. Create asciidoc build process
 4. Create `gh-pages` build process and index page
 5. Migrate existing generated docs to `gh-pages`
