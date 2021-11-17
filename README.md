@@ -44,21 +44,28 @@ Migrate the existing schema structure into git
    2. parameterize vars (e.g. ext-relative, schema version)
    3. add step to build composite files e.g. `label_geography.csv`
    4. auto pull version text files (search for `wget` or `curl` to find)
-3. Create asciidoc build process
-4. Create `gh-pages` build process and index page
-5. Migrate existing generated docs to `gh-pages`
-6. Publish releases, add change-notes
+3. build changelog process (no longer part of the docs themselves)
+4. Create asciidoc build process
+5. Create `gh-pages` build process and index page
+6. Migrate existing generated docs to `gh-pages`
+7. Publish releases, add change-notes
+8. Rework `naming_convention.csv` to not break asciidoc formatting
 
 ## Technical notes
-Asciidoctor does not include the ability to subset a csv by column. This was a major functionality that a bash wrapper provided. In switching to an Asciidoctor specific solution an extension was used: [Asciidoctor-CSV-SubColumn](https://github.com/yugp2005/Asciidoctor-CSV-SubColumn). The extension lives in the `lib/` directory. It is added to asciidoctor when the process runs. E.g.:
+Asciidoctor does not include the ability to subset a csv by column. This was a major functionality that a bash wrapper provided. A custom ruby plugin was implemented to handle this case. The extension lives in the `lib/` directory. It is added to asciidoctor when the process runs. E.g.:
 ```shell
 asciidoctor -r ./lib/csvsubcolumn-include-processor.rb ./sample.adoc
 ```
 
-Real example
+## Create Main Schema
 ```shell
 mkdir dist
 cd src
 asciidoctor -r ../lib/csvsubcolumn-include-processor.rb -a outfilesuffix=.html -o ../dist/lehd_public_use_schema.html lehd_public_use_schema.asciidoc
 cd -
+```
+
+## Create CSV Naming
+```shell
+asciidoctor -r ../lib/csvsubcolumn-include-processor.rb -a outfilesuffix=.html -o ../dist/lehd_csv_naming.html lehd_csv_naming.asciidoc
 ```

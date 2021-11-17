@@ -1,6 +1,5 @@
 = LEHD Public Use Data Schema V4.8.2
 <ces.qwi.feedback@census.gov>
-06 October 2021
 :ext-relative: {outfilesuffix}
 :icons: font
 :toc:
@@ -904,18 +903,3 @@ The files are structured as follows:
 |===================================================
 include::variables_pseo_institutions.csv[]
 |===================================================
-
-
-== [[changes]] Changes
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
-=== Changes from 4.8.1
-- Added IPEDS status flag for partially missing counts
-- Updated PSEO earnings to 2019 dollars
-
-
-<<<
-*******************
-Released: 2021-10-06
-*******************
-

@@ -1,21 +1,21 @@
 = LEHD Public Use  Schema V4.8.2 - File and Directory Naming Convention
 <ces.qwi.feedback@census.gov>
-06 October 2021
 :ext-relative: {outfilesuffix}
+:icons: font
+:toc:
+:numbered:
+:toclevels: 4
+:sectnumlevels: 4
 
-( link:lehd_csv_naming.pdf[Printable version] )
 
-
-
-[IMPORTANT]
+[NOTE]
 .Important
 ==============================================
 Feedback is welcome. Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema_draft[ces.qwi.feedback@census.gov].
 ==============================================
-	
 
-Purpose
--------
+
+== Purpose
 The public-use data from the Longitudinal Employer-Household Dynamics Program, including the Quarterly Workforce Indicators (QWI)
 and Job-to-Job Flows (J2J), are available for download with the following data schema.
 These data are available as Comma-Separated Value (CSV) files through the LEHD website’s Data page at
@@ -23,23 +23,19 @@ https://lehd.ces.census.gov/data/ and through LED Extraction Tool at https://led
 
 This document describes the file and directory naming schema for LEHD-provided CSV files.
 
-Schema for Data File Contents
------------------------------
+== Schema for Data File Contents
 
 The contents (schema) for LEHD data files are described in  link:lehd_public_use_schema{ext-relative}[].
 The contents (schema) for shapefiles are described in link:lehd_shapefiles{ext-relative}[].
 
-Extends
--------
-This version modifies a portion of the structure of the metadata. Many files compliant with LEHD or QWI Schema v4.2 or lower will also be compliant with this schema, but compatibility is not guaranteed.
+== Extends
+This version modifies a portion of the structure of the metadata.Many files compliant with LEHD or QWI Schema v4.2 or lower will also be compliant with this schema, but compatibility is not guaranteed.
 
-Supersedes
-----------
+== Supersedes
 This version supersedes V4.8.1.
 
 
-Basic Filename Schema
----------------------
+== Basic Filename Schema
 
 All files are preceded by a file type definition, followed by additional information on the aggregation level of the file, or
 some other identifier.
@@ -53,7 +49,7 @@ some other identifier.
 
 [width="90%",format="csv",delim=",",cols="^1,<3,<5",options="header"]
 |===================================================
-include::tmp_naming_convention.csv[]
+include::naming_convention.csv[]
 |===================================================
 
 === QWIPU from the LED Extraction Tool
@@ -209,23 +205,3 @@ include::naming_sa.csv[]
 |===================================================
 include::naming_ext.csv[]
 |===================================================
-
-<<<
-
-
-== [[changes]] Changes
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
-=== Changes from 4.8.1
-- None
-[IMPORTANT]
-.Important
-==============================================
-Some of the data products noted above do not exist yet.
-==============================================
-
-<<<
-*******************
-Released: 2021-10-06
-*******************
-
