@@ -69,3 +69,6 @@ cd -
 ```shell
 asciidoctor -r ../lib/csvsubcolumn-include-processor.rb -a outfilesuffix=.html -o ../dist/lehd_csv_naming.html lehd_csv_naming.asciidoc
 ```
+
+## Create Shapefiles
+asciidoctor -r ../lib/csvsubcolumn-include-processor.rb -a outfilesuffix=.html -o ../dist/lehd_shapefiles.html lehd_shapefiles.asciidoc

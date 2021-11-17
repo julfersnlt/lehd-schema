@@ -1,12 +1,14 @@
 = LEHD Public Use Shapefile Data
-<ces.qwi.feedback@census.gov>
-06 October 2021
+Contact Us <ces.qwi.feedback@census.gov>
 :ext-relative: {outfilesuffix}
-( link:lehd_shapefiles.pdf[Printable version] )
+:icons: font
+:toc:
+:numbered:
+:toclevels: 4
+:sectnumlevels: 4
 
 
-
-[IMPORTANT]
+[NOTE]
 .Important
 ==============================================
 Feedback is welcome. 	
@@ -16,8 +18,7 @@ link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Shapefiles[ces.qwi.feedback
 
 
 
-Scope
------
+== Scope
 
 The public-use data from the Longitudinal Employer-Household Dynamics
 Program, including the Quarterly Workforce Indicators (QWI) and
@@ -31,10 +32,9 @@ https://ledextract.ces.census.gov/[LED Extraction Tool].
 
 Shapefiles are used to provide mapping functionality in https://qwiexplorer.ces.census.gov/[QWI Explorer] and https://j2jexplorer.ces.census.gov/[Job-to-Job Explorer].
 They are created by transforming input shapefiles sourced from https://www.census.gov/geo/maps-data/data/tiger-line.html[TIGER/Line].
-New TIGER/Line shapefiles are typically released by the Census Bureau's Geography Division in August of each year, which are then processed by the LEHD program as new tabulation areas for the https://lehd.ces.census.gov/data/#qwi[QWI] and https://lehd.ces.census.gov/data/#j2j[J2J] data products. The LEHD shapefiles will be made available in the data schema in coordination with the public release of QWI and J2J data products, usually in December or January of each year.
+New TIGER/Line shapefiles are typically released by the Census Bureau's Geography Division in August of each year, which are then processed by the LEHD program as new tabulation areas for the https://lehd.ces.census.gov/data/#qwi[QWI] and https://lehd.ces.census.gov/data/#j2j[J2J] data products.The LEHD shapefiles will be made available in the data schema in coordination with the public release of QWI and J2J data products, usually in December or January of each year.
 
-Sources
--------
+== Sources
 Files are derived from   https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2020.html[TIGER/Line 2020 shapefiles] (except the "gb" and "gm" shapefile types, which are still sourced from https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2019.html[TIGER/Line 2019]):
 
 * https://www2.census.gov/geo/tiger/TIGER2020/STATE/[tl_2020_us_state]
@@ -43,8 +43,7 @@ Files are derived from   https://www.census.gov/geographies/mapping-files/time-s
 * https://www2.census.gov/geo/tiger/TIGER2020/PLACE/[tl_2020_(ST)_place]  (for creation of WIA/WIB shapefile)
 * https://www2.census.gov/geo/tiger/TIGER2020/COUSUB/[tl_2020_(ST)_cousub] (for creation of WIA/WIB shapefile)
 
-Transformations
----------------
+== Transformations
 The following major transformations are applied to the input files:
 
 * All geographies are reprojected to https://spatialreference.org/ref/epsg/wgs-84/[WGS-1984 Geographic Coordinate System]
@@ -53,12 +52,10 @@ The following major transformations are applied to the input files:
 * Features from Guam, American Samoa, and the Northern Mariana Islands have been removed because they are not used in current LEHD tabulations.
 * Each shapefile's attribute table has been updated to conform to the standard LEHD output format, defined in <<format,Format>> section
 
-Outputs
--------
-Output shapefiles – grouped by paired products – are listed below. Each shapefile includes specific notes on its preparation.
+== Outputs
+Output shapefiles – grouped by paired products – are listed below.Each shapefile includes specific notes on its preparation.
 
-Basic Naming Schema
--------------------
+== Basic Naming Schema
 
 All files follow the following naming convention:
 
@@ -133,29 +130,18 @@ The WIA/WIB shapefiles are built from the Place, County Subdivision, and County 
 * Micropolitan areas are removed and state remainder areas are added as new features. State remainders are assigned unique codes ([STUSPS]+999) and names ("Not in metropolitan area, [STUSPS]").
 
 [[versioning]]
-Versioning
-----------
+== Versioning
 
 Versioning rules follow https://semver.org/spec/v2.0.0.html[Semantic
 Versioning V2.0.0], which states that
 
-________________________________________________________________________________
+[quote]
+____
 Given a version number MAJOR.MINOR.PATCH, increment the:
 
 * MAJOR version when you make incompatible API changes,
 * MINOR version when you add functionality in a backwards-compatible
 manner, and
 * PATCH version when you make backwards-compatible bug fixes.
-________________________________________________________________________________
-
-== [[changes]] Changes
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
-=== Changes from 4.8.1
-- None
-
-<<<
-*******************
-Released: 2021-10-06
-*******************
+____
 
