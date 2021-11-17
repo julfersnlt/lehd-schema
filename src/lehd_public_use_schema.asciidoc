@@ -2,9 +2,14 @@
 <ces.qwi.feedback@census.gov>
 06 October 2021
 :ext-relative: {outfilesuffix}
+:icons: font
+:toc:
+:numbered:
+:toclevels: 4
+:sectnumlevels: 4
 
 
-[IMPORTANT]
+[NOTE]
 .Important
 ==============================================
 Feedback is welcome. Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema[ces.qwi.feedback@census.gov].
@@ -761,7 +766,7 @@ Most indicators in the LEHD data products have associated status flags. Each sta
 
 === Standard Status Flags
 
-[IMPORTANT]
+[NOTE]
 .Important
 ==============================================
 Note: Currently, the J2J and PSEO tables only contain status flags '-1', '1', '5'. Status flags with values 10 or above only appear in online applications, not in CSV files.

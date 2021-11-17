@@ -57,5 +57,8 @@ asciidoctor -r ./lib/csvsubcolumn-include-processor.rb ./sample.adoc
 
 Real example
 ```shell
-cd src && asciidoctor -r ../lib/csvsubcolumn-include-processor.rb -b html5 -a icons -a toc -a numbered -a linkcss -a toclevels=4 -a sectnumlevels=4 -a outfilesuffix=.html lehd_public_use_schema.asciidoc && cd -
+mkdir dist
+cd src
+asciidoctor -r ../lib/csvsubcolumn-include-processor.rb -a outfilesuffix=.html -o ../dist/lehd_public_use_schema.html lehd_public_use_schema.asciidoc
+cd -
 ```
