@@ -33,9 +33,6 @@ The naming conventions of the data files is documented in link:lehd_csv_naming{e
 == Extends
 This version reimplements some features from V4.0. Many files compliant with LEHD or QWI Schema v4.0 will also be compliant with this schema, but compatibility is not guaranteed.
 
-== Supersedes
-This version supersedes V4.8.1.
-
 == Basic Schema
 Each data file is structured as a CSV file.The first columns contain <<identifiers>>, subsequent columns contain <<indicators>>, followed by <<statusflags,status flags>>.In some cases, visually formatted Excel (XLSX) files are also available, containing the same information together with header lines on each sheet.
 

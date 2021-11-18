@@ -33,10 +33,6 @@ The contents (schema) for shapefiles are described in link:lehd_shapefiles{ext-r
 == Extends
 This version modifies a portion of the structure of the metadata.Many files compliant with LEHD or QWI Schema v4.2 or lower will also be compliant with this schema, but compatibility is not guaranteed.
 
-== Supersedes
-This version supersedes V4.8.1.
-
-
 == Basic Filename Schema
 
 All files are preceded by a file type definition, followed by additional information on the aggregation level of the file, or
