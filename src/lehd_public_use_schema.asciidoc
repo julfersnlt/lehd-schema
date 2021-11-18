@@ -126,10 +126,6 @@ include::lehd_identifiers_pseo.csv[]
 
 <<<
 
-
-
-<<<
-
 === [[indicators]]Indicators
 
 The following tables and associated mapping files list the indicators available on each file.
@@ -642,7 +638,8 @@ The file link:label_geography_metro.csv[] contains labels for records of type <<
 
 [%autowidth%header,format="csv",cols="^1,^2,<3"]
 |===================================================
-Scope,Types,Format file US,N,link:label_geography_us.csv[]
+Scope,Types,Format file
+US,N,link:label_geography_us.csv[]
 DIVISION,D,link:label_geography_division.csv[]
 METRO,B,link:label_geography_metro.csv[]
 AK,S C W M,link:label_geography_ak.csv[]

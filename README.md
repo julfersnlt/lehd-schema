@@ -41,7 +41,7 @@ Migrate the existing schema structure into git
 1. ~~Remove bash-isms~~
 2. Correct asciidoc format
    1. ~~remove internal adoc link refs~~
-   2. parameterize vars (e.g. ext-relative, schema version)
+   2. ~~parameterize vars (e.g. ext-relative, schema version)~~
    3. add step to build composite files e.g. `label_geography.csv`
    4. auto pull version text files (search for `wget` or `curl` to find)
 3. build changelog process (no longer part of the docs themselves)
@@ -50,6 +50,9 @@ Migrate the existing schema structure into git
 6. Migrate existing generated docs to `gh-pages`
 7. Publish releases, add change-notes
 8. Rework `naming_convention.csv` to not break asciidoc formatting
+9. Fix j2j "Soon." references, find in docs to see
+10. Parameterize the Geovintage/TIGER vintage
+11. Parameterize the YYYYQQ string e.g. 2020Q1
 
 ## Technical notes
 Asciidoctor does not include the ability to subset a csv by column. This was a major functionality that a bash wrapper provided. A custom ruby plugin was implemented to handle this case. The extension lives in the `lib/` directory. It is added to asciidoctor when the process runs. E.g.:
