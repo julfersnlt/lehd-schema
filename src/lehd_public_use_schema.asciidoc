@@ -847,7 +847,7 @@ The contents contain the following elements:
 include::variables_version.csv[]
 |===================================================
 
-For instance, the metadata for the latest_release QWI release of Delaware (obtained from https://lehd.ces.census.gov/data/qwi/latest_release/de/version_qwi.txt[here]) has the following content:
+For instance, the metadata for the R2021Q2 QWI release of Delaware (example https://lehd.ces.census.gov/data/qwi/latest_release/de/version_qwi.txt[here]) has the following content:
 
 --------------------------------
 
@@ -857,7 +857,7 @@ QWI_FA DE 10 1998:3-2020:2 V4.8.0 R2021Q2 qwipu_de_20210729_1826
 QWI_FS DE 10 1998:3-2020:2 V4.8.0 R2021Q2 qwipu_de_20210729_1826
 --------------------------------
 
-Similarly, the metadata for the latest release of Delaware J2J tabulations (obtained from https://lehd.ces.census.gov/data/j2j/latest_release/de/j2j/version_j2j.txt[here]) has the following content:
+Similarly, the metadata for the R2021Q2 J2J release of Delaware (example https://lehd.ces.census.gov/data/j2j/latest_release/de/j2j/version_j2j.txt[here]) has the following content:
 
 --------------------------------
 J2J DE 10 2000:2-2020:2 V4.7.0 R2021Q2 j2jpu_de_20210624_2130
@@ -867,7 +867,7 @@ Some J2J metadata may contain multiple lines, as necessary.
 
 The PSEO metadata will contain separate lines for the PSEOE and PSEOF tables.
 The year range for PSEO tables is based on the <<Grad Cohort>>, the start year of the graduation cohort.
-An example for Colorado institutions has the following content:
+An example for R2019Q1 PSEO release for Colorado institutions (example https://lehd.ces.census.gov/data/pseo/latest_release/co/version_pseo.txt[here]) has the following content:
 
 --------------------------------
 PSEOE CO 08 2001-2015 V4.5.0 2019Q1 pseopu_co_20190617_0839
