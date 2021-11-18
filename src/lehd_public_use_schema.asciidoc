@@ -1,4 +1,4 @@
-= LEHD Public Use Data Schema V4.8.2
+= LEHD Public Use Data Schema ({schemaversion})
 Contact Us <ces.qwi.feedback@census.gov>
 :ext-relative: {outfilesuffix}
 :icons: font

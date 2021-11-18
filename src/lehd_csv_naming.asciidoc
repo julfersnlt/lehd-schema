@@ -1,4 +1,4 @@
-= LEHD Public Use Schema V4.8.2 - File and Directory Naming Convention
+= File and Directory Naming Convention ({schemaversion})
 Contact Us <ces.qwi.feedback@census.gov>
 :ext-relative: {outfilesuffix}
 :icons: font

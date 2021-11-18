@@ -57,18 +57,7 @@ Asciidoctor does not include the ability to subset a csv by column. This was a m
 asciidoctor -r ./lib/csvsubcolumn-include-processor.rb ./sample.adoc
 ```
 
-## Create Main Schema
+## Create schema files
 ```shell
-mkdir dist
-cd src
-asciidoctor -r ../lib/csvsubcolumn-include-processor.rb -a outfilesuffix=.html -o ../dist/lehd_public_use_schema.html lehd_public_use_schema.asciidoc
-cd -
+./generate_schema_docs.sh -v V1.2.3
 ```
-
-## Create CSV Naming
-```shell
-asciidoctor -r ../lib/csvsubcolumn-include-processor.rb -a outfilesuffix=.html -o ../dist/lehd_csv_naming.html lehd_csv_naming.asciidoc
-```
-
-## Create Shapefiles
-asciidoctor -r ../lib/csvsubcolumn-include-processor.rb -a outfilesuffix=.html -o ../dist/lehd_shapefiles.html lehd_shapefiles.asciidoc
