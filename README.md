@@ -13,35 +13,6 @@ In the current build process neither the source repository nor the published fil
 The goal is to simplify the build process and use _git and asciidoc as they're intended_.
 
 
-## Process
-Set a working directory
-```shell
-schema_wd=/some/path
-```
-
-Get the existing public schemas
-```shell
-cd $schema_wd
-mkdir public-lehd-schemas && cd public-lehd-schemas
-wget -r -np -nH --cut-dirs=2 -R "index.html*" -R "*.zip" https://lehd.ces.census.gov/data/schema/
-```
-
-Get the existing git schemas
-```shell
-cd $schema_wd
-git clone https://github.com/LEDApplications/lehd-schema.git
-```
-
-Migrate the existing schema structure into git
-```shell
-./migrate_schema.sh $schema_wd/public-lehd-schemas $schema_wd/lehd-schema
-```
-
-Generate a historical changelog from the CHANGES text files
-```shell
-./generate_historical_change.log.sh $schema_wd/public-lehd-schemas ./my-changelog.adoc
-```
-
 ## TODO
 1. ~~Remove bash-isms~~
 2. ~~Correct asciidoc format~~
