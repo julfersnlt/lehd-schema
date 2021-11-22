@@ -27,7 +27,14 @@ Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema[c
 
 EOF
 
-for dir in ${public_schema_source_path}/*/; do
+schema_dirs=${public_schema_source_path}/*/
+reverse() {
+  tac <(echo "$@" | tr ' ' '\n') | tr '\n' ' '
+}
+reversed_schema_dirs=$(reverse $schema_dirs)
+
+
+for dir in $reversed_schema_dirs; do
   schema_version="$(basename $dir)"
 
   # validate that the schema is in semver-ish form (e.g. v1.2 or V1.2.0)
@@ -35,13 +42,17 @@ for dir in ${public_schema_source_path}/*/; do
     continue
   fi
 
+
   echo "Processing ${schema_version}..."
+
+  echo "" >> $output_adoc
   echo "== ${schema_version}" >> $output_adoc
   echo "" >> $output_adoc
 
   change_files=$(find $dir -type f -name "CHANGES*")
   for change_file in $change_files; do
     cat $change_file >> $output_adoc
+    echo "" >> $output_adoc
   done
 
 done

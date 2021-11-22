@@ -84,6 +84,13 @@ asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
   -o ${destination_dir}/lehd_shapefiles.html \
   lehd_shapefiles.asciidoc
 
+# generate changelog
+asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
+  -a schemaversion=$version \
+  -a outfilesuffix=.html \
+  -o ${destination_dir}/lehd_changelog.html \
+  lehd_changelog.asciidoc
+
 # return to the root dir
 cd - >/dev/null
 
