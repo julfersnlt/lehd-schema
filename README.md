@@ -31,6 +31,7 @@ The goal is to simplify the build process and use _git and asciidoc as they're i
 11. Fix j2j "Soon." references, find in docs to see
 12. Parameterize the Geovintage/TIGER vintage
 13. Parameterize the YYYYQQ string e.g. 2020Q1
+14. Generate `naming_geohi.csv` from `create_naming_geohi.sh` (hasn't been updated in a while)
 
 ## Technical notes
 Asciidoctor does not include the ability to subset a csv by column. This was a major functionality that a bash wrapper provided. A custom ruby plugin was implemented to handle this case. The extension lives in the `lib/` directory. It is added to asciidoctor when the process runs. E.g.:
