@@ -21,26 +21,10 @@ Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema[c
 
 === Changes from 4.8.1
 
-- None
-
-=== Changes from 4.8.1
-
-- None
-
-=== Changes from 4.8.1
-
 - Added IPEDS status flag for partially missing counts
 - Updated PSEO earnings to 2019 dollars
 
 == V4.8.1
-
-=== Changes from 4.8.0
-
-- None
-
-=== Changes from 4.8.0
-
-- None
 
 === Changes from 4.8.0
 
@@ -52,10 +36,6 @@ Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema[c
 
 - Underlying geovintage updated to reflect 2020 TIGER/Line geography (except for CBSAs - "gb" and "gm" features)
 - Updated shapefiles based on TIGER/Line 2020 (except for CBSAs - "gb" and "gm" shapefile types) ==
-
-=== Changes from 4.7.0
-
-- None
 
 === Changes from 4.7.0
 
