@@ -1,5 +1,4 @@
 = LEHD Public Use Shapefile Data ({schemaversion})
-Contact Us <ces.qwi.feedback@census.gov>
 :ext-relative: {outfilesuffix}
 :icons: font
 :linkcss:
@@ -10,11 +9,10 @@ Contact Us <ces.qwi.feedback@census.gov>
 :sectnumlevels: 4
 
 [NOTE]
-.Important
+.Contact Us
 ==============================================
 Feedback is welcome.
-Please write us at
-link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Shapefiles[ces.qwi.feedback@census.gov].
+Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Shapefiles[ces.qwi.feedback@census.gov].
 ==============================================
 
 == Scope

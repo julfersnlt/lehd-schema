@@ -1,5 +1,4 @@
 = LEHD Schema Changelog ({schemaversion})
-Contact Us <ces.qwi.feedback@census.gov>
 :ext-relative: {outfilesuffix}
 :icons: font
 :linkcss:
@@ -11,7 +10,7 @@ Contact Us <ces.qwi.feedback@census.gov>
 :sectnumlevels: 0
 
 [NOTE]
-.Important
+.Contact Us
 ==============================================
 Feedback is welcome.
 Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema[ces.qwi.feedback@census.gov].
