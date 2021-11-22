@@ -5,9 +5,10 @@ Contact Us <ces.qwi.feedback@census.gov>
 :linkcss:
 :copycss:
 :toc:
+:toc-title: Versions
 :numbered:
-:toclevels: 4
-:sectnumlevels: 4
+:toclevels: 1
+:sectnumlevels: 0
 
 [NOTE]
 .Important
@@ -18,21 +19,13 @@ Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema[c
 
 == V4.8.2
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === Changes from 4.8.1
 
 - None ==
 
-[[changes]] Changes For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === Changes from 4.8.1
 
 - None ==
-
-[[changes]] Changes For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
 
 === Changes from 4.8.1
 
@@ -41,21 +34,13 @@ For a description of how schema files are versioned, see link:../VERSIONING{ext-
 
 == V4.8.1
 
-== [[changes]] Changes
+=== Changes from 4.8.0
 
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
+- None
 
 === Changes from 4.8.0
 
-- None ==
-
-[[changes]] Changes For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
-=== Changes from 4.8.0
-
-- None ==
-
-[[changes]] Changes For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
+- None
 
 === Changes from 4.8.0
 
@@ -63,24 +48,14 @@ For a description of how schema files are versioned, see link:../VERSIONING{ext-
 
 == V4.8.0
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === Changes from 4.7.0
 
 - Underlying geovintage updated to reflect 2020 TIGER/Line geography (except for CBSAs - "gb" and "gm" features)
 - Updated shapefiles based on TIGER/Line 2020 (except for CBSAs - "gb" and "gm" shapefile types) ==
 
-[[changes]] Changes For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === Changes from 4.7.0
 
 - None
-
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
 
 === Changes from 4.7.0
 
@@ -90,24 +65,6 @@ For a description of how schema files are versioned, see link:../VERSIONING{ext-
 Tabulations for "B" and "M" geo_levels continue to use 2019 TIGER/Line geographies.
 
 == V4.7.0
-
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
-=== Changes from 4.6.0
-
-- None ==
-
-[[changes]] Changes For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
-=== Changes from 4.6.0
-
-- Adding PSEO data product
-
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
 
 === Changes from 4.6.0
 
@@ -124,13 +81,9 @@ For a description of how schema files are versioned, see link:../VERSIONING{ext-
 
 == V4.6.0
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2020-01-21: Initial release
+- Initial release
 
 === Version 4.6.0 from 4.4.0
 
@@ -140,13 +93,9 @@ For a description of how schema files are versioned, see link:../VERSIONING{ext-
 
 == V4.5.0-draft
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2019-05-16: Initial release
+- Initial release
 
 === Version 4.5.0 from 4.4.0
 
@@ -155,14 +104,10 @@ For a description of how schema files are versioned, see link:../VERSIONING{ext-
 
 == V4.4.0
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2019-02-21: Initial release
-- 2019-03-31: Minor layout changes for better readability
+- Initial release
+- Minor layout changes for better readability
 
 === Version 4.4.0 from 4.3.1
 
@@ -174,18 +119,14 @@ For a description of how schema files are versioned, see link:../VERSIONING{ext-
 
 == V4.3.1
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2018-10-30: Initial release
-- 2019-02-28: Switch to different rendering engine, only stylistic changes
+- Initial release
+- Switch to different rendering engine, only stylistic changes
 
 === Version 4.3.1 from 4.3.0
 
-- 2018-10-30: Due to a change of the geographic boundaries for a WIB in Iowa, the shape files need to be updated.
+- Due to a change of the geographic boundaries for a WIB in Iowa, the shape files need to be updated.
 - Adjust the "supersedes" definition to correctly reference the prior version.
 
 === Version 4.3.0 from 4.2.0
@@ -196,13 +137,9 @@ This does not affect data files, but it does affect the metadata, and thus requi
 
 == V4.3.0
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2018-06-25: Initial release
+- Initial release
 
 === Version 4.3.0 from 4.2.0
 
@@ -212,13 +149,9 @@ This does not affect data files, but it does affect the metadata, and thus requi
 
 == V4.2-rc1
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2017-12-15: Initial release
+- Initial release
 
 === Version 4.2.0 from 4.1.3
 
@@ -235,22 +168,18 @@ For a description of how schema files are versioned, see link:../VERSIONING{ext-
 
 == V4.2b-draft
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2017-08-21: Initial release
-- 2017-09-01: Incorporates forgotten updates to j2japp descriptions.
+- Initial release
+- Incorporates forgotten updates to j2japp descriptions.
 This does not affect the structure or contents of any released data files, but it affects the unreleased J2J app updates downstream.
-- 2017-09-07: clarifying the version.txt description - removed the mention of fips replacing by geonum
-- 2017-09-07: Moved stusps to the geography section, where it rightfully belongs.
-- 2017-09-07: Clarified language and usage of metropolitan area codes in label_geography_metro.csv, removed unused label_geography_cbsa.csv
-- 2017-09-07: Expanded definition of [geohi] to include CBSA codes for metropolitan areas
-- 2017-10-30: Description on J2JOD earnings measures reversed, fixed.
+- clarifying the version.txt description - removed the mention of fips replacing by geonum
+- Moved stusps to the geography section, where it rightfully belongs.
+- Clarified language and usage of metropolitan area codes in label_geography_metro.csv, removed unused label_geography_cbsa.csv
+- Expanded definition of [geohi] to include CBSA codes for metropolitan areas
+- Description on J2JOD earnings measures reversed, fixed.
 Only affects the J2J app metadata.
-- 2017-12-18: Description on J2JOD earnings measures reversed, should have also fixed on J2JOD description.
+- Description on J2JOD earnings measures reversed, should have also fixed on J2JOD description.
 
 === Version 4.2b-draft from V4.2a-draft
 
@@ -262,13 +191,9 @@ Only affects the J2J app metadata.
 
 == V4.2a-draft
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2017-04-04: Initial release
+- Initial release
 
 === Version 4.2a-draft from 4.1.1
 
@@ -276,15 +201,11 @@ For a description of how schema files are versioned, see link:../VERSIONING{ext-
 
 == V4.2.0
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2017-12-15: Initial release
-- 2018-03-23: Fix EOL issues
-- 2018-06-04: Additional EOL issues
+- Initial release
+- Fix EOL issues
+- Additional EOL issues
 
 === Version 4.2.0 from 4.1.3
 
@@ -300,21 +221,17 @@ For a description of how schema files are versioned, see link:../VERSIONING{ext-
 
 == V4.1-rc3
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2016-08-08: Initial release
+- Initial release
 
 === Version 4.1-rc1 from 4.0.5
 
-- 2016-08-08: Implemented select changes from V4.1d-draft: Key changes are
+- Implemented select changes from V4.1d-draft: Key changes are
 - Changed structure of state-level geography labels (flat directory structure) e5dbe97
 - Describes National QWI files and J2J files (both of which are still in beta), added J2J, National QWI spec
 - added additional geo_level for CBSA (complete), additional description, sources in label_geo_level.csv 1eb399f,27a2674
-- 2016-08-31: adjusted AL, AR, GA, IA, KY, LA, MN, MS, NM, PA, TN, TX metropolitan areas for 2016 geo vintage
+- adjusted AL, AR, GA, IA, KY, LA, MN, MS, NM, PA, TN, TX metropolitan areas for 2016 geo vintage
 
 ==== In more detail
 
@@ -340,12 +257,12 @@ At this time, no such files have been released. 3a0975e
 
 === Version 4.1-rc2 from 4.1-rc1
 
-- 2016-08-10: Added description,definition of SHP files
-- 2016-08-11: Modified Indicator Names for J2J variable metadata.
+- Added description,definition of SHP files
+- Modified Indicator Names for J2J variable metadata.
 
 === Version 4.1-rc3 from 4.1-rc2
 
-- 2016-08-31: adjusted AL, AR, GA, IA, KY, LA, MN, MS, NM, PA, TN, TX metropolitan areas for 2016 geo vintage
+- adjusted AL, AR, GA, IA, KY, LA, MN, MS, NM, PA, TN, TX metropolitan areas for 2016 geo vintage
 
 For additional details, please consult the previous draft versions:
 
@@ -356,17 +273,13 @@ For additional details, please consult the previous draft versions:
 
 == V4.1-rc2
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2016-08-08: Initial release
+- Initial release
 
 === Version 4.1-rc1 from 4.0.5
 
-- 2016-08-08: Implemented select changes from V4.1d-draft: Key changes are
+- Implemented select changes from V4.1d-draft: Key changes are
 - Changed structure of state-level geography labels (flat directory structure) e5dbe97
 - Describes National QWI files and J2J files (both of which are still in beta), added J2J, National QWI spec
 - added additional geo_level for CBSA (complete), additional description, sources in label_geo_level.csv 1eb399f,27a2674
@@ -395,8 +308,8 @@ At this time, no such files have been released. 3a0975e
 
 === Version 4.1-rc2 from 4.1-rc1
 
-- 2016-08-10: Added description,definition of SHP files
-- 2016-08-11: Modified Indicator Names for J2J variable metadata.
+- Added description,definition of SHP files
+- Modified Indicator Names for J2J variable metadata.
 
 For additional details, please consult the previous draft versions:
 
@@ -407,17 +320,13 @@ For additional details, please consult the previous draft versions:
 
 == V4.1-rc1
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2016-08-08: Initial release
+- Initial release
 
 === Version 4.1-rc1 from 4.0.5
 
-- 2016-08-08: Implemented select changes from V4.1d-draft: Key changes are
+- Implemented select changes from V4.1d-draft: Key changes are
 - Changed structure of state-level geography labels (flat directory structure) e5dbe97
 - Describes National QWI files and J2J files (both of which are still in beta), added J2J, National QWI spec
 - added additional geo_level for CBSA (complete), additional description, sources in label_geo_level.csv 1eb399f,27a2674
@@ -453,13 +362,11 @@ For additional details, please consult the previous draft versions:
 
 == V4.1-draft
 
-== [[changes]] Changes
-
 === This version from previous releases of this document
 
-- 2015-02-25: corrected flag values
-- 2015-02-25: documents are now identified by date, not revision
-- 2015-03-10: Correction of the TIGER vintage that is used for geographic references
+- corrected flag values
+- documents are now identified by date, not revision
+- Correction of the TIGER vintage that is used for geographic references
 
 === Version 4.1-draft from 4.0
 
@@ -467,36 +374,34 @@ For additional details, please consult the previous draft versions:
 
 == V4.1d-draft
 
-== [[changes]] Changes
-
 === This version from previous releases of V4.1 draft schema documents
 
-- 2015-02-25: corrected flag values
-- 2015-02-25: documents are now identified by date, not revision
-- 2015-03-10: Correction of the TIGER vintage that is used for geographic references
-- 2015-03-11: Added URL for J2J
-- 2015-03-11: Correction of typo in type naming convention, rename of naming_fipsalpha.csv to naming_geohi.csv to be consistent.
-- 2015-03-17: Changing of naming convention for to-be-released files based on federal government from fg -> of.
+- corrected flag values
+- documents are now identified by date, not revision
+- Correction of the TIGER vintage that is used for geographic references
+- Added URL for J2J
+- Correction of typo in type naming convention, rename of naming_fipsalpha.csv to naming_geohi.csv to be consistent.
+- Changing of naming convention for to-be-released files based on federal government from fg -> of.
 At this time, no such files have been released.
-- 2015-04-24: Changes to alternate name of SepSnx and EmpSpv, tentative rate names
-- 2015-04-26: Changes to name of variable schema files (qwipu -> qwi), addition of variability variable schema files.
-- 2015-04-28: Fixed small typos in QWI variable short names
-- 2015-05-18: Updated agg_level description, replaced agg_level.csv file
-- 2015-05-22: Fixed minor rendering bug for QWI rate variability names.
-No change to actual metadata.
-- 2015-06-09: Fixed a minor coding error in label_fipsnum.csv, added a concatenation of geography files as label_geography_all.csv.
-- 2015-08-07: Minor text change for agg_level, modified agg_level file.
-- 2015-08-12: Removed the last 4 rows of variables_j2jod.csv, since they are not on the current beta J2JOD files.
-- 2015-08-25: Added a extension component [ext] to the file naming convention to reflect availability of Excel files (and PDF files)
-- 2016-03-16: Removed extraneous empty lines
-- 2016-04-12: Fixed typo in variables_qwi.csv (FrmJbLsS, EarnHirNS and status variables)
-- 2016-04-12: Incorporated all state-level geography from 4.0.5
-- 2016-04-12: Added additional geo_level for CBSA (complete)
-- 2016-04-12: Added additional agg_level values
-- 2016-04-12: Clarified labels of j2jod identifiers
-- 2016-04-12: Renamed label_geography_all as label_geography
-- 2016-04-12: Added a column geo_level to all label_geography_* files
-- 2016-08-08: Corrected erroneous Oregon geography labels.
+- Changes to alternate name of SepSnx and EmpSpv, tentative rate names
+- Changes to name of variable schema files (qwipu -> qwi), addition of variability variable schema files.
+- Fixed small typos in QWI variable short names
+- Updated agg_level description, replaced agg_level.csv file
+- Fixed minor rendering bug for QWI rate variability names.
+- No change to actual metadata.
+- Fixed a minor coding error in label_fipsnum.csv, added a concatenation of geography files as label_geography_all.csv.
+- Minor text change for agg_level, modified agg_level file.
+- Removed the last 4 rows of variables_j2jod.csv, since they are not on the current beta J2JOD files.
+- Added a extension component [ext] to the file naming convention to reflect availability of Excel files (and PDF files)
+- Removed extraneous empty lines
+- Fixed typo in variables_qwi.csv (FrmJbLsS, EarnHirNS and status variables)
+- Incorporated all state-level geography from 4.0.5
+- Added additional geo_level for CBSA (complete)
+- Added additional agg_level values
+- Clarified labels of j2jod identifiers
+- Renamed label_geography_all as label_geography
+- Added a column geo_level to all label_geography_* files
+- Corrected erroneous Oregon geography labels.
 
 === Version 4.1d-draft from 4.0.1
 
@@ -511,31 +416,29 @@ No change to actual metadata.
 
 == V4.1c-draft
 
-== [[changes]] Changes
-
 === This version from previous releases of this document
 
-- 2015-02-25: corrected flag values
-- 2015-02-25: documents are now identified by date, not revision
-- 2015-03-10: Correction of the TIGER vintage that is used for geographic references
-- 2015-03-11: Added URL for J2J
-- 2015-03-11: Correction of typo in type naming convention, rename of naming_fipsalpha.csv to naming_geohi.csv to be consistent.
-- 2015-03-17: Changing of naming convention for to-be-released files based on federal government from fg -> of.
+- corrected flag values
+- documents are now identified by date, not revision
+- Correction of the TIGER vintage that is used for geographic references
+- Added URL for J2J
+- Correction of typo in type naming convention, rename of naming_fipsalpha.csv to naming_geohi.csv to be consistent.
+- Changing of naming convention for to-be-released files based on federal government from fg -> of.
 At this time, no such files have been released.
-- 2015-04-24: Changes to alternate name of SepSnx and EmpSpv, tentative rate names
-- 2015-04-26: Changes to name of variable schema files (qwipu -> qwi), addition of variability variable schema files.
-- 2015-04-28: Fixed small typos in QWI variable short names
-- 2015-05-18: Updated agg_level description, replaced agg_level.csv file
-- 2015-05-22: Fixed minor rendering bug for QWI rate variability names.
+- Changes to alternate name of SepSnx and EmpSpv, tentative rate names
+- Changes to name of variable schema files (qwipu -> qwi), addition of variability variable schema files.
+- Fixed small typos in QWI variable short names
+- Updated agg_level description, replaced agg_level.csv file
+- Fixed minor rendering bug for QWI rate variability names.
 No change to actual metadata.
-- 2015-06-09: Fixed a minor coding error in label_fipsnum.csv, added a concatenation of geography files as label_geography_all.csv.
-- 2015-08-07: Minor text change for agg_level, modified agg_level file.
-- 2015-08-12: Removed the last 4 rows of variables_j2jod.csv, since they are not on the current beta J2JOD files.
-- 2015-08-25: Added a extension component [ext] to the file naming convention to reflect availability of Excel files (and PDF files)
-- 2016-03-16: Removed extraneous empty lines
-- 2016-04-12: Fixed typo in variables_qwi.csv (FrmJbLsS, EarnHirNS and status variables)
-- 2016-04-13: Fixed typo in variables_qwi.csv (HirAS, HirNS, and status variables)
-- 2016-04-13: Fixed typo in variables_qwi*v.csv (HirAS, HirNS)
+- Fixed a minor coding error in label_fipsnum.csv, added a concatenation of geography files as label_geography_all.csv.
+- Minor text change for agg_level, modified agg_level file.
+- Removed the last 4 rows of variables_j2jod.csv, since they are not on the current beta J2JOD files.
+- Added a extension component [ext] to the file naming convention to reflect availability of Excel files (and PDF files)
+- Removed extraneous empty lines
+- Fixed typo in variables_qwi.csv (FrmJbLsS, EarnHirNS and status variables)
+- Fixed typo in variables_qwi.csv (HirAS, HirNS, and status variables)
+- Fixed typo in variables_qwi*v.csv (HirAS, HirNS)
 
 === Version 4.1c-draft from 4.0
 
@@ -548,24 +451,22 @@ No change to actual metadata.
 
 == V4.1b-draft
 
-== [[changes]] Changes
-
 === This version from previous releases of this document
 
-- 2015-02-25: corrected flag values
-- 2015-02-25: documents are now identified by date, not revision
-- 2015-03-10: Correction of the TIGER vintage that is used for geographic references
-- 2015-03-11: Added URL for J2J
-- 2015-03-11: Correction of typo in type naming convention, rename of naming_fipsalpha.csv to naming_geohi.csv to be consistent.
-- 2015-03-17: Changing of naming convention for to-be-released files based on federal government from fg -> of.
+- corrected flag values
+- documents are now identified by date, not revision
+- Correction of the TIGER vintage that is used for geographic references
+- Added URL for J2J
+- Correction of typo in type naming convention, rename of naming_fipsalpha.csv to naming_geohi.csv to be consistent.
+- Changing of naming convention for to-be-released files based on federal government from fg -> of.
 At this time, no such files have been released.
-- 2015-04-24: Changes to alternate name of SepSnx and EmpSpv, tentative rate names
-- 2015-04-26: Changes to name of variable schema files (qwipu -> qwi), addition of variability variable schema files.
-- 2015-04-28: Fixed small typos in QWI variable short names
-- 2015-05-18: Updated agg_level description, replaced agg_level.csv file
-- 2015-05-22: Fixed minor rendering bug for QWI rate variability names.
+- Changes to alternate name of SepSnx and EmpSpv, tentative rate names
+- Changes to name of variable schema files (qwipu -> qwi), addition of variability variable schema files.
+- Fixed small typos in QWI variable short names
+- Updated agg_level description, replaced agg_level.csv file
+- Fixed minor rendering bug for QWI rate variability names.
 No change to actual metadata.
-- 2015-06-09: Fixed a minor coding error in label_fipsnum.csv
+- Fixed a minor coding error in label_fipsnum.csv
 
 === Version 4.1b-draft from 4.0
 
@@ -580,122 +481,108 @@ No change to actual metadata.
 
 == V4.1.3
 
-== [[changes]] Changes
-
 For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
 
 === This version (revisions)
 
-- 2017-08-21: Initial release
+- Initial release
 
 === Version 4.1.3 from 4.1.2
 
-- 2017-08-15: Updated LEHD shape files for Texas WIB definitions
-- 2017-08-15: Update the source links of metro definitions from http://www.census.gov/population/metro/ (broken) to https://www.census.gov/programs-surveys/metro-micro.html
-- 2017-08-21: Corrected naming of three of the status flags that have "Rate" at the end.
+- Updated LEHD shape files for Texas WIB definitions
+- Update the source links of metro definitions from http://www.census.gov/population/metro/ (broken) to https://www.census.gov/programs-surveys/metro-micro.html
+- Corrected naming of three of the status flags that have "Rate" at the end.
 That should be just "R".
 
 === Version 4.1.2 from 4.1.1
 
-- 2017-06-19: Updated LEHD shape files, Louisiana and Alabama WIB definitions
+- Updated LEHD shape files, Louisiana and Alabama WIB definitions
 
 === Version 4.1.1 from 4.1.0
 
-- 2017-03-06: Modifed naming_geo_cat.csv, gb value to read "Metropolitan (complete)", gm to "Metropolitan/Micropolitan (state parts)"
-- 2017-03-06: Updated reference in shapefile description to Job-to-Job Explorer to point to the recently released Beta webap, updated title to refer to the same name as the naming_geo_cat.csv uses
-- 2017-03-06: Updated TIGER references to 2016 in shapefile description
-- 2017-03-06: Modifed label_geo_level.csv, B value to read "Metropolitan (complete)"
-- 2017-03-06: Added referenced in the same file to where to find the CBSA code underlying the state-part definitions
-- 2017-03-06: Added a new file label_geography_metro.csv
-- 2017-03-06: Changed references where appropriate from label_geography_cbsa to label_geography_metro
-- 2017-03-06: Added additional aggregation levels, changed some labels
-- 2017-03-06: Removed two variables from variables_j2jod.csv that were not actually on the CSV file
-- 2017-03-07: Updated 2016 geography in shapefiles
-- 2017-03-07: Corrected naming of files inside shapefile ZIP files
+- Modifed naming_geo_cat.csv, gb value to read "Metropolitan (complete)", gm to "Metropolitan/Micropolitan (state parts)"
+- Updated reference in shapefile description to Job-to-Job Explorer to point to the recently released Beta webap, updated title to refer to the same name as the naming_geo_cat.csv uses
+- Updated TIGER references to 2016 in shapefile description
+- Modifed label_geo_level.csv, B value to read "Metropolitan (complete)"
+- Added referenced in the same file to where to find the CBSA code underlying the state-part definitions
+- Added a new file label_geography_metro.csv
+- Changed references where appropriate from label_geography_cbsa to label_geography_metro
+- Added additional aggregation levels, changed some labels
+- Removed two variables from variables_j2jod.csv that were not actually on the CSV file
+- Updated 2016 geography in shapefiles
+- Corrected naming of files inside shapefile ZIP files
 
 == V4.1.2
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2017-06-19: Initial release
-- 2017-08-21: Corrected naming of three of the status flags that have "Rate" at the end.
+- Initial release
+- Corrected naming of three of the status flags that have "Rate" at the end.
 That should be just "R".
 
 === Version 4.1.2 from 4.1.1
 
-- 2017-06-19: Updated LEHD shape files, Louisiana and Alabama WIB definitions
+- Updated LEHD shape files, Louisiana and Alabama WIB definitions
 
 === Version 4.1.1 from 4.1.0
 
-- 2017-03-06: Modifed naming_geo_cat.csv, gb value to read "Metropolitan (complete)", gm to "Metropolitan/Micropolitan (state parts)"
-- 2017-03-06: Updated reference in shapefile description to Job-to-Job Explorer to point to the recently released Beta webap, updated title to refer to the same name as the naming_geo_cat.csv uses
-- 2017-03-06: Updated TIGER references to 2016 in shapefile description
-- 2017-03-06: Modifed label_geo_level.csv, B value to read "Metropolitan (complete)"
-- 2017-03-06: Added referenced in the same file to where to find the CBSA code underlying the state-part definitions
-- 2017-03-06: Added a new file label_geography_metro.csv
-- 2017-03-06: Changed references where appropriate from label_geography_cbsa to label_geography_metro
-- 2017-03-06: Added additional aggregation levels, changed some labels
-- 2017-03-06: Removed two variables from variables_j2jod.csv that were not actually on the CSV file
-- 2017-03-07: Updated 2016 geography in shapefiles
-- 2017-03-07: Corrected naming of files inside shapefile ZIP files
+- Modifed naming_geo_cat.csv, gb value to read "Metropolitan (complete)", gm to "Metropolitan/Micropolitan (state parts)"
+- Updated reference in shapefile description to Job-to-Job Explorer to point to the recently released Beta webap, updated title to refer to the same name as the naming_geo_cat.csv uses
+- Updated TIGER references to 2016 in shapefile description
+- Modifed label_geo_level.csv, B value to read "Metropolitan (complete)"
+- Added referenced in the same file to where to find the CBSA code underlying the state-part definitions
+- Added a new file label_geography_metro.csv
+- Changed references where appropriate from label_geography_cbsa to label_geography_metro
+- Added additional aggregation levels, changed some labels
+- Removed two variables from variables_j2jod.csv that were not actually on the CSV file
+- Updated 2016 geography in shapefiles
+- Corrected naming of files inside shapefile ZIP files
 
 == V4.1.1
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2017-03-06: Initial release
-- 2017-08-21: Corrected naming of three of the status flags that have "Rate" at the end.
+- Initial release
+- Corrected naming of three of the status flags that have "Rate" at the end.
 That should be just "R".
 
 === Version 4.1.1 from 4.1.0
 
-- 2017-03-06: Modifed naming_geo_cat.csv, gb value to read "Metropolitan (complete)", gm to "Metropolitan/Micropolitan (state parts)"
-- 2017-03-06: Updated reference in shapefile description to Job-to-Job Explorer to point to the recently released Beta webap, updated title to refer to the same name as the naming_geo_cat.csv uses
-- 2017-03-06: Updated TIGER references to 2016 in shapefile description
-- 2017-03-06: Modifed label_geo_level.csv, B value to read "Metropolitan (complete)"
-- 2017-03-06: Added referenced in the same file to where to find the CBSA code underlying the state-part definitions
-- 2017-03-06: Added a new file label_geography_metro.csv
-- 2017-03-06: Changed references where appropriate from label_geography_cbsa to label_geography_metro
-- 2017-03-06: Added additional aggregation levels, changed some labels
-- 2017-03-06: Removed two variables from variables_j2jod.csv that were not actually on the CSV file
-- 2017-03-07: Updated 2016 geography in shapefiles
-- 2017-03-07: Corrected naming of files inside shapefile ZIP files
+- Modifed naming_geo_cat.csv, gb value to read "Metropolitan (complete)", gm to "Metropolitan/Micropolitan (state parts)"
+- Updated reference in shapefile description to Job-to-Job Explorer to point to the recently released Beta webap, updated title to refer to the same name as the naming_geo_cat.csv uses
+- Updated TIGER references to 2016 in shapefile description
+- Modifed label_geo_level.csv, B value to read "Metropolitan (complete)"
+- Added referenced in the same file to where to find the CBSA code underlying the state-part definitions
+- Added a new file label_geography_metro.csv
+- Changed references where appropriate from label_geography_cbsa to label_geography_metro
+- Added additional aggregation levels, changed some labels
+- Removed two variables from variables_j2jod.csv that were not actually on the CSV file
+- Updated 2016 geography in shapefiles
+- Corrected naming of files inside shapefile ZIP files
 
 == V4.1.0
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2016-09-26: Initial release
-- 2016-10-06: Fixed a rendering issue with an empty column.
-- 2016-10-06: Modified the label for firm age and firm size to contain mention of "Not Available For Public-Sector Firms"
-- 2016-10-06: Changed description of agg_level
-- 2017-03-06: Removed two variables from variables_j2jod.csv that were not actually on the CSV file
-- 2017-03-06: Corrected bad reference to release RXXXX, which should have been R2016Q4
-- 2017-03-07: Corrected naming of files inside shapefile ZIP files
-- 2017-08-21: Corrected naming of three of the status flags that have "Rate" at the end.
+- Initial release
+- Fixed a rendering issue with an empty column.
+- Modified the label for firm age and firm size to contain mention of "Not Available For Public-Sector Firms"
+- Changed description of agg_level
+- Removed two variables from variables_j2jod.csv that were not actually on the CSV file
+- Corrected bad reference to release RXXXX, which should have been R2016Q4
+- Corrected naming of files inside shapefile ZIP files
+- Corrected naming of three of the status flags that have "Rate" at the end.
 That should be just "R".
 
 === Version 4.1 from 4.0.5
 
-- 2016-08-08: Implemented select changes from V4.1d-draft: Key changes are
+- Implemented select changes from V4.1d-draft: Key changes are
 - Changed structure of state-level geography labels (flat directory structure)
 - Describes National QWI files and J2J files (both of which are still in beta), added J2J, National QWI spec
 - added additional geo_level for CBSA (complete), additional description, sources in label_geo_level.csv
-- 2016-08-10: Added description,definition of SHP files
-- 2016-08-11: Modified Indicator Names for J2J variable metadata.
-- 2016-08-31: adjusted AL, AR, GA, IA, KY, LA, MN, MS, NM, PA, TN, TX metropolitan areas for 2016 geo vintage
+- Added description,definition of SHP files
+- Modified Indicator Names for J2J variable metadata.
+- adjusted AL, AR, GA, IA, KY, LA, MN, MS, NM, PA, TN, TX metropolitan areas for 2016 geo vintage
 
 ==== In more detail
 
@@ -721,148 +608,128 @@ At this time, no such files have been released.
 
 == V4.0.5
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2016-03-15: Initial release
-- 2016-04-07: Fixed typo in variables_qwipu.csv (FrmJbLsS, EarnHirNS and status variables)
-- 2016-04-13: Fixed typo in variables_qwipu.csv (HirAS, HirNS, and status variables)
+- Initial release
+- Fixed typo in variables_qwipu.csv (FrmJbLsS, EarnHirNS and status variables)
+- Fixed typo in variables_qwipu.csv (HirAS, HirNS, and status variables)
 
 === Version 4.0.1 from 4.0
 
-- 2015-02-24: removed obsolete flag values
-- 2015-04-01: updated IL, NE geography definitions
+- removed obsolete flag values
+- updated IL, NE geography definitions
 
 === Version 4.0.2 from 4.0.1
 
-- 2015-04-01: switched NAICS coding from 2007 to 2012
+- switched NAICS coding from 2007 to 2012
 
 === Version 4.0.3 from 4.0.2
 
-- 2015-09-14: switched Geovintage to 2014, updated AK and SD files, added MA.
+- switched Geovintage to 2014, updated AK and SD files, added MA.
 
 === Version 4.0.4 from 4.0.3
 
-- 2015-11-30: updated OR.
-- 2015-12-10: Added consolidated geography label file label_geography_all.csv
-- 2015-12-22: Updated the identification of the correct geo vintage
-- 2015-12-22: Added a link to NAICS 2012 tables
-- 2015-12-22: Removing the 99 row in industry values - only used for internal error checking
+- updated OR.
+- Added consolidated geography label file label_geography_all.csv
+- Updated the identification of the correct geo vintage
+- Added a link to NAICS 2012 tables
+- Removing the 99 row in industry values - only used for internal error checking
 
 === Version 4.0.5 from 4.0.4
 
-- 2016-03-15: updated MO (new WIB code).
-- 2016-03-15: Added us/label_geography.csv to have an entry for the National QWI
-- 2016-03-15: Added better cross-links between CSV naming schame, and datafile schema
-- 2016-03-15: Corrected label_geo_level.csv to include the national level value.
-- 2016-03-15: Clarified description of geography codes
+- updated MO (new WIB code).
+- Added us/label_geography.csv to have an entry for the National QWI
+- Added better cross-links between CSV naming schame, and datafile schema
+- Corrected label_geo_level.csv to include the national level value.
+- Clarified description of geography codes
 
 == V4.0.4
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2015-12-22: Initial release
-- 2016-03-15: Added better cross-links between CSV naming schame, and datafile schema
-- 2016-03-15: Corrected label_geo_level.csv to include the national level value.
-- 2016-04-07: Fixed typo in variables_qwipu.csv (FrmJbLsS, EarnHirNS and status variables)
-- 2016-04-13: Fixed typo in variables_qwipu.csv (HirAS, HirNS, and status variables)
+- Initial release
+- Added better cross-links between CSV naming schame, and datafile schema
+- Corrected label_geo_level.csv to include the national level value.
+- Fixed typo in variables_qwipu.csv (FrmJbLsS, EarnHirNS and status variables)
+- Fixed typo in variables_qwipu.csv (HirAS, HirNS, and status variables)
 
 === Version 4.0.1 from 4.0
 
-- 2015-02-24: removed obsolete flag values
-- 2015-04-01: updated IL, NE geography definitions
+- removed obsolete flag values
+- updated IL, NE geography definitions
 
 === Version 4.0.2 from 4.0.1
 
-- 2015-04-01: switched NAICS coding from 2007 to 2012
+- switched NAICS coding from 2007 to 2012
 
 === Version 4.0.3 from 4.0.2
 
-- 2015-09-14: switched Geovintage to 2014, updated AK and SD files, added MA.
+- switched Geovintage to 2014, updated AK and SD files, added MA.
 
 === Version 4.0.4 from 4.0.3
 
-- 2015-11-30: updated OR.
-- 2015-12-10: Added consolidated geography label file label_geography_all.csv
-- 2015-12-22: Updated the identification of the correct geo vintage
-- 2015-12-22: Added a link to NAICS 2012 tables
-- 2015-12-22: Removing the 99 row in industry values - only used for internal error checking
+- updated OR.
+- Added consolidated geography label file label_geography_all.csv
+- Updated the identification of the correct geo vintage
+- Added a link to NAICS 2012 tables
+- Removing the 99 row in industry values - only used for internal error checking
 
 == V4.0.3
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2015-09-14: Initial release
-- 2015-12-10: Added consolidated geography label file label_geography_all.csv
-- 2015-12-22: Updated the identification of the correct geo vintage
-- 2016-04-07: Fixed typo in variables_qwipu.csv (FrmJbLsS, EarnHirNS and status variables)
-- 2016-04-11: Fixed error in CBSA names (failure to actually update to 2014 Geovintage)
-- 2016-04-11: Corrected WIB naming change in Florida and Ohio
-- 2016-04-13: Fixed typo in variables_qwipu.csv (HirAS, HirNS, and status variables)
+- Initial release
+- Added consolidated geography label file label_geography_all.csv
+- Updated the identification of the correct geo vintage
+- Fixed typo in variables_qwipu.csv (FrmJbLsS, EarnHirNS and status variables)
+- Fixed error in CBSA names (failure to actually update to 2014 Geovintage)
+- Corrected WIB naming change in Florida and Ohio
+- Fixed typo in variables_qwipu.csv (HirAS, HirNS, and status variables)
 
 === Version 4.0.1 from 4.0
 
-- 2015-02-24: removed obsolete flag values
-- 2015-04-01: updated IL, NE geography definitions
+- removed obsolete flag values
+- updated IL, NE geography definitions
 
 === Version 4.0.2 from 4.0.1
 
-- 2015-04-01: switched NAICS coding from 2007 to 2012
+- switched NAICS coding from 2007 to 2012
 
 === Version 4.0.3 from 4.0.2
 
-- 2015-09-14: switched Geovintage to 2014, updated AK and SD files, added MA.
+- switched Geovintage to 2014, updated AK and SD files, added MA.
 
 == V4.0.2
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2015-04-01: Initial version
-- 2015-08-07: Corrected release that the switch to NAICS 2012 was made
-- 2015-12-10: Added consolidated geography label file label_geography_all.csv
-- 2016-04-07: Fixed typo in variables_qwipu.csv (FrmJbLsS, EarnHirNS and status variables)
-- 2016-04-13: Fixed typo in variables_qwipu.csv (HirAS, HirNS, and status variables)
+- Initial version
+- Corrected release that the switch to NAICS 2012 was made
+- Added consolidated geography label file label_geography_all.csv
+- Fixed typo in variables_qwipu.csv (FrmJbLsS, EarnHirNS and status variables)
+- Fixed typo in variables_qwipu.csv (HirAS, HirNS, and status variables)
 
 === Version 4.0.1 from 4.0
 
-- 2015-02-24: removed obsolete flag values
-- 2015-04-01: updated IL, NE geography definitions
+- removed obsolete flag values
+- updated IL, NE geography definitions
 
 === Version 4.0.2 from 4.0.1
 
-- 2015-04-01: switched NAICS coding from 2007 to 2012
+- switched NAICS coding from 2007 to 2012
 
 == V4.0.1
 
-== [[changes]] Changes
-
-For a description of how schema files are versioned, see link:../VERSIONING{ext-relative}[main directory].
-
 === This version (revisions)
 
-- 2015-02-24: Initial release
-- 2016-04-07: Fixed typo in variables_qwipu.csv (FrmJbLsS, EarnHirNS and status variables)
-- 2016-04-13: Fixed typo in variables_qwipu.csv (HirAS, HirNS, and status variables)
+- Initial release
+- Fixed typo in variables_qwipu.csv (FrmJbLsS, EarnHirNS and status variables)
+- Fixed typo in variables_qwipu.csv (HirAS, HirNS, and status variables)
 
 === Version 4.0.1 from 4.0
 
-- 2015-02-24: removed obsolete flag values
-- 2015-04-01: updated IL, NE geography definitions
+- removed obsolete flag values
+- updated IL, NE geography definitions
 
 == V4.0
 
