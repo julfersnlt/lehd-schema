@@ -50,7 +50,7 @@ Generate a historical changelog from the CHANGES text files
    3. ~~add step to build composite files e.g.~~ label_geography.csv removed from build
    4. ~~auto pull version text files (search for `wget` or `curl` to find)~~ hardcoded
 3. ~~build changelog process (no longer part of the docs themselves)~~
-4. reformat toc
+4. ~~reformat toc~~
 5. ~~generate pdfs~~
 6. Create asciidoc build process
 7. Create `gh-pages` build process and index page
