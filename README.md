@@ -51,7 +51,7 @@ Generate a historical changelog from the CHANGES text files
    4. ~~auto pull version text files (search for `wget` or `curl` to find)~~ hardcoded
 3. ~~build changelog process (no longer part of the docs themselves)~~
 4. reformat toc
-5. generate pdfs
+5. ~~generate pdfs~~
 6. Create asciidoc build process
 7. Create `gh-pages` build process and index page
 8. Migrate existing generated docs to `gh-pages`
@@ -68,6 +68,13 @@ asciidoctor -r ./lib/csvsubcolumn-include-processor.rb ./sample.adoc
 ```
 
 ## Create schema files
+
+### HTML docs
 ```shell
 ./generate_schema_docs.sh -v V1.2.3
+```
+
+### HTML and PDF docs
+```shell
+./generate_schema_docs.sh -v V1.2.3 -p
 ```
