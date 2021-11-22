@@ -4,7 +4,7 @@ Contact Us <ces.qwi.feedback@census.gov>
 :icons: font
 :linkcss:
 :copycss:
-:toc:
+:toc: left
 :numbered:
 :toclevels: 4
 :sectnumlevels: 4
