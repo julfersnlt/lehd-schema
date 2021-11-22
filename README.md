@@ -49,15 +49,17 @@ Generate a historical changelog from the CHANGES text files
    2. ~~parameterize vars (e.g. ext-relative, schema version)~~
    3. ~~add step to build composite files e.g.~~ label_geography.csv removed from build
    4. ~~auto pull version text files (search for `wget` or `curl` to find)~~ hardcoded
-3. build changelog process (no longer part of the docs themselves)
-4. Create asciidoc build process
-5. Create `gh-pages` build process and index page
-6. Migrate existing generated docs to `gh-pages`
-7. Publish releases, add change-notes
-8. Rework `naming_convention.csv` to not break asciidoc formatting
-9. Fix j2j "Soon." references, find in docs to see
-10. Parameterize the Geovintage/TIGER vintage
-11. Parameterize the YYYYQQ string e.g. 2020Q1
+3. ~~build changelog process (no longer part of the docs themselves)~~
+4. reformat toc
+5. generate pdfs
+6. Create asciidoc build process
+7. Create `gh-pages` build process and index page
+8. Migrate existing generated docs to `gh-pages`
+9. Publish releases, add change-notes
+10. Rework `naming_convention.csv` to not break asciidoc formatting
+11. Fix j2j "Soon." references, find in docs to see
+12. Parameterize the Geovintage/TIGER vintage
+13. Parameterize the YYYYQQ string e.g. 2020Q1
 
 ## Technical notes
 Asciidoctor does not include the ability to subset a csv by column. This was a major functionality that a bash wrapper provided. A custom ruby plugin was implemented to handle this case. The extension lives in the `lib/` directory. It is added to asciidoctor when the process runs. E.g.:
