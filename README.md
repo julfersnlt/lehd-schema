@@ -37,6 +37,11 @@ Migrate the existing schema structure into git
 ./migrate_schema.sh $schema_wd/public-lehd-schemas $schema_wd/lehd-schema
 ```
 
+Generate a historical changelog from the CHANGES text files
+```shell
+./generate_historical_change.log.sh $schema_wd/public-lehd-schemas ./my-changelog.adoc
+```
+
 ## TODO
 1. ~~Remove bash-isms~~
 2. ~~Correct asciidoc format~~
