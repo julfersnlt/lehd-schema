@@ -21,11 +21,11 @@ Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema[c
 
 === Changes from 4.8.1
 
-- None ==
+- None
 
 === Changes from 4.8.1
 
-- None ==
+- None
 
 === Changes from 4.8.1
 
@@ -62,7 +62,7 @@ Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema[c
 - Update EmpSpv due to the restructuring of the QWI weights
 - Added PSEO metadata files for data partners and coverage
 - Underlying geovintage updated to reflect 2020 TIGER/Line geography - except for CBSAs.
-Tabulations for "B" and "M" geo_levels continue to use 2019 TIGER/Line geographies.
+- Tabulations for "B" and "M" geo_levels continue to use 2019 TIGER/Line geographies.
 
 == V4.7.0
 
@@ -131,8 +131,7 @@ Tabulations for "B" and "M" geo_levels continue to use 2019 TIGER/Line geographi
 
 === Version 4.3.0 from 4.2.0
 
-- Changed the format of the version.txt file.
-This does not affect data files, but it does affect the metadata, and thus requires an increase in the minor version.
+- Changed the format of the version.txt file. This does not affect data files, but it does affect the metadata, and thus requires an increase in the minor version.
 - Changed the description of the download locations of the QWI files, as part of the "naming" schema.
 
 == V4.3.0
@@ -143,8 +142,7 @@ This does not affect data files, but it does affect the metadata, and thus requi
 
 === Version 4.3.0 from 4.2.0
 
-- Changed the format of the version.txt file.
-This does not affect data files, but it does affect the metadata, and thus requires an increase in the minor version.
+- Changed the format of the version.txt file. This does not affect data files, but it does affect the metadata, and thus requires an increase in the minor version.
 - Changed the description of the download locations of the QWI files, as part of the "naming" schema.
 
 == V4.2-rc1
@@ -171,14 +169,12 @@ This does not affect data files, but it does affect the metadata, and thus requi
 === This version (revisions)
 
 - Initial release
-- Incorporates forgotten updates to j2japp descriptions.
-This does not affect the structure or contents of any released data files, but it affects the unreleased J2J app updates downstream.
+- Incorporates forgotten updates to j2japp descriptions. This does not affect the structure or contents of any released data files, but it affects the unreleased J2J app updates downstream.
 - clarifying the version.txt description - removed the mention of fips replacing by geonum
 - Moved stusps to the geography section, where it rightfully belongs.
 - Clarified language and usage of metropolitan area codes in label_geography_metro.csv, removed unused label_geography_cbsa.csv
 - Expanded definition of [geohi] to include CBSA codes for metropolitan areas
-- Description on J2JOD earnings measures reversed, fixed.
-Only affects the J2J app metadata.
+- Description on J2JOD earnings measures reversed, fixed. Only affects the J2J app metadata.
 - Description on J2JOD earnings measures reversed, should have also fixed on J2JOD description.
 
 === Version 4.2b-draft from V4.2a-draft
@@ -252,8 +248,7 @@ Only affects the J2J app metadata.
 - Renamed file from QWIPU_Data_Schema.pdf to lehd_public_use_schema.pdf 89617e3
 - Addition of variable schema description for J2J 1a57250
 - Added a extension component [ext] to the file naming convention to reflect availability of Excel files (and PDF files) d9f8387 f7cc524
-- Updated documentation-generating scripts to the latest.
-Documents are now identified by date, not revision 8136f0c
+- Updated documentation-generating scripts to the latest. Documents are now identified by date, not revision 8136f0c
 - Added a concatenation of geography files as label_geography.csv. 8136f0c, 39ecfc9
 - Added a column geo_level to all label_geography_* files a32bb4c
 - Changed fipsnum to force readin of FIPS as character, include geo_level, US. a32bb4c
@@ -261,8 +256,7 @@ Documents are now identified by date, not revision 8136f0c
 - Added Federal government to files (for National QWI) 942dd0a, 1654288
 - Clarified description of filenaming components 8888529, 8d580f6
 - Sundry small additional changes, building out the schema 28d7c6f
-- Changing of naming convention for to-be-released files based on federal government from fg -> of.
-At this time, no such files have been released. 3a0975e
+- Changing of naming convention for to-be-released files based on federal government from fg -> of. At this time, no such files have been released. 3a0975e
 
 === Version 4.1-rc2 from 4.1-rc1
 
@@ -272,13 +266,6 @@ At this time, no such files have been released. 3a0975e
 === Version 4.1-rc3 from 4.1-rc2
 
 - adjusted AL, AR, GA, IA, KY, LA, MN, MS, NM, PA, TN, TX metropolitan areas for 2016 geo vintage
-
-For additional details, please consult the previous draft versions:
-
-- link:../V4.1-draft[../V4.1-draft]
-- link:../V4.1b-draft[../V4.1b-draft]
-- link:../V4.1c-draft[../V4.1c-draft]
-- link:../V4.1d-draft[../V4.1d-draft]
 
 == V4.1-rc2
 
@@ -303,8 +290,7 @@ For additional details, please consult the previous draft versions:
 - Renamed file from QWIPU_Data_Schema.pdf to lehd_public_use_schema.pdf 89617e3
 - Addition of variable schema description for J2J 1a57250
 - Added a extension component [ext] to the file naming convention to reflect availability of Excel files (and PDF files) d9f8387 f7cc524
-- Updated documentation-generating scripts to the latest.
-Documents are now identified by date, not revision 8136f0c
+- Updated documentation-generating scripts to the latest. Documents are now identified by date, not revision 8136f0c
 - Added a concatenation of geography files as label_geography.csv. 8136f0c, 39ecfc9
 - Added a column geo_level to all label_geography_* files a32bb4c
 - Changed fipsnum to force readin of FIPS as character, include geo_level, US. a32bb4c
@@ -312,20 +298,12 @@ Documents are now identified by date, not revision 8136f0c
 - Added Federal government to files (for National QWI) 942dd0a, 1654288
 - Clarified description of filenaming components 8888529, 8d580f6
 - Sundry small additional changes, building out the schema 28d7c6f
-- Changing of naming convention for to-be-released files based on federal government from fg -> of.
-At this time, no such files have been released. 3a0975e
+- Changing of naming convention for to-be-released files based on federal government from fg -> of. At this time, no such files have been released. 3a0975e
 
 === Version 4.1-rc2 from 4.1-rc1
 
 - Added description,definition of SHP files
 - Modified Indicator Names for J2J variable metadata.
-
-For additional details, please consult the previous draft versions:
-
-- link:../V4.1-draft[../V4.1-draft]
-- link:../V4.1b-draft[../V4.1b-draft]
-- link:../V4.1c-draft[../V4.1c-draft]
-- link:../V4.1d-draft[../V4.1d-draft]
 
 == V4.1-rc1
 
@@ -350,8 +328,7 @@ For additional details, please consult the previous draft versions:
 - Renamed file from QWIPU_Data_Schema.pdf to lehd_public_use_schema.pdf 89617e3
 - Addition of variable schema description for J2J 1a57250
 - Added a extension component [ext] to the file naming convention to reflect availability of Excel files (and PDF files) d9f8387 f7cc524
-- Updated documentation-generating scripts to the latest.
-Documents are now identified by date, not revision 8136f0c
+- Updated documentation-generating scripts to the latest. Documents are now identified by date, not revision 8136f0c
 - Added a concatenation of geography files as label_geography.csv. 8136f0c, 39ecfc9
 - Added a column geo_level to all label_geography_* files a32bb4c
 - Changed fipsnum to force readin of FIPS as character, include geo_level, US. a32bb4c
@@ -359,15 +336,7 @@ Documents are now identified by date, not revision 8136f0c
 - Added Federal government to files (for National QWI) 942dd0a, 1654288
 - Clarified description of filenaming components 8888529, 8d580f6
 - Sundry small additional changes, building out the schema 28d7c6f
-- Changing of naming convention for to-be-released files based on federal government from fg -> of.
-At this time, no such files have been released. 3a0975e
-
-For additional details, please consult the previous draft versions:
-
-- link:../V4.1-draft[../V4.1-draft]
-- link:../V4.1b-draft[../V4.1b-draft]
-- link:../V4.1c-draft[../V4.1c-draft]
-- link:../V4.1d-draft[../V4.1d-draft]
+- Changing of naming convention for to-be-released files based on federal government from fg -> of. At this time, no such files have been released. 3a0975e
 
 == V4.1-draft
 
@@ -390,8 +359,7 @@ For additional details, please consult the previous draft versions:
 - Correction of the TIGER vintage that is used for geographic references
 - Added URL for J2J
 - Correction of typo in type naming convention, rename of naming_fipsalpha.csv to naming_geohi.csv to be consistent.
-- Changing of naming convention for to-be-released files based on federal government from fg -> of.
-At this time, no such files have been released.
+- Changing of naming convention for to-be-released files based on federal government from fg -> of. At this time, no such files have been released.
 - Changes to alternate name of SepSnx and EmpSpv, tentative rate names
 - Changes to name of variable schema files (qwipu -> qwi), addition of variability variable schema files.
 - Fixed small typos in QWI variable short names
@@ -432,14 +400,12 @@ At this time, no such files have been released.
 - Correction of the TIGER vintage that is used for geographic references
 - Added URL for J2J
 - Correction of typo in type naming convention, rename of naming_fipsalpha.csv to naming_geohi.csv to be consistent.
-- Changing of naming convention for to-be-released files based on federal government from fg -> of.
-At this time, no such files have been released.
+- Changing of naming convention for to-be-released files based on federal government from fg -> of. At this time, no such files have been released.
 - Changes to alternate name of SepSnx and EmpSpv, tentative rate names
 - Changes to name of variable schema files (qwipu -> qwi), addition of variability variable schema files.
 - Fixed small typos in QWI variable short names
 - Updated agg_level description, replaced agg_level.csv file
-- Fixed minor rendering bug for QWI rate variability names.
-No change to actual metadata.
+- Fixed minor rendering bug for QWI rate variability names. No change to actual metadata.
 - Fixed a minor coding error in label_fipsnum.csv, added a concatenation of geography files as label_geography_all.csv.
 - Minor text change for agg_level, modified agg_level file.
 - Removed the last 4 rows of variables_j2jod.csv, since they are not on the current beta J2JOD files.
@@ -467,14 +433,12 @@ No change to actual metadata.
 - Correction of the TIGER vintage that is used for geographic references
 - Added URL for J2J
 - Correction of typo in type naming convention, rename of naming_fipsalpha.csv to naming_geohi.csv to be consistent.
-- Changing of naming convention for to-be-released files based on federal government from fg -> of.
-At this time, no such files have been released.
+- Changing of naming convention for to-be-released files based on federal government from fg -> of. At this time, no such files have been released.
 - Changes to alternate name of SepSnx and EmpSpv, tentative rate names
 - Changes to name of variable schema files (qwipu -> qwi), addition of variability variable schema files.
 - Fixed small typos in QWI variable short names
 - Updated agg_level description, replaced agg_level.csv file
-- Fixed minor rendering bug for QWI rate variability names.
-No change to actual metadata.
+- Fixed minor rendering bug for QWI rate variability names. No change to actual metadata.
 - Fixed a minor coding error in label_fipsnum.csv
 
 === Version 4.1b-draft from 4.0
@@ -498,8 +462,7 @@ No change to actual metadata.
 
 - Updated LEHD shape files for Texas WIB definitions
 - Update the source links of metro definitions from http://www.census.gov/population/metro/ (broken) to https://www.census.gov/programs-surveys/metro-micro.html
-- Corrected naming of three of the status flags that have "Rate" at the end.
-That should be just "R".
+- Corrected naming of three of the status flags that have "Rate" at the end. That should be just "R".
 
 === Version 4.1.2 from 4.1.1
 
@@ -524,8 +487,7 @@ That should be just "R".
 === This version (revisions)
 
 - Initial release
-- Corrected naming of three of the status flags that have "Rate" at the end.
-That should be just "R".
+- Corrected naming of three of the status flags that have "Rate" at the end. That should be just "R".
 
 === Version 4.1.2 from 4.1.1
 
@@ -550,8 +512,7 @@ That should be just "R".
 === This version (revisions)
 
 - Initial release
-- Corrected naming of three of the status flags that have "Rate" at the end.
-That should be just "R".
+- Corrected naming of three of the status flags that have "Rate" at the end. That should be just "R".
 
 === Version 4.1.1 from 4.1.0
 
@@ -578,8 +539,7 @@ That should be just "R".
 - Removed two variables from variables_j2jod.csv that were not actually on the CSV file
 - Corrected bad reference to release RXXXX, which should have been R2016Q4
 - Corrected naming of files inside shapefile ZIP files
-- Corrected naming of three of the status flags that have "Rate" at the end.
-That should be just "R".
+- Corrected naming of three of the status flags that have "Rate" at the end. That should be just "R".
 
 === Version 4.1 from 4.0.5
 
@@ -601,8 +561,7 @@ That should be just "R".
 - Renamed file from QWIPU_Data_Schema.pdf to lehd_public_use_schema.pdf
 - Addition of variable schema description for J2J
 - Added a extension component [ext] to the file naming convention to reflect availability of Excel files (and PDF files)
-- Updated documentation-generating scripts to the latest.
-Documents are now identified by date, not revision
+- Updated documentation-generating scripts to the latest. Documents are now identified by date, not revision
 - Added a concatenation of geography files as label_geography.csv.
 - Added a column geo_level to all label_geography_* files
 - Changed fipsnum to force readin of FIPS as character, include geo_level, US.
@@ -610,8 +569,7 @@ Documents are now identified by date, not revision
 - Added Federal government to files (for National QWI)
 - Clarified description of filenaming components
 - Sundry small additional changes, building out the schema
-- Changing of naming convention for to-be-released files based on federal government from fg -> of.
-At this time, no such files have been released.
+- Changing of naming convention for to-be-released files based on federal government from fg -> of. At this time, no such files have been released.
 
 == V4.0.5
 
