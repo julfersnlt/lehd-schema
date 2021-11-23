@@ -23,15 +23,16 @@ The goal is to simplify the build process and use _git and asciidoc as they're i
 3. ~~build changelog process (no longer part of the docs themselves)~~
 4. ~~reformat toc~~
 5. ~~generate pdfs~~
-6. Create asciidoc build process
-7. Create `gh-pages` build process and index page
-8. Migrate existing generated docs to `gh-pages`
-9. Publish releases, add change-notes
-10. Rework `naming_convention.csv` to not break asciidoc formatting
-11. Fix j2j "Soon." references, find in docs to see
-12. Parameterize the Geovintage/TIGER vintage
-13. Parameterize the YYYYQQ string e.g. 2020Q1
-14. Generate `naming_geohi.csv` from `create_naming_geohi.sh` (hasn't been updated in a while)
+6. ~~remove `naming_geohi.csv`, `create_naming_geohi.sh`, and any refs (hasn't been updated in a while)~~
+7. Create asciidoc build process
+8. Create `gh-pages` build process and index page
+9. Migrate existing generated docs to `gh-pages`
+10. Publish releases, add change-notes
+11. Rework `naming_convention.csv` to not break asciidoc formatting
+12. Fix j2j "Soon." references, find in docs to see
+13. Parameterize the Geovintage/TIGER vintage
+14. Parameterize the YYYYQQ string e.g. 2020Q1
+15. Update chagelog with description of work done above
 
 ## Technical notes
 Asciidoctor does not include the ability to subset a csv by column. This was a major functionality that a bash wrapper provided. A custom ruby plugin was implemented to handle this case. The extension lives in the `lib/` directory. It is added to asciidoctor when the process runs. E.g.:

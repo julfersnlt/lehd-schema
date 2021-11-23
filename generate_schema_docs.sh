@@ -69,20 +69,21 @@ mkdir $destination_dir
 # also ignore any zip files as they're shapefiles from prod
 # sed then trims instances of "link:some_file_name.csv[]" into "some_file_name.csv"
 # sort -u dedupes the list
-files_linked_in_asciidoc=$(grep -hoP "link:.*?\[\]" src/*.asciidoc |
-                           grep -v '{ext-relative}' |
-                           grep -v '.zip' |
-                           sed 's/link://g' |
-                           sed 's/\[\]$//g' |
-                           sort -u)
+csvs_linked_in_asciidoc=$(grep -hoP "(link|include):.*?\.csv\[.*?\]" src/*.asciidoc |
+                          grep -v '{ext-relative}' |
+                          grep -v '.zip' |
+                          grep -v '.asciidoc' |
+                          sed 's/link://g' |
+                          sed 's/include:://g' |
+                          sed 's/\[.*\]$//g' |
+                          sort -u)
 
-# get a listing of files in the source dir, remove any asciidocs and dedupe
-files_in_source_dir=$(ls $source_dir |
-                      grep -v ".asciidoc" |
-                      sort -u)
+# get a listing of csv files in the source dir and dedupe
+csvs_in_src_dir=$(ls $source_dir | grep "\.csv" | sort -u)
 
 # compare two files, suppress output from the 1st file (-1) and output that's matched (-3)
-undocumented_files=$(comm -13 <(echo "$files_linked_in_asciidoc") <(echo "$files_in_source_dir"))
+undocumented_files=$(comm -13 <(echo "$csvs_linked_in_asciidoc") <(echo "$csvs_in_src_dir"))
+
 if [ -n "$undocumented_files" ]; then
   echo "Warn: the following files are not documented"
   echo "$undocumented_files"
@@ -90,7 +91,7 @@ if [ -n "$undocumented_files" ]; then
 fi
 
 # compare two files, suppress output from the 2nd file (-2) and output that's matched (-3)
-missing_files=$(comm -23 <(echo "$files_linked_in_asciidoc") <(echo "$files_in_source_dir"))
+missing_files=$(comm -23 <(echo "$csvs_linked_in_asciidoc") <(echo "$csvs_in_src_dir"))
 if [ -n "$missing_files" ]; then
   echo "Warn: the following files are documented but not in the source"
   echo "$missing_files"
