@@ -115,8 +115,6 @@ include::naming_type.csv[]
 
 === [[geohi]]Geohi
 
-( link:naming_geohi.csv[] )
-
 The geohi component in *filenames* is based on one of two possible code sets:
 
 - the lower-case alphabetic FIPS or postal state code based on https://catalog.data.gov/dataset/fips-state-codes[FIPS PUB 5-2] (see also link:label_stusps.csv[] for upper-case variants).
