@@ -62,6 +62,41 @@ lib_dir=${SCRIPT_DIR}/lib
 rm -rf $destination_dir
 mkdir $destination_dir
 
+# get a listing of all the files linked in the asciidoc source
+# grep options: -o only include match, -h hide filenames, -P use perl regex (allows use of ? for non, greedy matching)
+# the .*? pattern uses a non-greedy match for instances where multiple files appear in a single line
+# grep -v removes any entries that include the `ext-relative` text (aka, part of the docs themselves)
+# also ignore any zip files as they're shapefiles from prod
+# sed then trims instances of "link:some_file_name.csv[]" into "some_file_name.csv"
+# sort -u dedupes the list
+files_linked_in_asciidoc=$(grep -hoP "link:.*?\[\]" src/*.asciidoc |
+                           grep -v '{ext-relative}' |
+                           grep -v '.zip' |
+                           sed 's/link://g' |
+                           sed 's/\[\]$//g' |
+                           sort -u)
+
+# get a listing of files in the source dir, remove any asciidocs and dedupe
+files_in_source_dir=$(ls $source_dir |
+                      grep -v ".asciidoc" |
+                      sort -u)
+
+# compare two files, suppress output from the 1st file (-1) and output that's matched (-3)
+undocumented_files=$(comm -13 <(echo "$files_linked_in_asciidoc") <(echo "$files_in_source_dir"))
+if [ -n "$undocumented_files" ]; then
+  echo "Warn: the following files are not documented"
+  echo "$undocumented_files"
+  echo ""
+fi
+
+# compare two files, suppress output from the 2nd file (-2) and output that's matched (-3)
+missing_files=$(comm -23 <(echo "$files_linked_in_asciidoc") <(echo "$files_in_source_dir"))
+if [ -n "$missing_files" ]; then
+  echo "Warn: the following files are documented but not in the source"
+  echo "$missing_files"
+  echo ""
+fi
+
 echo "Info: generating schema docs..."
 
 # move into the src directory
