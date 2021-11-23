@@ -1,0 +1,29 @@
+name: build adocs
+
+on:
+  push:
+    branches:
+      - feat/github-action
+jobs:
+  adoc_build:
+    runs-on: ubuntu-18.04
+    name: generate schema docs
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get build container
+        id: adocbuild
+        uses: tonynv/asciidoctor-action@master
+        with:
+          program: "./generate_schema_docs.sh -v V1.2.3"
+
+      - name: Print execution time
+        run: echo "Time ${{ steps.adocbuild.outputs.time }}"
+
+      - name: Deploy docs to ghpages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_branch: gh-pages
+          publish_dir: ./dist
