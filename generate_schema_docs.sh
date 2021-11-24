@@ -63,16 +63,17 @@ rm -rf $destination_dir
 mkdir $destination_dir
 
 # get a listing of all the files linked in the asciidoc source
-# grep options: -o only include match, -h hide filenames, -P use perl regex (allows use of ? for non, greedy matching)
+# egrep allows use of ? for non-greedy matching
+# options: -o only include match, -h hide filenames,
 # the .*? pattern uses a non-greedy match for instances where multiple files appear in a single line
 # grep -v removes any entries that include the `ext-relative` text (aka, part of the docs themselves)
 # also ignore any zip files as they're shapefiles from prod
 # sed then trims instances of "link:some_file_name.csv[]" into "some_file_name.csv"
 # sort -u dedupes the list
-csvs_linked_in_asciidoc=$(grep -hoP "(link|include):.*?\.csv\[.*?\]" src/*.asciidoc |
-                          grep -v '{ext-relative}' |
-                          grep -v '.zip' |
-                          grep -v '.asciidoc' |
+csvs_linked_in_asciidoc=$(egrep -ho "(link|include):.*?\.csv\[.*?\]" src/*.asciidoc |
+                          egrep -v '{ext-relative}' |
+                          egrep -v '.zip' |
+                          egrep -v '.asciidoc' |
                           sed 's/link://g' |
                           sed 's/include:://g' |
                           sed 's/\[.*\]$//g' |
