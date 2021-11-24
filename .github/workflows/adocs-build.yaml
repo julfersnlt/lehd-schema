@@ -12,16 +12,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Get build container
+      - name: Build docs
         id: adocbuild
         uses: tonynv/asciidoctor-action@master
-        with:
-          program: "./generate_schema_docs.sh -v V1.2.3"
-
-      - name: Build index.html
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
-        run: ./github/generate_index.sh -r "GITHUB_REPOSITORY"
+        with:
+          program: "./generate_schema_docs.sh -v V1.2.3 && ./github/generate_index.sh -r $GITHUB_REPOSITORY"
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
