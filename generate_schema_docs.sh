@@ -71,9 +71,9 @@ mkdir $destination_dir
 # sed then trims instances of "link:some_file_name.csv[]" into "some_file_name.csv"
 # sort -u dedupes the list
 csvs_linked_in_asciidoc=$(egrep -ho "(link|include):.*?\.csv\[.*?\]" src/*.asciidoc |
-                          egrep -v '{ext-relative}' |
-                          egrep -v '.zip' |
-                          egrep -v '.asciidoc' |
+                          grep -v '{ext-relative}' |
+                          grep -v '.zip' |
+                          grep -v '.asciidoc' |
                           sed 's/link://g' |
                           sed 's/include:://g' |
                           sed 's/\[.*\]$//g' |
