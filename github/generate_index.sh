@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
-
 ############################################################
 # Help                                                     #
 ############################################################
@@ -51,4 +49,4 @@ while getopts ":hr:" option; do
 done
 
 export REPOSITORY=$repository
-envsubst < ${SCRIPT_DIR}/index.tmpl > ${SCRIPT_DIR}/../dist/index.html
+envsubst < index.tmpl > ../dist/index.html

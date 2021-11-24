@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-18.04
     name: generate schema docs
     steps:
-      - name: Install envsubst
-        run: sudo apt-get install -y gettext-base
 
       - name: Checkout code
         uses: actions/checkout@v2
@@ -18,10 +16,13 @@ jobs:
       - name: Build docs
         id: adocbuild
         uses: tonynv/asciidoctor-action@master
+        with:
+          program: "./generate_schema_docs.sh -v V1.2.3"
+
+      - name: Build index page
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
-        with:
-          program: "./generate_schema_docs.sh -v V1.2.3 && ./github/generate_index.sh -r $GITHUB_REPOSITORY"
+        run: cd ./github && ./generate_index.sh -r "$GITHUB_REPOSITORY"
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
