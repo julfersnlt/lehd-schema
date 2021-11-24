@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-18.04
     name: generate schema docs
     steps:
+      - name: Install envsubst
+        run: sudo apt-get install -y gettext-base
+
       - name: Checkout code
         uses: actions/checkout@v2
 
