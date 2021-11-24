@@ -18,9 +18,6 @@ jobs:
         with:
           program: "./generate_schema_docs.sh -v V1.2.3"
 
-      - name: Print execution time
-        run: echo "Time ${{ steps.adocbuild.outputs.time }}"
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
