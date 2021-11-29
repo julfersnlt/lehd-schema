@@ -30,9 +30,9 @@ The goal is to simplify the build process and use _git and asciidoc as they're i
 10. ~~Migrate existing generated docs to `gh-pages`.~~
 11. ~~Publish releases, add change-notes~~
 12. ~~Make asciidoc nav panel bigger~~
-13. Fix wide tables adding scrollbars
-14. Rework `naming_convention.csv` to not break asciidoc formatting
-15. Fix j2j "Soon." references, find in docs to see
+13. ~~Fix wide tables adding scrollbars~~ (punting)
+14. ~~Rework `naming_convention.csv` to not break asciidoc formatting~~ (punting)
+15. ~~Fix j2j "Soon." references, find in docs to see~~(already done)
 16. Parameterize the Geovintage/TIGER vintage
 17. Parameterize the YYYYQQ string e.g. 2020Q1
 18. Update chagelog with description of work done above

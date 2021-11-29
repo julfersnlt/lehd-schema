@@ -13,13 +13,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Import environment variables
+        id: import-env
+        shell: bash
+        run: cat variables.env >> $GITHUB_ENV
+
       - name: Build docs
         id: adocbuild
         uses: tonynv/asciidoctor-action@master
         with:
-          program: "./generate_schema_docs.sh -v V1.2.3"
+          program: "./generate_schema_docs.sh -v ${{ env.SCHEMA_VERSION }}"
 
       - name: Copy src files
+        shell: bash
         run: sudo cp src/*.csv dist/
 
       - name: Build index page
