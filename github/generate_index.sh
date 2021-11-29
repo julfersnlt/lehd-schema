@@ -51,4 +51,4 @@ done
 export REPOSITORY=$repository
 envsubst < index.tmpl > ../dist/index.html
 cp pygment_trac.css ../dist
-cp style.css ../dist
+cp styles.css ../dist
