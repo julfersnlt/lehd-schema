@@ -1,8 +1,6 @@
 = File and Directory Naming Convention ({schemaversion})
 :ext-relative: {outfilesuffix}
 :icons: font
-:linkcss:
-:copycss:
 :toc: left
 :numbered:
 :toclevels: 4

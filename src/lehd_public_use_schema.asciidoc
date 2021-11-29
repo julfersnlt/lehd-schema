@@ -1,8 +1,6 @@
 = LEHD Public Use Data Schema ({schemaversion})
 :ext-relative: {outfilesuffix}
 :icons: font
-:linkcss:
-:copycss:
 :toc: left
 :numbered:
 :toclevels: 4

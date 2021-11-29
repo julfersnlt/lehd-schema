@@ -1,0 +1,9 @@
+/* The following attributes have been changed in the default asciidoc stylesheet: */
+
+/* Make the TOC wider */
+body.toc2 {
+  padding-left: 26em;
+}
+#toc.toc2 {
+  width: 25em;
+}

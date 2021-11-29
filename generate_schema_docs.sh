@@ -106,6 +106,7 @@ cd $source_dir >/dev/null
 
 # generate public schema doc
 asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
+  -a stylesheet=${lib_dir}/css/asciidoctor.css \
   -a schemaversion=$version \
   -a outfilesuffix=.html \
   -o ${destination_dir}/lehd_public_use_schema.html \
@@ -113,6 +114,8 @@ asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
 
 # generate the csv naming doc
 asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
+  -a stylesheet=${lib_dir}/css/asciidoctor.css \
+  -a schemaversion=$version \
   -a schemaversion=$version \
   -a outfilesuffix=.html \
   -o ${destination_dir}/lehd_csv_naming.html \
@@ -120,6 +123,8 @@ asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
 
 # generate shapefiles doc
 asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
+  -a stylesheet=${lib_dir}/css/asciidoctor.css \
+  -a schemaversion=$version \
   -a schemaversion=$version \
   -a outfilesuffix=.html \
   -o ${destination_dir}/lehd_shapefiles.html \
@@ -127,6 +132,8 @@ asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
 
 # generate changelog
 asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
+  -a stylesheet=${lib_dir}/css/asciidoctor.css \
+  -a schemaversion=$version \
   -a schemaversion=$version \
   -a outfilesuffix=.html \
   -o ${destination_dir}/lehd_changelog.html \
