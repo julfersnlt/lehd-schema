@@ -20,7 +20,7 @@ jobs:
           program: "./generate_schema_docs.sh -v V1.2.3"
 
       - name: Copy src files
-        run: cp src/*.csv dist/
+        run: sudo cp src/*.csv dist/
 
       - name: Build index page
         env:
