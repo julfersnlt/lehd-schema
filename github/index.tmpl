@@ -30,7 +30,7 @@
     let htmlString = '<ul>';
     for (let file of data) {
       // only show files that end in .html
-      if (file.name.endsWith(".html")) {
+      if (file.name.endsWith(".html") && (file.name !== "index.html")) {
         htmlString += `<li><a href="${file.path}">${file.name}</a></li>`;
       }
     }
