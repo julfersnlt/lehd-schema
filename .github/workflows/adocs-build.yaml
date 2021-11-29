@@ -16,7 +16,7 @@ jobs:
       - name: Import environment variables
         id: import-env
         shell: bash
-        run: cat variables.env >> $GITHUB_ENV
+        run: cat .env >> $GITHUB_ENV
 
       - name: Build docs
         id: adocbuild

@@ -33,8 +33,8 @@ The goal is to simplify the build process and use _git and asciidoc as they're i
 13. ~~Fix wide tables adding scrollbars~~ (punting)
 14. ~~Rework `naming_convention.csv` to not break asciidoc formatting~~ (punting)
 15. ~~Fix j2j "Soon." references, find in docs to see~~(already done)
-16. Parameterize the Geovintage/TIGER vintage
-17. Parameterize the YYYYQQ string e.g. 2020Q1
+16. ~~Parameterize the Geovintage/TIGER vintage~~(punting)
+17. ~~Parameterize the YYYYQQ string e.g. 2020Q1~~(punting)
 18. Update chagelog with description of work done above
 
 ## Technical notes
@@ -45,12 +45,17 @@ asciidoctor -r ./lib/csvsubcolumn-include-processor.rb ./sample.adoc
 
 ## Create schema files
 
+### Load the environment vars
+```shell
+export $(xargs <.env)
+```
+
 ### HTML docs
 ```shell
-./generate_schema_docs.sh -v V1.2.3
+./generate_schema_docs.sh -v $SCHEMA_VERSION
 ```
 
 ### HTML and PDF docs
 ```shell
-./generate_schema_docs.sh -v V1.2.3 -p
+./generate_schema_docs.sh -v $SCHEMA_VERSION -p
 ```
