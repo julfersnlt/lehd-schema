@@ -1,3 +1,5 @@
+[![build adocs](https://github.com/jodyhoonstarr/lehd-schema-refactor/actions/workflows/adocs-build.yaml/badge.svg)](https://github.com/jodyhoonstarr/lehd-schema-refactor/actions/workflows/adocs-build.yaml)
+
 # LEHD Schema
 This repository contains a restructured version of the lehd schema. The conceptual between this version and previous ones are that generated documentation (html, pdf), binary data files (shapefiles) and schema files are distinct. 
 
