@@ -19,7 +19,9 @@ The public-use data from the Longitudinal Employer-Household Dynamics Program, i
 These data are available through the LEHD website’s Data page at
 https://lehd.ces.census.gov/data/ and through the LED Extraction Tool at https://ledextract.ces.census.gov/.
 
-This document describes the data schema for LEHD files.LEHD-provided SHP files are separately described in link:lehd_shapefiles{ext-relative}[].For each variable, a set of allowable values is defined.Definitions are provided as CSV files, with header variable definitions.Changes relative to the original v4.0 version are listed <<changes,at the end>>.
+This document describes the data schema for LEHD files. LEHD-provided SHP files are separately described in
+link:lehd_shapefiles{ext-relative}[]. For each variable, a set of allowable values is defined.Definitions are provided
+as CSV files, with header variable definitions. Changes are listed in link:lehd_changelog{ext-relative}[].
 
 == File naming
 
@@ -29,9 +31,11 @@ The naming conventions of the data files is documented in link:lehd_csv_naming{e
 
 This version reimplements some features from V4.0. Many files compliant with LEHD or QWI Schema v4.0 will also be compliant with this schema, but compatibility is not guaranteed.
 
+// tag::basic_schema[]
 == Basic Schema
 
 Each data file is structured as a CSV file.The first columns contain <<identifiers>>, subsequent columns contain <<indicators>>, followed by <<statusflags,status flags>>.In some cases, visually formatted Excel (XLSX) files are also available, containing the same information together with header lines on each sheet.
+// end::basic_schema[]
 
 === Generic Structure
 
@@ -57,11 +61,13 @@ While all indicators are included in the CSV files, only the requested indicator
 
 <<<
 
+// tag::identifiers[]
 === [[identifiers]]Identifiers
 
 Records, unless otherwise noted, are parts of time-series data.
 Unique record identifiers are noted below, by file type.
 Identifiers without the year and quarter component can be considered a series identifier.
+// end::identifiers[]
 
 ==== Mapping for Identifiers
 
@@ -79,6 +85,7 @@ include::lehd_mapping_identifiers.csv[]
 
 <<<
 
+// tag::lehd_identifiers_qwi[]
 ==== Identifiers for QWI
 
 ( link:lehd_identifiers_qwi.csv[] )
@@ -87,6 +94,7 @@ include::lehd_mapping_identifiers.csv[]
 |===================================================
 include::lehd_identifiers_qwi.csv[]
 |===================================================
+// end::lehd_identifiers_qwi[]
 
 <<<
 
@@ -122,7 +130,7 @@ include::lehd_identifiers_pseo.csv[]
 |===================================================
 
 <<<
-
+// tag::indicators[]
 === [[indicators]]Indicators
 
 The following tables and associated mapping files list the indicators available on each file.
@@ -137,7 +145,10 @@ The descriptor files themselves are structured as follows:
 - ''Concept'' classifies the variables into higher-level concepts.
 The taxonomy for these concepts has not been finalized yet, see link:label_concept_draft.csv[label_concept_draft.csv] for a draft version.
 - The ''Base'' indicates the denominator used to compute the statistic, and may be '1'.
+// end::indicators[]
 
+
+// tag::variables_qwi[]
 ==== National QWI and State-Level QWI ====
 
 ( link:variables_qwi.csv[variables_qwi.csv] )
@@ -146,9 +157,11 @@ The taxonomy for these concepts has not been finalized yet, see link:label_conce
 |===================================================
 include::variables_qwi.csv[]
 |===================================================
+// end::variables_qwi[]
 
 <<<
 
+// tag::variables_qwir[]
 ==== National QWI and State-Level QWI Rates ====
 
 Rates are computed from published data, and are provided as a convenience.
@@ -159,6 +172,7 @@ Rates are computed from published data, and are provided as a convenience.
 |===================================================
 include::variables_qwir.csv[]
 |===================================================
+// end::variables_qwir[]
 
 <<<
 

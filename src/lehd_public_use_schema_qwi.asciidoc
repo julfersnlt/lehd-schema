@@ -1,0 +1,31 @@
+= LEHD QWI Public Use for QWI ({schemaversion})
+:ext-relative: {outfilesuffix}
+:icons: font
+:toc: left
+:numbered:
+:toclevels: 4
+:sectnumlevels: 4
+
+[NOTE]
+.Contact Us
+==============================================
+Feedback is welcome.
+Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema[ces.qwi.feedback@census.gov].
+==============================================
+
+== Purpose
+
+This page shows a demo of how to include sections from the master schema in sub-schemas.
+
+
+include::./lehd_public_use_schema.asciidoc[tags=basic_schema]
+
+include::./lehd_public_use_schema.asciidoc[tags=identifiers]
+
+include::./lehd_public_use_schema.asciidoc[tags=lehd_identifiers_qwi]
+
+include::./lehd_public_use_schema.asciidoc[tags=indicators]
+
+include::./lehd_public_use_schema.asciidoc[tags=variables_qwi]
+
+include::./lehd_public_use_schema.asciidoc[tags=variables_qwir]
