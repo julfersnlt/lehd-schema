@@ -14,7 +14,9 @@ Feedback is welcome.
 Please write us at link:mailto:ces.qwi.feedback@census.gov?subject=LEHD_Schema[ces.qwi.feedback@census.gov].
 ==============================================
 
-== V4.9.0
+== V4.8.3
+
+=== Updated file structure and build process
 
 - Reformat schema structure, including historical releases
 - Remove scripting dependencies when generating docs
