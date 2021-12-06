@@ -25,4 +25,7 @@ See the [instructions document](./docs/instructions.md#build-the-current-version
 #### Deprecated (V4.8.2 or earlier)
 See the [previous instructions document](./docs/previous-instructions.md#build-an-earlier-version-of-the-schema) to build an earlier version of the schema.
 
+### Guides
+ Include specific row/columns of a csv file: [custom preprocessor guide](./docs/customization.md#include-preprocessor-usage)
+
 
