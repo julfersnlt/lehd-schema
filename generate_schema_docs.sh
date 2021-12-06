@@ -112,12 +112,12 @@ asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
   -o ${destination_dir}/lehd_public_use_schema.html \
   lehd_public_use_schema.asciidoc
 
-asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
-  -a stylesheet=${lib_dir}/css/asciidoctor.css \
-  -a schemaversion=$version \
-  -a outfilesuffix=.html \
-  -o ${destination_dir}/lehd_public_use_schema_qwi.html \
-  lehd_public_use_schema_qwi.asciidoc
+#asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
+#  -a stylesheet=${lib_dir}/css/asciidoctor.css \
+#  -a schemaversion=$version \
+#  -a outfilesuffix=.html \
+#  -o ${destination_dir}/lehd_public_use_schema_qwi.html \
+#  lehd_public_use_schema_qwi.asciidoc
 
 # generate the csv naming doc
 asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
@@ -153,10 +153,10 @@ if [ "$generate_pdf" = true ] ; then
     -o ${destination_dir}/lehd_public_use_schema.pdf \
     lehd_public_use_schema.asciidoc
 
-  asciidoctor-pdf -r ${lib_dir}/csvsubcolumn-include-processor.rb \
-    -a schemaversion=$version \
-    -o ${destination_dir}/lehd_public_use_schema_qwi.pdf \
-    lehd_public_use_schema_qwi.asciidoc
+#  asciidoctor-pdf -r ${lib_dir}/csvsubcolumn-include-processor.rb \
+#    -a schemaversion=$version \
+#    -o ${destination_dir}/lehd_public_use_schema_qwi.pdf \
+#    lehd_public_use_schema_qwi.asciidoc
 
   asciidoctor-pdf -r ${lib_dir}/csvsubcolumn-include-processor.rb \
     -a schemaversion=$version \
