@@ -11,6 +11,6 @@ This repository contains a restructured version of the lehd schema. The conceptu
 
 ## Instructions
 
-See the [instructions document](./docs/INSTRUCTIONS.md#build-the-current-version-of-the-schema) for a step-by-step guide to building the current version of the schema.
+See the [instructions document](./docs/instructions.md#build-the-current-version-of-the-schema) for a step-by-step guide to building the current version of the schema.
 
 
