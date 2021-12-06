@@ -11,8 +11,11 @@ How to build older versions of this schema.
 # list the available tags
 git tag
 
+# set the $SCHEMA_VERSION to one of the tags
+SCHEMA_VERSION=V4.7.0
+
 # checkout the tag to a new branch
-git checkout tags/V4.7.0 -b V4.7.0
+git checkout tags/$SCHEMA_VERSION -b $SCHEMA_VERSION
 
 # build the schema docs
 cd src
@@ -32,7 +35,7 @@ git reset --hard HEAD
 git status
 
 # move the dist directory to deploy as needed
-mv dist /path/to/deploy
+mv ./dist /path/to/schemas/$SCHEMA_VERSION -r
 
 # cleanup created branch and revert to main
 git checkout main

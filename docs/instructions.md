@@ -6,6 +6,7 @@ How to build the docs.
 
 1. Load the schema version from the environment variable
 ```shell
+# set the $SCHEMA_VERSION environment variable
 export $(xargs <.env)
 ```
 
