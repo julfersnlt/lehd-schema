@@ -30,7 +30,7 @@ class CsvSubcolumnIncludeProcessor < Asciidoctor::Extensions::IncludeProcessor
 		# subset csv by columns (lines optional)
 		if column_numbers.kind_of?(Array)
 			csv_string = ""
-			CSV.foreach(target, "r", col_sep: csvfile_separator).with_index(1) do |row, lineno|
+			CSV.foreach(target, col_sep: csvfile_separator).with_index(1) do |row, lineno|
 
 				# if lines are requested, skip those not in the attributes
 				if line_numbers.kind_of?(Array) and not line_numbers.include?(lineno)
@@ -59,7 +59,7 @@ class CsvSubcolumnIncludeProcessor < Asciidoctor::Extensions::IncludeProcessor
 			# subset csv by line
 		elsif line_numbers.kind_of?(Array)
 			csv_string = ""
-			CSV.foreach(target, "r", col_sep: csvfile_separator).with_index(1) do |row, lineno|
+			CSV.foreach(target, col_sep: csvfile_separator).with_index(1) do |row, lineno|
 				if line_numbers.include?(lineno)
 
 					quoted_row = row.map do |item|
