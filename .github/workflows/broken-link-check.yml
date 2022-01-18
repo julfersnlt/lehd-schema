@@ -1,3 +1,4 @@
+name: Broken Link Check
 on:
   push:
     branches:
@@ -6,17 +7,43 @@ on:
   schedule:
     - cron: 0 0 1 * * # run monthly
 
-name: Broken Link Check
 jobs:
-  check:
-    name: Broken Link Check
+  broken_link_checker_job:
     runs-on: ubuntu-latest
+    name: Check for broken links
     steps:
-      - name: Broken Link Check
-        uses: technote-space/broken-link-checker-action@v2
+      - name: CSV Naming Link Check
+        id: link-report-csv-naming
+        uses: celinekurpershoek/link-checker@v1.0.1
         with:
-          TARGET: |
-            - https://ledapplications.github.io/lehd-schema/lehd_csv_naming.html
-            - https://ledapplications.github.io/lehd-schema/lehd_public_use_schema.html
-            - https://ledapplications.github.io/lehd-schema/lehd_shapefiles.html
-          RECURSIVE: true
+          # Required:
+          url: 'https://ledapplications.github.io/lehd-schema/lehd_csv_naming.html'
+          # optional:
+          ignorePatterns: 'github,google'
+          recursiveLinks: false
+      - name: CSV Naming Result
+        run: echo "${{steps.link-report-csv-naming.outputs.result}}"
+
+      - name: Full Schema Link Check
+        id: link-report-full-schema
+        uses: celinekurpershoek/link-checker@v1.0.1
+        with:
+          # Required:
+          url: 'https://ledapplications.github.io/lehd-schema/lehd_public_use_schema.html'
+          # optional:
+          ignorePatterns: 'github,google'
+          recursiveLinks: false
+      - name: Full Schema Result
+        run: echo "${{steps.link-report-full-schema.outputs.result}}"
+
+      - name: Shapefiles Schema Link Check
+        id: link-report-shapefiles-schema
+        uses: celinekurpershoek/link-checker@v1.0.1
+        with:
+          # Required:
+          url: 'https://ledapplications.github.io/lehd-schema/lehd_shapefiles.html'
+          # optional:
+          ignorePatterns: 'github,google'
+          recursiveLinks: false
+      - name: Shapefiles Schema Result
+        run: echo "${{steps.link-report-shapefiles-schema.outputs.result}}"
