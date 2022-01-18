@@ -13,6 +13,7 @@ jobs:
     name: Check for broken links
     steps:
       - name: CSV Naming Link Check
+        if: always()
         id: link-report-csv-naming
         uses: celinekurpershoek/link-checker@v1.0.1
         with:
@@ -22,9 +23,11 @@ jobs:
           ignorePatterns: 'github,google'
           recursiveLinks: false
       - name: CSV Naming Result
+        if: always()
         run: echo "${{steps.link-report-csv-naming.outputs.result}}"
 
       - name: Full Schema Link Check
+        if: always()
         id: link-report-full-schema
         uses: celinekurpershoek/link-checker@v1.0.1
         with:
@@ -34,9 +37,11 @@ jobs:
           ignorePatterns: 'github,google'
           recursiveLinks: false
       - name: Full Schema Result
+        if: always()
         run: echo "${{steps.link-report-full-schema.outputs.result}}"
 
       - name: Shapefiles Schema Link Check
+        if: always()
         id: link-report-shapefiles-schema
         uses: celinekurpershoek/link-checker@v1.0.1
         with:
@@ -46,4 +51,5 @@ jobs:
           ignorePatterns: 'github,google'
           recursiveLinks: false
       - name: Shapefiles Schema Result
+        if: always()
         run: echo "${{steps.link-report-shapefiles-schema.outputs.result}}"
