@@ -59,8 +59,8 @@ destination_dir=${SCRIPT_DIR}/dist
 lib_dir=${SCRIPT_DIR}/lib
 
 # clean create output folder
-rm -rf $destination_dir
-mkdir $destination_dir
+rm -rf "$destination_dir"
+mkdir "$destination_dir"
 
 # get a listing of all the files linked in the asciidoc source
 # egrep allows use of ? for non-greedy matching
@@ -102,75 +102,75 @@ fi
 echo "Info: generating schema docs..."
 
 # move into the src directory
-cd $source_dir >/dev/null
+cd "$source_dir" >/dev/null
 
 # generate public schema doc
-asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
-  -a stylesheet=${lib_dir}/css/asciidoctor.css \
+asciidoctor -r "${lib_dir}/csvsubcolumn-include-processor.rb" \
+  -a stylesheet="${lib_dir}/css/asciidoctor.css" \
   -a schemaversion=$version \
   -a outfilesuffix=.html \
-  -o ${destination_dir}/lehd_public_use_schema.html \
+  -o "${destination_dir}/lehd_public_use_schema.html" \
   lehd_public_use_schema.asciidoc
 
-#asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
-#  -a stylesheet=${lib_dir}/css/asciidoctor.css \
+#asciidoctor -r "${lib_dir}/csvsubcolumn-include-processor.rb" \
+#  -a stylesheet="${lib_dir}/css/asciidoctor.css" \
 #  -a schemaversion=$version \
 #  -a outfilesuffix=.html \
-#  -o ${destination_dir}/lehd_public_use_schema_qwi.html \
+#  -o "${destination_dir}/lehd_public_use_schema_qwi.html" \
 #  lehd_public_use_schema_qwi.asciidoc
 
 # generate the csv naming doc
-asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
-  -a stylesheet=${lib_dir}/css/asciidoctor.css \
+asciidoctor -r "${lib_dir}/csvsubcolumn-include-processor.rb" \
+  -a stylesheet="${lib_dir}/css/asciidoctor.css" \
   -a schemaversion=$version \
   -a schemaversion=$version \
   -a outfilesuffix=.html \
-  -o ${destination_dir}/lehd_csv_naming.html \
+  -o "${destination_dir}/lehd_csv_naming.html" \
   lehd_csv_naming.asciidoc
 
 # generate shapefiles doc
-asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
-  -a stylesheet=${lib_dir}/css/asciidoctor.css \
+asciidoctor -r "${lib_dir}/csvsubcolumn-include-processor.rb" \
+  -a stylesheet="${lib_dir}/css/asciidoctor.css" \
   -a schemaversion=$version \
   -a schemaversion=$version \
   -a outfilesuffix=.html \
-  -o ${destination_dir}/lehd_shapefiles.html \
+  -o "${destination_dir}/lehd_shapefiles.html" \
   lehd_shapefiles.asciidoc
 
 # generate changelog
-asciidoctor -r ${lib_dir}/csvsubcolumn-include-processor.rb \
-  -a stylesheet=${lib_dir}/css/asciidoctor.css \
+asciidoctor -r "${lib_dir}/csvsubcolumn-include-processor.rb" \
+  -a stylesheet="${lib_dir}/css/asciidoctor.css" \
   -a schemaversion=$version \
   -a schemaversion=$version \
   -a outfilesuffix=.html \
-  -o ${destination_dir}/lehd_changelog.html \
+  -o "${destination_dir}/lehd_changelog.html" \
   lehd_changelog.asciidoc
 
 # generate PDF versions
 if [ "$generate_pdf" = true ] ; then
-  asciidoctor-pdf -r ${lib_dir}/csvsubcolumn-include-processor.rb \
+  asciidoctor-pdf -r "${lib_dir}/csvsubcolumn-include-processor.rb" \
     -a schemaversion=$version \
-    -o ${destination_dir}/lehd_public_use_schema.pdf \
+    -o "${destination_dir}/lehd_public_use_schema.pdf" \
     lehd_public_use_schema.asciidoc
 
-#  asciidoctor-pdf -r ${lib_dir}/csvsubcolumn-include-processor.rb \
+#  asciidoctor-pdf -r "${lib_dir}/csvsubcolumn-include-processor.rb" \
 #    -a schemaversion=$version \
-#    -o ${destination_dir}/lehd_public_use_schema_qwi.pdf \
+#    -o "${destination_dir}/lehd_public_use_schema_qwi.pdf" \
 #    lehd_public_use_schema_qwi.asciidoc
 
-  asciidoctor-pdf -r ${lib_dir}/csvsubcolumn-include-processor.rb \
+  asciidoctor-pdf -r "${lib_dir}/csvsubcolumn-include-processor.rb" \
     -a schemaversion=$version \
-    -o ${destination_dir}/lehd_csv_naming.pdf \
+    -o "${destination_dir}/lehd_csv_naming.pdf" \
     lehd_csv_naming.asciidoc
 
-  asciidoctor-pdf -r ${lib_dir}/csvsubcolumn-include-processor.rb \
+  asciidoctor-pdf -r "${lib_dir}/csvsubcolumn-include-processor.rb" \
     -a schemaversion=$version \
-    -o ${destination_dir}/lehd_shapefiles.pdf \
+    -o "${destination_dir}/lehd_shapefiles.pdf" \
     lehd_shapefiles.asciidoc
 
-  asciidoctor-pdf -r ${lib_dir}/csvsubcolumn-include-processor.rb \
+  asciidoctor-pdf -r "${lib_dir}/csvsubcolumn-include-processor.rb" \
     -a schemaversion=$version \
-    -o ${destination_dir}/lehd_changelog.pdf \
+    -o "${destination_dir}/lehd_changelog.pdf" \
     lehd_changelog.asciidoc
 fi
 
