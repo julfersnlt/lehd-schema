@@ -1,5 +1,5 @@
 [![build](https://github.com/LEDApplications/lehd-schema/actions/workflows/adocs-build.yaml/badge.svg)](https://github.com/LEDApplications/lehd-schema/actions/workflows/adocs-build.yaml)
-
+[![Broken Link Check](https://github.com/LEDApplications/lehd-schema/actions/workflows/broken-link-check.yml/badge.svg)](https://github.com/LEDApplications/lehd-schema/actions/workflows/broken-link-check.yml)
 # Overview
 
 This repository contains a development copy of the LEHD schema that will feed into an official release.
