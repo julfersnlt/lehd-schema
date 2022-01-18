@@ -19,4 +19,4 @@ jobs:
             - https://ledapplications.github.io/lehd-schema/lehd_csv_naming.html
             - https://ledapplications.github.io/lehd-schema/lehd_public_use_schema.html
             - https://ledapplications.github.io/lehd-schema/lehd_shapefiles.html
-          RECURSIVE: false
+          RECURSIVE: true
