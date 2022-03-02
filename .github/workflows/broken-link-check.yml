@@ -48,7 +48,7 @@ jobs:
           # Required:
           url: 'https://ledapplications.github.io/lehd-schema/lehd_shapefiles.html'
           # optional:
-          ignorePatterns: 'https://ledapplications.github.io/lehd-schema/lehd_shp_*.zip'
+          ignorePatterns: 'https://ledapplications.github.io/lehd-schema/lehd_shp_gc.zip,https://ledapplications.github.io/lehd-schema/lehd_shp_gs.zip'
           recursiveLinks: false
       - name: Shapefiles Schema Result
         if: always()
