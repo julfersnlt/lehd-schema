@@ -34,7 +34,7 @@ jobs:
           # Required:
           url: 'https://ledapplications.github.io/lehd-schema/lehd_public_use_schema.html'
           # optional:
-          ignorePatterns: 'github,google'
+          ignorePatterns: ''
           recursiveLinks: false
       - name: Full Schema Result
         if: always()
@@ -48,7 +48,7 @@ jobs:
           # Required:
           url: 'https://ledapplications.github.io/lehd-schema/lehd_shapefiles.html'
           # optional:
-          ignorePatterns: 'github,google'
+          ignorePatterns: 'https://ledapplications.github.io/lehd-schema/lehd_shp_*.zip'
           recursiveLinks: false
       - name: Shapefiles Schema Result
         if: always()
