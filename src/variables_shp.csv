@@ -1,5 +1,5 @@
 column,label,description,type
-STUSPS,State USPS code,FIPS State Postal Code as per https://www.census.gov/geo/reference/codes/cou.html,string
+STUSPS,State USPS code,FIPS State Postal Code as per https://www.census.gov/library/reference/code-lists/ansi.html,string
 GEOGRAPHY,Nationally unique identifier,Derived from Nationally Unique Federal Information Processing Series (FIPS) Code as per https://www.census.gov/geo/reference/ansi.html (see notes),string
 NAME,Feature Name,Full Census Name of Geography Feature,string
 LABEL,Feature Label,Shorter Census Name of Geography Feature for Thematic Mapping,string
