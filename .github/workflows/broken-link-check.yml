@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Check for broken links
     steps:
+      - name: Sleep to allow build actions to complete
+        run: sleep 30s
+        shell: bash
+
       - name: Full Schema Link Check
         if: always()
         id: link-report-full-schema
