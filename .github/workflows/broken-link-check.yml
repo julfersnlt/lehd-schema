@@ -12,44 +12,32 @@ jobs:
     runs-on: ubuntu-latest
     name: Check for broken links
     steps:
-      - name: CSV Naming Link Check
-        if: always()
-        id: link-report-csv-naming
-        uses: celinekurpershoek/link-checker@v1.0.1
-        with:
-          # Required:
-          url: 'https://ledapplications.github.io/lehd-schema/lehd_csv_naming.html'
-          # optional:
-          ignorePatterns: 'github,google'
-          recursiveLinks: false
-      - name: CSV Naming Result
-        if: always()
-        run: echo "${{steps.link-report-csv-naming.outputs.result}}"
-
       - name: Full Schema Link Check
         if: always()
         id: link-report-full-schema
-        uses: celinekurpershoek/link-checker@v1.0.1
+        uses: jodyhoonstarr/link-checker@master
         with:
-          # Required:
           url: 'https://ledapplications.github.io/lehd-schema/lehd_public_use_schema.html'
-          # optional:
+          honorRobotExclusions: true
           ignorePatterns: ''
           recursiveLinks: false
-      - name: Full Schema Result
-        if: always()
-        run: echo "${{steps.link-report-full-schema.outputs.result}}"
 
-      - name: Shapefiles Schema Link Check
+      - name: CSV Naming Link Check
         if: always()
-        id: link-report-shapefiles-schema
-        uses: celinekurpershoek/link-checker@v1.0.1
+        id: link-report-csv-naming
+        uses: jodyhoonstarr/link-checker@master
         with:
-          # Required:
-          url: 'https://ledapplications.github.io/lehd-schema/lehd_shapefiles.html'
-          # optional:
-          ignorePatterns: 'https://ledapplications.github.io/lehd-schema/lehd_shp_gc.zip,https://ledapplications.github.io/lehd-schema/lehd_shp_gs.zip'
+          url: 'https://ledapplications.github.io/lehd-schema/lehd_csv_naming.html'
+          honorRobotExclusions: true
+          ignorePatterns: ''
           recursiveLinks: false
-      - name: Shapefiles Schema Result
+
+      - name: Shapefiles Link Check
         if: always()
-        run: echo "${{steps.link-report-shapefiles-schema.outputs.result}}"
+        id: link-report-shapefiles
+        uses: jodyhoonstarr/link-checker@master
+        with:
+          url: 'https://ledapplications.github.io/lehd-schema/lehd_shapefiles.html'
+          honorRobotExclusions: true
+          ignorePatterns: 'https://ledapplications.github.io/lehd-schema/lehd_shp_*.zip'
+          recursiveLinks: false
