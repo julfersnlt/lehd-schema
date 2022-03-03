@@ -13,7 +13,7 @@ jobs:
     name: Check for broken links
     steps:
       - name: Sleep to allow build actions to complete
-        run: sleep 30s
+        run: sleep 60s
         shell: bash
 
       - name: Full Schema Link Check
