@@ -1,4 +1,4 @@
-geography,label,geo_level
+﻿geography,label,geo_level
 18,"Indiana",S
 18001,"Adams, IN",C
 18003,"Allen, IN",C
@@ -96,6 +96,7 @@ geography,label,geo_level
 1812140,"Auburn, IN",M
 1813260,"Bedford, IN",M
 1814020,"Bloomington, IN",M
+1814160,"Bluffton, IN",M
 1816980,"Chicago-Naperville-Elgin, IL-IN-WI (IN part)",M
 1817140,"Cincinnati, OH-KY-IN (IN part)",M
 1818020,"Columbus, IN",M

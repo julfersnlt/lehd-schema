@@ -1,4 +1,4 @@
-geography,label,geo_level
+﻿geography,label,geo_level
 13,"Georgia",S
 13001,"Appling, GA",C
 13003,"Atkinson, GA",C
@@ -216,6 +216,5 @@ geography,label,geo_level
 13000015,"15 Middle Flint WIB",W
 13000016,"16 Heart of Georgia/Altamaha WIB",W
 13000017,"17 Southwest Georgia WIB",W
-13000018,"18 South Georgia WIB",W
-13000019,"19 Southeast Georgia WIB",W
+13000018,"18 Southern Georgia WIB",W
 13000020,"20 Coastal WIB",W
