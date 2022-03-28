@@ -19,7 +19,7 @@ This repository contains a development copy of the LEHD schema that will feed in
 
 These steps only need to be run when deploying an official release. Choose the appropriate instruction set below.
 
-####  Current (V4.8.3 or later)
+####  Current (V4.9.0 or later)
 See the [instructions document](./docs/instructions.md#build-the-current-version-of-the-schema) for a step-by-step guide to building the current version of the schema.
 
 #### Deprecated (V4.8.2 or earlier)
