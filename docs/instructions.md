@@ -38,3 +38,10 @@ cp ./dist /path/to/schemas/$SCHEMA_VERSION -r
 # csv files are in the ./src directory
 cp ./src/*.csv /path/to/schemas/$SCHEMA_VERSION
 ```
+
+5. Correct csv line endings
+
+```shell
+cd /path/to/schemas/$SCHEMA_VERSION
+for f in $(ls *.csv); do echo processing ${f}...; dos2unix $f; done      
+```
